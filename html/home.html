@@ -16,61 +16,94 @@
     <link rel="stylesheet" href="../css/nice-select.css" type="text/css">
     <link rel="stylesheet" href="../css/jquery-ui.min.css" type="text/css">
     <link rel="stylesheet" href="../css/owl.carousel.min.css" type="text/css">
-    //abcdef
+    <!--Link bootstrap-->
+    <link rel="stylesheet" href="../bootstrap-4.5.3-dist/css/bootstrap.css">
+    <script src="../bootstrap-4.5.3-dist/js/bootstrap.js"></script> 
     
 </head>
 <body>
     <header>
-   
-    </header>
-    <div class="top-row">
-        <div class="logo">
-            <img src="../img/logo_1.png">
-            <label class="text-logo">N-f i v e</label>
-        </div>
-        <div class="introduce" >
-            <h6>Ở đây chứa câu slogan của trang web </h6>
-        </div>
-       
-        <div class="login-register-button">
-            <a class="register-button" href="">Đăng nhập</a>
-            <a class="login-button" href="">Đăng kí</a>
-        </div>
-       
-    </div>
-    <div class="row">
-        
-        <ul class="main-menu">
-            <li class="home"><a href="">Trang chủ</a></li>
-            <li><a href="">Giới thiệu</a></li>
-            <li><a href="">Khóa học</a></li>
-            <li><a href="">Học phí</a></li>
-            <li><a href="">Hỗ trợ</a></li>
-            <li><a href="">Liên hệ</a></li>
+ <!--Menu-->
+<nav class="navbar navbar-expand-lg navbar-dark primary-color main_background_color">
+    <!-- Tên trang học -->
+    <a class="navbar-brand" href="#">N-five</a>
+  
+    <!-- Menu-->
+    <div class="collapse navbar-collapse" id="menuNav">
+  
+      <!-- Danh mục menu -->
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item active">
+          <a class="nav-link" href="#">Home
+            <span class="sr-only">(current)</span>
+          </a>
+        </li>
+        <li class="nav-item col-sm-7">
+          <a class="nav-link" href="#">Giới thiệu</a>
+        </li>
+        <li class="nav-item col-sm-7">
+          <a class="nav-link" href="#">Hỗ trợ</a>
+        </li>
+  
+        <!-- Danh sách khóa học -->
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" data-toggle="dropdown"
+            aria-haspopup="true" aria-expanded="false">Khóa học</a>
+          <div class="dropdown-menu dropdown-primary">
+            <a class="dropdown-item" href="#">Ngoại ngữ</a>
+            <a class="dropdown-item" href="#">Lập trình</a>
+            <a class="dropdown-item" href="#">Hội họa</a>
+            <a class="dropdown-item" href="#">Âm nhạc</a>
+            <a class="dropdown-item" href="#">Nấu ăn</a>
+          </div>
+        </li>
+  
+      </ul>
+      <!--Thanh tìm kiếm-->
 
-        </ul>
-        <div class="SearchBar">
-            <form action="" class="search-form" >
-                <input class="searchTerm" type="search" placeholder="Tìm kiếm khóa học"> 
-                <button type="submit" class="searchButton">
-                <i class="fa fa-search"> </i>
-                </button>
-            </form>  
+      <form class="form-inline">
+        <div class="md-form my-0">
+        <button class="btn"><i class="fa fa-search"></i></button>
+          <input class="form-control mr-sm-2" type="text" placeholder="Tìm kiếm khóa học" aria-label="Search">
         </div>
+      </form>
     </div>
+  
+  </nav>
+  <nav class="primary-color bg-white shadow-sm p-3 mb-5 bg-white rounded">
+    <div class="d-flex justify-content-end">
+        <div>
+            <img src="../img/titleWeb-01.png" class="img-fluid" alt="Responsive image" style="height: 40px;">
+        </div>
+        <div class="mr-2">
+            <button type="button" class="btn btn-info">
+                <i class="fa fa-shopping-cart" aria-hidden="true"></i> Cart <span class="badge badge-pill badge-danger">3</span>
+            </button>
+        </div>
+        <div>
+            <button type="button" class="btn mr-2 text-white" style="background-color:  #AA1E28;">Đăng nhập</button>
+        </div>
+        
+        <div>
+            <button type="button" class="btn btn-light mr-2" >Đăng kí</button>
+        </div>
+        
+    </div>
+    
+  </nav>
+    </header>
+
 
     <!--Ngan_site_bar-->
-    <section >
-        <div class="container">
-            <div class="row_menu_bar">    
-                <div class="col_site_bar">
+    <section class="mt-3 d-flex flex-row"> 
+               <div class="ml-3 col-2">
                     <div class="site_bar">
                         <div class="site_bar_title">
                             <i class="fa fa-bars"></i>
                             <span>Danh mục</span>
                         </div>
                             <nav class="header__menu">
-                                <ul class="site_bar_box">
+                                <ul class="pl-3">
                                     <li class="active"><a href="./index.html">Ngoại ngữ</a>
                                         <ul class="header__menu__dropdown">
                                             <li><a href="#">Tiếng Anh</a></li>
@@ -89,11 +122,11 @@
                                     <li><a href="#">Hội họa</a></li>
                                     <li><a href="#">Nấu ăn</a></li>
                                 </ul>
-                            </nav>        
-                </div>
-            </div>
-            <div class="col_banner">
-                <img src="../img/hero/banner.jpg">
+                            </nav>    
+                        </div  >  
+               </div> 
+            <div class="col-sm-8 d-flex justify-content-center">
+                <img src="../img/banner.jpg">
             </div>
             </div>
 
@@ -306,6 +339,8 @@
     </section>
 
 <!--end Ngan featured section-->
+
+
     <section class="become-teacher">
         <div class="teacher-block">
             <div>

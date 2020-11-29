@@ -522,14 +522,7 @@ div{
 }
 
 /* Site_bar_menu */
-.container{
-    width:100%;
-    padding-right:15px;
-    padding-left:15px;
-    margin-right:auto;
-    margin-left:auto;
-    padding-top: 25px;
-}
+
 .row_menu_bar{
 	display:flex;
 	-ms-flex-wrap:wrap;
@@ -711,7 +704,9 @@ div{
 	margin-bottom: 50px;
 	text-align: center;
 }
-
+.main_background_color{
+    background: #AA1E28;
+}
 .section-title h2 {
 	color: #1c1c1c;
 	font-weight: 700;
