@@ -1,0 +1,17 @@
+
+.main_color.active{
+    background-color:#bc0e28 !important;
+    border-color:#bc0e28 !important
+}
+
+.main_color_button {
+    color:#bc0e28 !important;
+    border-color:#bc0e28 !important
+}
+
+.main_color_button:hover{
+    color:#fff !important;
+    background-color:#bc0e28 !important;
+    border-color:#bc0e28 !important
+}
+
