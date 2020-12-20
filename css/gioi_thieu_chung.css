@@ -21,3 +21,21 @@
     margin-bottom: 25px;
     text-align: center ;
 }
+
+.product__details__tab .nav-tabs:after {
+    width: 270px !important;
+}
+
+.product__details__tab .nav-tabs::before {
+    width: 270px !important;
+}
+
+ol li a{
+    color: #1c1c1c;
+}
+ol li a:hover{
+    color: #AA1E28 ;
+}
+p a:hover{
+    color: black;
+}
