@@ -1,0 +1,33 @@
+{
+    "name": "intro-sw-n-five",
+    "version": "1.0.0",
+    "description": "",
+    "main": "index.js",
+    "dependencies": {
+        "bcryptjs": "^2.4.3",
+        "express": "^4.17.1",
+        "express-handlebars": "^5.2.0",
+        "express-handlebars-sections": "^1.0.1",
+        "express-hbs": "^2.3.4",
+        "handlebars": "^4.7.6",
+        "hbs": "^4.1.1",
+        "moment": "^2.29.1",
+        "mysql": "^2.18.1",
+        "until": "^0.1.1"
+    },
+    "devDependencies": {},
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1",
+        "start": "node app"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/kimnamlhn/Intro-SW-N-Five.git"
+    },
+    "author": "",
+    "license": "ISC",
+    "bugs": {
+        "url": "https://github.com/kimnamlhn/Intro-SW-N-Five/issues"
+    },
+    "homepage": "https://github.com/kimnamlhn/Intro-SW-N-Five#readme"
+}
