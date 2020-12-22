@@ -1,0 +1,90 @@
+.yellow-text{
+    color: #ffff00;
+}
+#more{
+    display: none;
+}
+.teacher-list li i{
+    color: #e6720d;
+}
+.bg-infoCourse{
+    background-color: #051f3f;
+    color:white;
+}
+.strike-price{
+    color: #ff5757;
+}
+.bs-accordion .panel-heading{
+    padding:0;
+}
+.bs-accordion .panel-heading a{
+    display: block;
+    padding: 10px 15px;
+}
+a:hover,a:focus{
+    text-decoration: none;
+    outline: none;
+}
+#accordion .panel{
+    border: none;
+    border-radius: 0;
+    box-shadow: none;
+    margin-bottom: -5px;
+}
+#accordion .panel-heading{
+    padding: 0;
+    border: none;
+    border-radius: 0;
+}
+#accordion .panel-title a{
+    display: block;
+    padding: 15px 70px 15px 20px;
+    background: #fff;
+    font-size: 18px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    color: #e6720d;
+    border-bottom: 1px solid #1d2e3b;
+    position: relative;
+}
+#accordion .panel-title a.collapsed{ color: #1d2e3b; }
+#accordion .panel-title a.collapsed:hover{ color: #e6720d; }
+#accordion .panel-title a:before,
+#accordion .panel-title a:after{
+    content: "";
+    width: 3px;
+    height: 10px;
+    background: #e6720d;
+    font-size: 15px;
+    position: absolute;
+    top: 20px;
+    right: 35px;
+    transform: rotate(-45deg);
+    transition: all 0.3s ease-in-out 0s;
+}
+#accordion .panel-title a:after{
+    right: 29px;
+    transform: rotate(45deg);
+}
+#accordion .panel-title a.collapsed:before{
+    transform: rotate(45deg);
+    background: #1d2e3b;
+}
+#accordion .panel-title a.collapsed:after{
+    transform: rotate(-45deg);
+    background: #1d2e3b;
+}
+#accordion .panel-title a.collapsed:hover:before,
+#accordion .panel-title a.collapsed:hover:after{ background: #e6720d; }
+#accordion .panel-body{
+    padding: 10px 20px;
+    background: #1d2e3b;
+    border-top: none;
+    font-size: 15px;
+    color: #fff;
+    line-height: 25px;
+}
+
+.bg-card{
+    background-color: #dee7fa !important;
+}
