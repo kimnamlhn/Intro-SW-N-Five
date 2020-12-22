@@ -14,9 +14,9 @@ const pool_query = util.promisify(pool.query).bind(pool);
 
 module.exports = {
     load: sql => pool_query(sql)
-    // load(sql) {
-    //     return pool_query(sql);
-    // }
+        // load(sql) {
+        //     return pool_query(sql);
+        // }
 }
 
 
