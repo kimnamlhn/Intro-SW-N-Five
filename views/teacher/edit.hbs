@@ -1,0 +1,24 @@
+<form method="POST">
+  <div class="form-group" >
+    <label for="fullName">fullName</label>
+    <input type="text" class="form-control" id="txtFullName" name="fullName" value="{{this.category.fullName}}" >
+    <label for="id">id</label>
+    <input type="text" class="form-control" id="txtID" name="id" readonly value="{{this.category.id}}">
+  </div>
+  <div class="form-group">
+    <label for="url">url</label>
+    <input type="text" class="form-control" id="txtURL" name="url" value="{{this.category.url}}">
+     <div class="form-group">
+    <label for="job">job</label>
+    <input type="text" class="form-control" id="txtJob" name="job" value="{{this.category.job}}">
+  </div>
+  <button type="submit" class="btn btn-outline-success" formaction="/teacher/update">
+      <i class="fa fa-check" aria-hidden="true"></i> Save
+  </button>
+  <button type="submit" class="btn btn-outline-danger" formaction="/teacher/del">
+      <i class="fa fa-trash" aria-hidden="true"></i> Remove
+  </button>
+  <a name="" id="" class="btn btn-outline-success" href="/teacher" role="button">
+  <i class="fa fa-backward" aria-hidden="true"></i> Back
+  </a>
+</form>

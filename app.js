@@ -14,7 +14,12 @@ app.engine('hbs', exphbs({
     partialsDir: 'views/_partials',
     helpers: {
         section: express_hbs(),
+
     }
+}));
+
+app.use(express.urlencoded({
+    extended: true
 }));
 app.set('view engine', 'hbs');
 
@@ -43,9 +48,10 @@ app.get('/user/view-video', function(req, res) {
 
 
 app.use('/register', require('./routes/account/register-teacher.route'));
-
-
-
+app.use('/login', require('./routes/account/login_teacher.route'));
+app.use('/', require('./routes/teacher.route'));
+app.use('/admin/categories', require('./routes/categories.route'));
+app.use('/admin', require('./routes/admin.route'));
 
 
 
