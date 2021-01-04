@@ -9,9 +9,13 @@
     "express": "^4.17.1",
     "express-handlebars": "^5.2.0",
     "express-handlebars-sections": "^1.0.1",
+<<<<<<< Updated upstream
     "mysql": "^2.18.1",
     "path": "^0.12.7",
     "util": "^0.12.3"
+=======
+    "mysql": "^2.18.1"
+>>>>>>> Stashed changes
   },
   "devDependencies": {
     "video.js": "^7.10.2"

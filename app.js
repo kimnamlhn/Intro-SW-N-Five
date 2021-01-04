@@ -14,12 +14,16 @@ app.engine('hbs', exphbs({
     partialsDir: 'views/_partials',
     helpers: {
         section: express_hbs(),
+<<<<<<< Updated upstream
 
     }
 }));
 
 app.use(express.urlencoded({
     extended: true
+=======
+    }
+>>>>>>> Stashed changes
 }));
 app.set('view engine', 'hbs');
 
@@ -48,10 +52,16 @@ app.get('/user/view-video', function(req, res) {
 
 
 app.use('/register', require('./routes/account/register-teacher.route'));
+<<<<<<< Updated upstream
 app.use('/login', require('./routes/account/login_teacher.route'));
 app.use('/', require('./routes/teacher.route'));
 app.use('/admin/categories', require('./routes/categories.route'));
 app.use('/admin', require('./routes/admin.route'));
+=======
+
+
+
+>>>>>>> Stashed changes
 
 
 
