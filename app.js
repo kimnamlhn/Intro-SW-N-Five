@@ -16,6 +16,11 @@ app.engine('hbs', exphbs({
         section: express_hbs(),
     }
 }));
+
+app.use(express.urlencoded({
+    extended: true
+
+}));
 app.set('view engine', 'hbs');
 
 app.get('/', function(req, res) {
@@ -32,6 +37,18 @@ app.get('/search-result', function(req, res) {
     res.render('guest/search-result');
 });
 
+app.get('/general-intro', function(req, res) {
+    res.render('guest/gioi_thieu_chung', {
+        layout: 'gioi_thieu_chung'
+    });
+});
+
+app.get('/support', function(req, res) {
+    res.render('guest/ho_tro', {
+        layout: 'ho_tro'
+    });
+});
+
 //End Guest
 //User
 
@@ -41,13 +58,33 @@ app.get('/user/view-video', function(req, res) {
     });
 });
 
+app.get('/user/outcomes', function(req, res) {
+    res.render('user/kq_hoc_tap', {
+        layout: 'user_layout'
+    });
+});
+
 
 app.use('/register', require('./routes/account/register-teacher.route'));
 
+app.use('/login', require('./routes/account/login_teacher.route'));
+app.use('/', require('./routes/teacher.route'));
+app.use('/admin/categories', require('./routes/categories.route'));
+app.use('/admin', require('./routes/admin.route'));
+app.use('/', require('./routes/coursePage.route'));
 
+//Admin
+app.get('/admin/add-admin', function(req, res) {
+    res.render('admin/add_admin', {
+        layout: 'admin_layout'
+    });
+});
 
-
-
+app.get('/admin/manage', function(req, res) {
+    res.render('admin/quan_ly_admin', {
+        layout: 'admin_layout'
+    });
+});
 
 
 
