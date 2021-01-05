@@ -14,16 +14,12 @@ app.engine('hbs', exphbs({
     partialsDir: 'views/_partials',
     helpers: {
         section: express_hbs(),
-<<<<<<< Updated upstream
-
     }
 }));
 
 app.use(express.urlencoded({
     extended: true
-=======
-    }
->>>>>>> Stashed changes
+
 }));
 app.set('view engine', 'hbs');
 
@@ -42,13 +38,13 @@ app.get('/search-result', function(req, res) {
 });
 
 app.get('/general-intro', function(req, res) {
-    res.render('guest/gioi_thieu_chung',{
+    res.render('guest/gioi_thieu_chung', {
         layout: 'gioi_thieu_chung'
     });
 });
 
 app.get('/support', function(req, res) {
-    res.render('guest/ho_tro',{
+    res.render('guest/ho_tro', {
         layout: 'ho_tro'
     });
 });
@@ -70,13 +66,12 @@ app.get('/user/outcomes', function(req, res) {
 
 
 app.use('/register', require('./routes/account/register-teacher.route'));
-<<<<<<< Updated upstream
+
 app.use('/login', require('./routes/account/login_teacher.route'));
 app.use('/', require('./routes/teacher.route'));
 app.use('/admin/categories', require('./routes/categories.route'));
 app.use('/admin', require('./routes/admin.route'));
-=======
-
+app.use('/', require('./routes/coursePage.route'));
 
 //Admin
 app.get('/admin/add-admin', function(req, res) {
@@ -90,11 +85,6 @@ app.get('/admin/manage', function(req, res) {
         layout: 'admin_layout'
     });
 });
-
-
->>>>>>> Stashed changes
-
-
 
 
 

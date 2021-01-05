@@ -1,12 +1,11 @@
 const express = require('express');
 const courseModel = require('../models/coures.model');
 const router = express.Router();
-router.get('/', async function(req, res) {
+router.get('/course', async function(req, res) {
     try {
         const list = await courseModel.all();
-        res.render('guest/courses', {
-            mycourses: list,
-            empty: list.length === 0
+        res.render('./course/source', {
+
         });
     } catch (err) {
         console.error(err);
