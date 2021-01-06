@@ -7,7 +7,6 @@ router.get('/', auth, async function (req, res)
   {
     try {
         const id = res.locals.stuAccount.idHocVien
-        console.log(id)
         const rows =  await mCourseModel.myCourses(id)
         //
         if (rows !== null){
@@ -19,7 +18,6 @@ router.get('/', auth, async function (req, res)
                     progress = parseFloat(SoVideoDaHoc[0].SoVideoDaHoc)/parseFloat(TongVideo[0].SoVideoKhoaHoc)
                 }
                rows[i].progress = Math.round(progress*100)
-               console.log( rows[i].progress)
               }
         }
       
@@ -39,7 +37,6 @@ router.get('/', auth, async function (req, res)
   {
     try {
         const id = res.locals.stuAccount.idHocVien
-        console.log(id)
         const rows =  await mCourseModel.myCourses(id)
         //
         if (rows !== null){
@@ -51,7 +48,6 @@ router.get('/', auth, async function (req, res)
                     progress = parseFloat(SoVideoDaHoc[0].SoVideoDaHoc)/parseFloat(TongVideo[0].SoVideoKhoaHoc)
                 }
                rows[i].progress = Math.round(progress*100)
-               console.log( rows[i].progress)
               }
         }
       

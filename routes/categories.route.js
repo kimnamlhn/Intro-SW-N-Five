@@ -19,7 +19,6 @@ router.post('/add', async function(req, res) {
         NameID: req.body.txtNameID
     }
     const ret = await categoryModel.add(entity);
-    console.log(ret);
     res.render('./vwcategories/add');
 })
 module.exports = router;

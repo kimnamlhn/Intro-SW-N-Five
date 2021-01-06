@@ -14,7 +14,6 @@ router.get('/:id', async function (req, res) {
       if(res.locals.accounttype === true){
         check = courseAuth.courseAuth(res.locals.stuAccount.idHocVien,coId)
       }
-      console.log(check)
       const list = await detailModel.detailCourse(coId)
       const feedback = await detailModel.getFeedBack(coId)
       const relatedCourse = await detailModel.relatedCourse(coId)
@@ -27,7 +26,6 @@ router.get('/:id', async function (req, res) {
         rows[i].lessons = less
         }
      }
-     console.log(rows)
      
 
      //
@@ -73,15 +71,19 @@ router.get('/:id', async function (req, res) {
 
   router.post('/:id/enroll',auth, async function (req, res) {
     try {
-      
+      let IdKhoaHoc = parseFloat(req.body.IdKhoaHoc);
+      let idHocVien = res.locals.stuAccount.idHocVien;
       const obj = {
-        KhoaHoc_IdKhoaHoc: parseFloat(req.body.IdKhoaHoc),
-        HocVien_idHocVien: res.locals.stuAccount.idHocVien,
-        NgayDangKi: new Date().toISOString().slice(0, 10) ,
+        KhoaHoc_IdKhoaHoc: IdKhoaHoc,
+        HocVien_idHocVien: idHocVien,
+        NgayDangKy: new Date().toISOString().slice(0, 10) ,
         TrangThai: 0
       }
-
-     await enrollModel.enroll(obj)
+    let check = await courseAuth.courseAuth(IdKhoaHoc,idHocVien);
+    console.log(check)
+    if(check === false){
+     await detailModel.enroll(obj)
+    }
      res.redirect(req.headers.referer);
    
     } catch (err) {

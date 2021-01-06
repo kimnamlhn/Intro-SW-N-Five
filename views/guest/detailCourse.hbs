@@ -11,10 +11,10 @@
    </script>
 
     <script>
-       $('.addWishList').on('click', function () {
+       $('.enrollCourse').on('click', function () {
       const id = $(this).data('id');
-      $('#IdKhoaHoc-WishList').val(id);
-      $('#frmAddWishList').submit();
+      $('#IdKhoaHocEnroll').val(id);
+      $('#frmEnrollCourse').submit();
   });
    </script>
 <!--Rating-->
@@ -48,6 +48,11 @@
         <input type="hidden" name="IdKhoaHoc" id="IdKhoaHoc">
       </form>
       <!--Add to cart .//-->
+           <!--Enroll-->
+       <form action="/detail-course/{{IdKhoaHoc}}/enroll" method="post" id="frmEnrollCourse">
+        <input type="hidden" name="IdKhoaHoc" id="IdKhoaHocEnroll">
+      </form>
+      <!--Enroll.//-->
     <div class="row align-items-center my-5">
       <div class="col-lg-7">
         <img class="img-fluid rounded mb-4 mb-lg-0" src="/img/banner-1.jpg" alt="">
@@ -59,7 +64,7 @@
         </ul><span class="text-muted text-sm">({{SoLuongHVDangKy}} học viên)</span> <span class="badge badge-success ml-3"><i class="far fa-clock pr-1"></i>{{LastUpdate}}</span> <span>Lần cập nhật cuối</span>
 
          <a data-id="{{IdKhoaHoc}}" href="javascript:;" role="button" class="btn btn-primary addCourse"> <i class="fa fa-shopping-cart"></i>Add to Cart</a>
-        <a data-id="{{IdKhoaHoc}}" href="javascript:;" role="button" class="btn btn-outline-danger"><i class="fa fa-sign-in" aria-hidden="true"></i>Enroll</a>
+        <a data-id="{{IdKhoaHoc}}" href="javascript:;" role="button" class="btn btn-outline-danger enrollCourse"><i class="fa fa-sign-in" aria-hidden="true"></i>Enroll</a>
 
       </div>
       <!-- /.col-md-4 -->
