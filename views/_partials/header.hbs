@@ -1,50 +1,44 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-color">
             <!-- Brand-->
-            <a class="navbar-brand" href="#">HocNua</a>
+            <a class="navbar-brand" href="/">NFIVE</a>
             <div class="collapse navbar-collapse" id="menuNav">
                 <!-- Menu option-->
                 <ul class="navbar-nav mr-auto">
                     <li class="nav-item active">
-                        <a class="nav-link" href="#">Home
+                        <a class="nav-link" href="/">Home
                             <span class="sr-only">(current)</span>
                         </a>
                     </li>
 
                     <!--Categories-->
-                    <li class="nav-item dropdown">
+                   <!-- <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" data-toggle="dropdown"
                             aria-haspopup="true" aria-expanded="false">Categories</a>
                         <div class="dropdown-menu dropdown-primary">
                             <a class="dropdown-item" href="#">Category 1</a>
                             <a class="dropdown-item" href="#">Category 2</a>
                         </div>
-                    </li>
+                    </li> -->
 
                     <div class="dropdown">
                         <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" data-toggle="dropdown"
-                            aria-haspopup="true" aria-expanded="false">Tutorials</a>
+                            aria-haspopup="true" aria-expanded="false">Categories</a>
                         <ul class="dropdown-menu">
-                            <li><a tabindex="-1" href="#" class="dropdown-item">Web Development</a></li>
-                            <li><a tabindex="-1" href="#" class="dropdown-item">Mobile Development</a></li>
+                            {{#each lcCategories}}
                             <li class="dropdown-submenu">
-                                <a class="test dropdown-item" tabindex="-1" href="#">More<i class="fa fa-caret-down"
+                                <a class="test dropdown-item" tabindex="{{idLinhVuc}}" href="#">{{TenLinhVuc}}<i class="fa fa-caret-down"
                                         aria-hidden="true"></i><span class="caret"></span></a>
                                 <ul class="dropdown-menu">
-                                    <li><a tabindex="-1" href="#" class="dropdown-item">2nd level dropdown</a></li>
-                                    <li><a tabindex="-1" href="#" class="dropdown-item">2nd level dropdown</a></li>
-                                    <li class="dropdown-submenu">
-                                        <a class="test dropdown-item" href="#" class="dropdown-item">Another dropdown <i
-                                                class="fa fa-caret-down" aria-hidden="true"></i><span
-                                                class="caret"></span></a>
-                                        <ul class="dropdown-menu">
-                                            <li><a href="#" class="dropdown-item">3rd level dropdown</a></li>
-                                            <li><a href="#" class="dropdown-item">3rd level dropdown</a></li>
-                                        </ul>
-                                    </li>
+                                    {{#each level2}}
+                                      <li><a tabindex="{{idLinhVuc}}" href="/courses/{{idLinhVucCap2}}" class="dropdown-item">{{TenLinhVucCap2}}</a></li>  
+                                    {{/each}}
                                 </ul>
                             </li>
+                            {{/each}}
+
                         </ul>
                     </div>
+                    
             </div>
             <!--End - Categories-->
             <!--Search bar -->
@@ -64,21 +58,59 @@
                     </li>
                 </ul>
             </div>
+            <form action="/login/-out" method="post" id="frmLogout"></form>
             <!--End of search bar-->
-
-            <div class="d-flex justify-content-end">
+            {{#if accounttype}}
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item">
+                    <a href="/cart" class="btn btn-info btn-sm">
+                    <i class="fa fa-shopping-cart" aria-hidden="true"></i> Cart {{#if nCart}}
+                           <span class="badge badge-pill badge-danger">{{nCart}}</span>
+                       {{/if}}
+                     </a>
+                </li>
+               <li class="nav-item">
+                    <a href="/user/my-watchlist" class="btn btn-outline-danger btn-sm">
+                   <i class="fa fa-heart" aria-hidden="true"></i> Wishlist 
+                        <span
+                    class="badge badge-pill badge-success">{{nItem.SoKhoaHocWishList}}</span>
+                     </a>
+                </li>
+                <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <i class="fa fa-envelope-o">
+                <i class="fa fa-user" aria-hidden="true"></i><span class="badge badge-primary">11</span>
+                </i>
+                Account
+                </a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <a class="dropdown-item" href="/user/profile">Profile</a>
+            <a class="dropdown-item" href="/user/my-course">My courses</a>
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item" href="javascript: $('#frmLogout').submit();">Log out</a>
+          </div>
+        </li>
+        </ul>
+            {{else}}
+                <div class="d-flex justify-content-end">
                 <div class="mr-2">
-                    <button type="button" class="btn btn-info">
-                        <i class="fa fa-shopping-cart" aria-hidden="true"></i> Cart <span
-                            class="badge badge-pill badge-danger">3</span>
-                    </button>
+                    <a href="/cart" class="btn btn-info">
+                        <i class="fa fa-shopping-cart" aria-hidden="true"></i> Cart 
+                       {{#if nCart}}
+                           <span class="badge badge-pill badge-danger">{{nCart}}</span>
+                       {{/if}}
+                        
+                    </a>
                 </div>
                 <div>
-                    <button type="button" class="btn mr-2 text-white" style="background-color:  #e71d36;">Login</button>
+                    <a href="/login" class="btn mr-2 text-white" style="background-color:  #e71d36;">Login</a>
                 </div>
 
                 <div>
-                    <button type="button" class="btn btn-light mr-2">Register</button>
+                    <a href="/register" class="btn btn-light mr-2">Register</a>
                 </div>
+            </div>
+            {{/if}}
+            
 
         </nav>

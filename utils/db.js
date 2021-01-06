@@ -6,19 +6,19 @@ const pool = mysql.createPool({
     port: 3306,
     user: 'root',
     password: "123456",
-    database: 'data mau',
+    database: 'mycourse',
     connectionLimit: 100,
 });
 
 const pool_query = util.promisify(pool.query).bind(pool);
 
 module.exports = {
-    load: sql => pool_query(sql)
-    // load(sql) {
-    //     return pool_query(sql);
-    // }
-}
-
+  load: sql => pool_query(sql),
+  add: (entity, tableName) => pool_query(`insert into ${tableName} set ?`, entity),
+  del: (condition, tableName) => pool_query(`delete from ${tableName} where ?`, condition),
+  patch: (entity, condition, tableName) => pool_query(`update ${tableName} set ? where ?`, [entity, condition])
+  
+};
 
 
 //  Luc ket noi db thi mo code tu khuc nay tro len

@@ -1,0 +1,57 @@
+{{#section 'footer'}}
+    <script>
+$('.form-control').keypress(function (e) {
+  if (e.which == 13) {
+      const code1 = $('#code1').val();
+       const code2 = $('#code2').val();
+       const code3 = $('#code3').val();
+       const code4 = $('#code4').val();
+       const code5 = $('#code5').val();
+       const code6 = $('#code6').val();
+      const code = code1+code2+code3+code4+code5+code6;
+      const OTP = $('#OTP').val();
+      if (code === OTP){
+    $('#frmConfirmOTP').submit();
+    }
+    else{
+        alert("OTP không chính xác")
+    return false;    }
+  }
+});
+
+
+
+</script>
+{{/section}}
+<div class="container">
+      <div class="row">
+        <div class="col-sm-9 col-md-7 col-lg-5 mx-auto">
+          <div class="card card-signin my-5">
+            <div class="card-body">
+                 {{#if err_message}}
+                  <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+                    {{err_message}}
+                  </div>
+                {{/if}}
+            {{#if fail}}
+                <h5 class="m-0">OTP verification</h5><span class="mobile-text">Chúng tôi không thể gửi mã xác minh đến email của bạn!<b class="text-danger">Email</b></span>
+               
+            {{else}}
+              <form class="form-signup" action="/register/confirmOTP" method="post" id="frmConfirmOTP">
+                <input type="hidden" class="form-control" autofocus="" name="OTP" value="{{OTP}}" id="OTP">
+                <input type="hidden" class="form-control" autofocus="" name="Email" value="{{Email}}">
+                <input type="hidden" class="form-control" autofocus="" name="fullName" value="{{fullName}}">
+                <h5 class="m-0">OTP verification</h5><span class="mobile-text">Chúng tôi vừa gửi mã xác minh đến email của bạn, vui lòng xác nhận mã để tiếp tục <b class="text-danger">{{Email}}</b></span>
+                <div class="d-flex flex-row mt-5"><input type="text" class="form-control" autofocus="" id="code1"><input type="text" class="form-control confirm mr-1" id="code2"><input type="text" class="form-control mr-1" id="code3"><input type="text" class="form-control mr-1" id="code4"><input type="text" class="form-control mr-1" id="code5"><input type="text" class="form-control mr-1" id="code6"></div>
+                 <div class="text-center mt-5"><span class="d-block mobile-text">Không nhận được mã code?</span><span class="font-weight-bold text-danger cursor">Gửi lại</span></div>
+              </form>
+            {{/if}}
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>

@@ -1,0 +1,132 @@
+{{#section 'header'}}
+<link rel="stylesheet" href="/css/rating.css">
+{{/section}}
+{{#section 'footer'}}
+   <script>
+       $('.addCourse').on('click', function () {
+    const id = $(this).data('id');
+    $('#IdKhoaHoc').val(id);
+    $('#frmAddCourse').submit();
+  });
+   </script>
+
+    <script>
+       $('.addWishList').on('click', function () {
+      const id = $(this).data('id');
+      $('#IdKhoaHoc-WishList').val(id);
+      $('#frmAddWishList').submit();
+  });
+   </script>
+<!--Rating-->
+    <script>
+	$(".btnrating").on('click',(function(e) {
+	var previous_value = $("#selected_rating").val();
+  var selected_value = $(this).attr("data-attr");
+  $("#selected_rating").val(selected_value);
+ for (i = 1; i <= selected_value; ++i) {
+	$("#rating-star-"+i).toggleClass('text-warning');
+	$("#rating-star-"+i).toggleClass('text-dark');
+	}
+	
+	for (ix = 1; ix <= previous_value; ++ix) {
+	$("#rating-star-"+ix).toggleClass('text-warning');
+	$("#rating-star-"+ix).toggleClass('text-dark');
+	}
+
+	}));
+  </script>
+  <!--Rating .// -->
+	
+{{/section}}
+  <!-- Page Content -->
+  <div class="container">
+
+    <!-- Heading Row -->
+     {{#with this.detCourse}}
+     <!--Add to cart-->
+       <form action="/cart/add" method="post" id="frmAddCourse">
+        <input type="hidden" name="IdKhoaHoc" id="IdKhoaHoc">
+      </form>
+      <!--Add to cart .//-->
+    <div class="row align-items-center my-5">
+      <div class="col-lg-7">
+        <img class="img-fluid rounded mb-4 mb-lg-0" src="/img/banner-1.jpg" alt="">
+      </div>
+      <!-- /.col-lg-8 -->
+      <div class="col-lg-5">
+        <h2 class="font-weight-light">{{TenKhoaHoc}}</h2>
+        <p>Giảng viên: {{TenGiangVien}}</p>
+        </ul><span class="text-muted text-sm">({{SoLuongHVDangKy}} học viên)</span> <span class="badge badge-success ml-3"><i class="far fa-clock pr-1"></i>{{LastUpdate}}</span> <span>Lần cập nhật cuối</span>
+
+         <a data-id="{{IdKhoaHoc}}" href="javascript:;" role="button" class="btn btn-primary addCourse"> <i class="fa fa-shopping-cart"></i>Add to Cart</a>
+        <a data-id="{{IdKhoaHoc}}" href="javascript:;" role="button" class="btn btn-outline-danger"><i class="fa fa-sign-in" aria-hidden="true"></i>Enroll</a>
+
+      </div>
+      <!-- /.col-md-4 -->
+    </div>
+    <!-- /.row -->
+    {{/with}}
+    <!-- Call to Action Well -->
+    <div class="card text-white bg-secondary my-5 py-4 text-center">
+      <div class="card-body">
+        <p class="text-white m-0">This call to action card is a great place to showcase some important information or display a clever tagline!</p>
+      </div>
+    </div>
+
+    <!-- Content Row -->
+    <div class="row">
+      <div class="col-md-4 mb-5">
+        <div class="card h-100">
+          <div class="card-body">
+            <h2 class="card-title">Card One</h2>
+            <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Rem magni quas ex numquam, maxime minus quam molestias corporis quod, ea minima accusamus.</p>
+          </div>
+          <div class="card-footer">
+            <a href="#" class="btn btn-primary btn-sm">More Info</a>
+          </div>
+        </div>
+      </div>
+      <!-- /.col-md-4 -->
+      <div class="col-md-4 mb-5">
+        <div class="card h-100">
+          <div class="card-body">
+            <h2 class="card-title">Card Two</h2>
+            <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quod tenetur ex natus at dolorem enim! Nesciunt pariatur voluptatem sunt quam eaque, vel, non in id dolore voluptates quos eligendi labore.</p>
+          </div>
+          <div class="card-footer">
+            <a href="#" class="btn btn-primary btn-sm">More Info</a>
+          </div>
+        </div>
+      </div>
+      <!-- /.col-md-4 -->
+      <div class="col-md-4 mb-5">
+        <div class="card h-100">
+          <div class="card-body">
+            <h2 class="card-title">Card Three</h2>
+            <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Rem magni quas ex numquam, maxime minus quam molestias corporis quod, ea minima accusamus.</p>
+          </div>
+          <div class="card-footer">
+            <a href="#" class="btn btn-primary btn-sm">More Info</a>
+          </div>
+        </div>
+      </div>
+      <!-- /.col-md-4 -->
+
+    </div>
+    <!-- /.row -->
+
+  </div>
+  <!-- /.container -->
+
+  <!-- Footer -->
+  <footer class="py-5 bg-dark">
+    <div class="container">
+      <p class="m-0 text-center text-white">Copyright &copy; Your Website 2020</p>
+    </div>
+    <!-- /.container -->
+  </footer>
+
+  <!-- Bootstrap core JavaScript -->
+  <script src="vendor/jquery/jquery.min.js"></script>
+  <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
