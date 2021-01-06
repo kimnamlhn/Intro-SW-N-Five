@@ -16,7 +16,7 @@ require('./middleware/error.mdw')(app);
 //require('./middleware/other.mdw')
 
 
-const PORT = 3000;
+const PORT = 5000;
 app.listen(PORT, _ => {
     console.log(`Example app listening at http://localhost:${PORT}`);
 });

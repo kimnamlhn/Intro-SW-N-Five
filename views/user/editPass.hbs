@@ -1,0 +1,114 @@
+{{#section 'header'}}
+<link rel="stylesheet"
+  href="https://cdnjs.cloudflare.com/ajax/libs/jquery-datetimepicker/2.5.20/jquery.datetimepicker.min.css">
+{{/section}}
+ 
+{{#section 'footer'}}
+<script
+  src="https://cdnjs.cloudflare.com/ajax/libs/jquery-datetimepicker/2.5.20/jquery.datetimepicker.full.min.js"></script>
+
+<script>
+ $('#txtDOB').datetimepicker({
+    format: 'd/m/Y',
+    timepicker: false,
+    mask: true,
+  });
+
+</script>
+
+{{/section}}
+{{#with stuAccount}}
+<div class="container">
+        <div class="main-body">
+        
+              <!-- Breadcrumb -->
+              <nav aria-label="breadcrumb" class="main-breadcrumb">
+                <ol class="breadcrumb">
+                  <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+                  <li class="breadcrumb-item"><a href="javascript:void(0)">User</a></li>
+                  <li class="breadcrumb-item active" aria-current="page">User Profile</li>
+                </ol>
+              </nav>
+              <!-- /Breadcrumb -->
+        
+              <div class="row gutters-sm">
+                <div class="col-md-4 mb-3">
+                  <div class="card">
+                    <div class="card-body">
+                      <div class="d-flex flex-column align-items-center text-center">
+                        <img src="https://bootdey.com/img/Content/avatar/avatar7.png" alt="Admin" class="rounded-circle" width="150">
+                        <div class="mt-3">
+                          {{#if TenHocVien}}
+                            <h4>{{TenHocVien}}</h4>
+                          {{else}}
+                            <h4>(NO NAME)</h4>
+                          {{/if}}
+                          
+                          {{#if NgaySinh}}
+                            <p class="text-secondary mb-1">{{Tuoi}} years old</p>
+                          {{else}}
+                            <p class="text-secondary mb-1">(NO BIRTHDAY)</p>
+                          {{/if}}
+                          
+                          
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="card mt-3">
+                    <div class="list-group" id="list-tab" role="tablist">
+                        <a class="list-group-item list-group-item-action" href="/user/profile">My profile</a>
+                        <a class="list-group-item list-group-item-action active" href="">Change password</a>
+                        <a class="list-group-item list-group-item-action" href="">My courses</a>
+                        <a class="list-group-item list-group-item-action" href="" >My watchlist</a>
+                        <a class="list-group-item list-group-item-action" href="">Log out</a>
+                      </div>
+                  </div>
+                </div>
+                <div class="col-md-8">
+                 
+                  <div class="card">
+
+                    <h3 class="card-header text-center font-weight-bold text-uppercase py-4">Edit your password</h3>
+                    <div class="card-body">
+                      
+              <form class="form-signup" action="/user/profile/edit-pass" method="post" id="frmEditPass">
+                  {{#if ../err_message}}
+                  <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+                    {{../err_message}}
+                  </div>
+                  {{/if}}
+                  {{#if ../succ_message}}
+                  <div class="alert alert-success alert-dismissible fade show" role="alert">
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+                    {{../succ_message}}
+                  </div>
+                  {{/if}}
+                  <input type="hidden"  name="idTaiKhoan" value="{{TaiKhoan_idTaiKhoan}}">
+                <div class="form-group">
+                  <input type="password" id="oldPass" name="oldPassword" class="form-control" placeholder="Your old password">
+                </div>
+  
+                <div class="form-group">
+                  <input type="password" id="newPass" name="newPassword" class="form-control" placeholder="Your new password">
+                </div>
+  
+                <button class="btn btn-lg btn-primary btn-block text-uppercase" type="submit">Confirm</button>
+              </form>
+
+                    </div>
+                  </div>
+                  <!--End Edit profile-->
+                  </div>
+                </div>
+              </div>
+            </div>
+            
+        </div>
+        {{/with}}
+        

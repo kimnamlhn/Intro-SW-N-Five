@@ -65,68 +65,173 @@
       <!-- /.col-md-4 -->
     </div>
     <!-- /.row -->
-    {{/with}}
+   
     <!-- Call to Action Well -->
     <div class="card text-white bg-secondary my-5 py-4 text-center">
-      <div class="card-body">
-        <p class="text-white m-0">This call to action card is a great place to showcase some important information or display a clever tagline!</p>
-      </div>
+        <p class="text-white m-0">Mô tả khóa học</p>
     </div>
-
-    <!-- Content Row -->
-    <div class="row">
-      <div class="col-md-4 mb-5">
-        <div class="card h-100">
-          <div class="card-body">
-            <h2 class="card-title">Card One</h2>
-            <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Rem magni quas ex numquam, maxime minus quam molestias corporis quod, ea minima accusamus.</p>
-          </div>
-          <div class="card-footer">
-            <a href="#" class="btn btn-primary btn-sm">More Info</a>
-          </div>
-        </div>
-      </div>
-      <!-- /.col-md-4 -->
-      <div class="col-md-4 mb-5">
-        <div class="card h-100">
-          <div class="card-body">
-            <h2 class="card-title">Card Two</h2>
-            <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quod tenetur ex natus at dolorem enim! Nesciunt pariatur voluptatem sunt quam eaque, vel, non in id dolore voluptates quos eligendi labore.</p>
-          </div>
-          <div class="card-footer">
-            <a href="#" class="btn btn-primary btn-sm">More Info</a>
-          </div>
-        </div>
-      </div>
-      <!-- /.col-md-4 -->
-      <div class="col-md-4 mb-5">
-        <div class="card h-100">
-          <div class="card-body">
-            <h2 class="card-title">Card Three</h2>
-            <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Rem magni quas ex numquam, maxime minus quam molestias corporis quod, ea minima accusamus.</p>
-          </div>
-          <div class="card-footer">
-            <a href="#" class="btn btn-primary btn-sm">More Info</a>
-          </div>
-        </div>
-      </div>
-      <!-- /.col-md-4 -->
-
+    <div>
+       {{{MoTaChiTiet}}}
     </div>
-    <!-- /.row -->
+ 
 
   </div>
-  <!-- /.container -->
 
-  <!-- Footer -->
-  <footer class="py-5 bg-dark">
-    <div class="container">
-      <p class="m-0 text-center text-white">Copyright &copy; Your Website 2020</p>
+<section id="tabs">
+	<div class="container">
+		<div class="row">
+			<div class="col-xs-12 ">
+				<nav>
+					<div class="nav nav-tabs nav-fill" id="nav-tab" role="tablist">
+						<a class="nav-item nav-link active" id="nav-home-tab" data-toggle="tab" href="#nav-home" role="tab" aria-controls="nav-home" aria-selected="true">Thông tin giảng viên</a>
+						<a class="nav-item nav-link" id="nav-profile-tab" data-toggle="tab" href="#nav-profile" role="tab" aria-controls="nav-profile" aria-selected="false">Phản hồi học viên</a>
+					
+					</div>
+				</nav>
+				<div class="tab-content py-3 px-3 px-sm-0" id="nav-tabContent">
+					<div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
+						
+            <div class="row p-2  border rounded">
+                  <div class="col-md-3 mt-1"><img class="img-fluid img-responsive rounded product-image" src="../img/new_teacher.jpeg"></div>
+                  <div class="col-md-9 mt-1">
+                      <h5 class="text-white">{{TenGiangVien}}</h5>
+                      <div class="d-flex flex-row">
+                        <ul class="list-unstyled teacher-list">
+                          <li> <i class="fa fa-star" aria-hidden="true"></i> {{NgSinh}}</li>
+                          <li><i class="fa fa-play-circle" aria-hidden="true"></i> {{Email}}</li>
+                          <li><i class="fa fa-graduation-cap" aria-hidden="true"></i> {{SoLuongHVDangKy}} Students</li>
+                          {{#each teacher}}
+                            <li><i class="fa fa-book" aria-hidden="true"></i> {{SoKhoaHoc}} Courses</li>
+                          {{/each}}
+                          
+                        </ul>
+                      </div>
+                      <div>
+                        <p class="text-white">{{{MoTa}}}</p>
+
+                        <button onclick="showMore()" id="myBtn" class="btn btn-default">Read more</button>
+                      </div>
+                  </div>
+              </div>
+  {{/with}}
+	
+					</div>
+					<div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
+            <!--Feedback-->
+            <div class="container">              
+              <div class="card">
+                    {{#each this.feedback}}
+                  <div class="card-body">
+                      <div class="row">
+                          <div class="col-md-2">
+                              <img src="https://image.ibb.co/jw55Ex/def_face.jpg" class="img img-rounded img-fluid"/>
+                              <p class="text-secondary text-center">{{NgayDanhGia}}</p>
+                          </div>
+                          <div class="col-md-10">
+                              <p>
+                                  <a class="float-left" href="https://maniruzzaman-akash.blogspot.com/p/contact.html"><strong>{{TenHocVien}}</strong></a>
+                                  <span class="float-right"><i class="text-warning fa fa-star"></i></span>
+                                    <span class="float-right"><i class="text-warning fa fa-star"></i></span>
+                                  <span class="float-right"><i class="text-warning fa fa-star"></i></span>
+                                  <span class="float-right"><i class="text-warning fa fa-star"></i></span>
+
+                            </p>
+                            <div class="clearfix"></div>
+                              <p>{{NhanXet}}</p>
+                              <p>
+                                  <a class="float-right btn btn-outline-primary ml-2"> <i class="fa fa-reply"></i> Reply</a>
+                                  <a class="float-right btn text-white btn-danger"> <i class="fa fa-heart"></i> Like</a>
+                            </p>
+                          </div>
+                      </div>
+                     
+                      
+
+                  </div>
+                   {{/each}}
+              </div>
+              <!--Give rating -->
+               {{#if courseAuth}}
+                <h5 class="mt-4">Add a review</h5>
+                <!--Leave a rating-->
+               <div class="form-group">
+                 <form action="/detail-course/{{detCourse.IdKhoaHoc}}/addComment" method="POST" id="addComment">
+                    <input type="hidden" id="selected_rating" name="selected_rating" value="0" required="required">
+
+                
+                  <a class="text-dark btnrating " type="button" data-attr="1" id="rating-star-1">
+                      <i class="fa fa-star" aria-hidden="true"></i>
+                  </a>
+                  <a class="text-dark btnrating " type="button" data-attr="2" id="rating-star-2">
+                      <i class="fa fa-star" aria-hidden="true"></i>
+                  </a>
+                  <a class="text-dark btnrating " type="button" data-attr="3" id="rating-star-3">
+                      <i class="fa fa-star" aria-hidden="true"></i>
+                  </a>
+                  <a class="text-dark btnrating " type="button" data-attr="4" id="rating-star-4">
+                      <i class="fa fa-star" aria-hidden="true"></i>
+                  </a>
+                  <a class="text-dark btnrating " type="button" data-attr="5" id="rating-star-5">
+                      <i class="fa fa-star" aria-hidden="true"></i>
+                  </a>                  
+              </div>
+                <!--End leave rating .//-->
+
+                  <div>
+                  <!-- Add review -->
+                  <div class="md-form md-outline">
+                    <textarea id="form76" class="md-textarea form-control pr-6" rows="4" form="addComment" name="comment"></textarea>
+                    <label for="form76">Your review</label>
+                  </div>
+                  <!--End add review-->
+                  <div class="text-right pb-2">
+                    <button type="submit" class="btn btn-primary">Send review</button>
+                  </div>
+                </div>
+                </form>
+                {{/if}}
+              <!--End give rating .//-->
+              
+            </div>            
+              <!--Feeback ../ -->
+          </div>
+				
+				</div>
+			
+			</div>
+		</div>
+	</div>
+
+</section>
+  <div class="container pb-5 mb-2">
+  {{#if relatedCourse}}
+    <h2 class="text-center text-info">Students also bought</h2>
+  {{else}}
+    <h2 class="text-center text-info">No related courses to display</h2>
+  {{/if}}
+  {{#each relatedCourse}}
+        <div class="cart-item d-md-flex justify-content-between" >
+        <div class="px-3 my-3">
+            <a class="cart-item-product" href="#">
+                <div class="cart-item-product-thumb"><img src="/img/course-img.png" alt="Product"></div>
+                <div class="cart-item-product-info">
+                    <h4 class="cart-item-product-title">{{TenKhoaHoc}}<span class="badge badge-danger ml-3"><i class="far fa-clock pr-1"></i>Bestseller</span></h4><span><strong>Last update:</strong> {{LastUpdate}}</span><span><strong>Rating</strong> {{DiemDanhGia}}<i class="fa fa-star" style="color: #e6720d;" aria-hidden="true"></i></span>
+                </div>
+            </a>
+        </div>
+        <div class="px-3 my-3 text-center">
+            <div class="cart-item-label">Viewers</div><span class="text-xl font-weight-medium">{{SoLuongHVDangKy}}<i class="fa fa-users" aria-hidden="true"></i></span>
+        </div>
+        <div class="px-3 my-3 text-center">
+            <div class="cart-item-label">{{giaMoi}}</div><span class="text-xl font-weight-medium"><strike>{{HocPhi}}</strike></span>
+        </div>
+         <div class="px-3 my-3 text-center">
+            <a class="btn  btn-default addCourse"  data-id="{{IdKhoaHoc}}" href="javascript:;" role="button" ><i class="fa fa-cart-plus" aria-hidden="true"></i></i></a>
+            <a data-id="{{IdKhoaHoc}}" href="javascript:;" role="button" class="btn btn-outline-danger addWishList"> <i class="fa fa-heart" aria-hidden="true"></i></a>
+
+        </div>
     </div>
-    <!-- /.container -->
-  </footer>
-
-  <!-- Bootstrap core JavaScript -->
-  <script src="vendor/jquery/jquery.min.js"></script>
-  <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  {{/each}}
+  
+    </div>
 

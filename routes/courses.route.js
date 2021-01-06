@@ -1,11 +1,11 @@
 const express = require('express');
-const courseModel = require('../models/coures.model');
+const courseModel = require('../models/courses.model');
 const router = express.Router();
 //Đi đến trang khóa học
 router.get('/:id', async function (req, res) {
     try {
       const coId = req.params.id;
-     // const list = await courseModel.infoCourses();
+     console.log(coId)
       const list = await courseModel.courseByCateg(coId)
      const categ = await courseModel.allWithDetails()
      // console.log(res.locals.lcCategories)
