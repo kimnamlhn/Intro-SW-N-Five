@@ -1,32 +1,44 @@
+
 <div class="card">
-    <h5 class="card-header">
-        Categories
-    </h5>
-    {{!-- <div class="card-body">
-        <p class="card-text">Không có dữ liệu.</p>
-    </div> --}}
-    <div class="card-body">
-        <table class="table table-hover">
-            <thead>
-                <tr>
-                    <th scope="col">#</th>
-                    <th scope="col">Category</th>
-                    <th scope="col">&nbsp;</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <th scope="row">1</th>
-                    <td>Mark</td>
-                    <td class="text-right">
-                        <a name="" id="" class="btn btn-sm btn-primary" href="javascript:;" role="button" title="Edit Category"></a>
-                        <i class="fa fa-pencil" aria-hidden="true"></i>
-                    </td>
-                </tr>                
-            </tbody>
-        </table>
-    </div>
-    <div class="card-footer text-muted">
-        Footer
-    </div>
+  <h5 class="card-header d-flex justify-content-between">
+    Categories
+    
+    <a class="btn btn-outline-success" href="/admin/categories/add" role="button">
+    <i class="fa fa-plus" aria-hidden="true"> Add Categories</i>
+    </a>
+    
+  </h5>
+  {{#if this.empty}}
+  <div class="card-body">
+    <p class="card-text">Không có dữ liệu.</p>
+  </div>
+  {{else}}
+  <div class="card-body">
+    <table class="table table-hover">
+      <thead>
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">Category</th>
+          <th scope="col">&nbsp;</th>
+        </tr>
+      </thead>
+      <tbody>
+        {{#each this.categories}}
+        <tr>
+          <th scope="row">{{CatID}}</th>
+          <td>{{NameID}}</td>
+          <td class="text-right">
+          <a  class="btn btn-outline-danger" href="/admin/categories/edit?id={{CatID}}" role="button" title="Edit Category">
+          <i class="fa fa-pencil" aria-hidden="true"></i> 
+          </a>
+          </td>
+        </tr>
+        {{/each}}
+      </tbody>
+    </table>
+  </div>
+  {{/if}}
+  <div class="card-footer text-muted">
+    Footer
+  </div>
 </div>

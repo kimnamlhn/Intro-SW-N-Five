@@ -1,0 +1,43 @@
+
+<div class="row">
+ 
+  <div class="col-md-3">
+    <li class="list-group-item">Ngoại ngữ</li>
+    <li class="list-group-item">Lập trình</li>
+    <li class="list-group-item">Âm nhạc</li>
+    <li class="list-group-item">Hội họa</li>
+    <li class="list-group-item">Nấu ăn</li>
+  </div>
+   <div class="col-md-9">
+      <div class="d-flex flex-row-reverse">
+       
+         <div class="p-2">
+          <a class="btn btn-outline-success" href="/teacher/add" role="button">
+          <i class="fa fa-address-book" aria-hidden="true"></i>
+            ADD TEACHER
+          </a>
+        </div>
+      </div>
+     <div class="card-body  ">
+       <div class="row ">
+          {{#each this.teacher}}
+              <div class="col-sm-4 w-100">
+                <div class="card ">
+                  <div class="card-body">
+                    <h4 class="card-title">{{fullName}}</h4>
+                    <p class="card-text">{{url}}</p>
+                    <p class="card-text">{{job}}</p>
+                  </div>
+                  <div class="card-footer text-muted">
+                    <a class="btn btn-outline-success" href="/teacher/edit?id={{id}}" role="button">
+                      <i class="fa fa-address-book" aria-hidden="true"></i>
+                        EDIT TEACHER
+                    </a>
+                  </div>
+                </div>
+              </div> 
+          {{/each}}
+       </div>
+     </div>   
+   </div>
+</div>

@@ -1,5 +1,5 @@
 const express = require('express');
-const courseModel = require('../models/courses.model');
+const courseModel = require('../models/coures.model');
 const router = express.Router();
 //Đi đến trang khóa học
 router.get('/:id', async function (req, res) {
@@ -16,16 +16,10 @@ router.get('/:id', async function (req, res) {
         numOfCateg: categ === null
       });
     } catch (err) {
-      console.error(err);
-      res.send('View error log at server console.');
+        console.error(err);
+        res.send('View error log at server console.');
     }
   
   })
-  //Đi đến trang khóa học chi tiết
- 
-  module.exports = router;
 
-
-
-
-
+module.exports = router;
