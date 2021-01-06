@@ -25,7 +25,7 @@ module.exports = {
     return db.add(entity, TBL_USERS)
     },
     lastId(){
-        const sql = `select LAST_INSERT_ID() as lastID`;
+        const sql = `select idTaiKhoan from TaiKhoan ORDER BY idTaiKhoan DESC LIMIT 1`;
         const lastid = db.load(sql);
         return lastid;
     },
