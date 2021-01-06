@@ -3,6 +3,9 @@
        $('.acceptCourse').on('click', function () {
          $('#frmAcceptCourse').submit();
   });
+       $('.deleteCourse').on('click', function () {
+         $('#frmDeleteCourse').submit();
+  });
    </script>
 
   
@@ -90,12 +93,12 @@
                     </thead>
                     <tbody>
                        {{#each this.list}}
-                              <!--Add to cart-->
+                              <!--accept course-->
                             <form action="/admin/accept" method="post" id="frmAcceptCourse">
-                                <input type="hidden" name="IdKhoaHoc" id="IdKhoaHoc" value="{{IdKhoaHoc}}">
-                                <input type="hidden" name="idHocVien" id="IdHocVien" value={{idHocVien}}>
+                                <input type="hidden" name="IdKhoaHoc" value="{{IdKhoaHoc}}">
+                                <input type="hidden" name="idHocVien"  value={{idHocVien}}>
                             </form>
-                            <!--Add to cart .//-->
+                            <!--accept course .//-->
                           <tr>
                             <th scope="row">{{idHocVien}}</th>
                             <td>{{TenHocVien}}</td>
@@ -109,10 +112,16 @@
                             <td>
                                 <a name="" id="" class="icon_btn btn-sm" href="javascript:;" role="button"
                                     title="Delete student">
-                                    <i class="fa fa-trash" aria-hidden="true"></i>
+                                    <i class="fa fa-trash deleteCourse" aria-hidden="true"></i>
                                 </a>
                             </td>
                         </tr>
+                            <!--delete course-->
+                            <form action="/admin/delete" method="post" id="frmDeleteCourse">
+                                <input type="hidden" name="IdKhoaHoc" value="{{IdKhoaHoc}}">
+                                <input type="hidden" name="idHocVien"  value={{idHocVien}}>
+                            </form>
+                            <!--delete course .//-->
                        {{/each}}
                         
              

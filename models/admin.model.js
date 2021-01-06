@@ -15,5 +15,9 @@ module.exports = {
     changeState(idHocVien, idKhoaHoc) {
        return db.load(`update hocvien_dangky_khoahoc set TrangThai = 1 where KhoaHoc_IdKhoaHoc = ${idKhoaHoc}  and HocVien_idHocVien =${idHocVien} `);    
       },
+
+    deleteCourse(idHocVien, idKhoaHoc) {
+        return db.load(`delete from hocvien_dangky_khoahoc where KhoaHoc_IdKhoaHoc = ${idKhoaHoc}  and HocVien_idHocVien =${idHocVien} `);    
+       },
 }
 

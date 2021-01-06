@@ -10,6 +10,7 @@ router.get('/', auth, async function (req, res) {
       empty: temp === null
     });
   })
+  
   router.post('/accept', async function (req, res) {
     const IdKhoaHoc = req.body.IdKhoaHoc
     const idHocVien = req.body.idHocVien
@@ -18,6 +19,13 @@ router.get('/', auth, async function (req, res) {
     res.redirect(req.headers.referer);
   })
 
+  router.post('/delete', async function (req, res) {
+    const IdKhoaHoc = req.body.IdKhoaHoc
+    const idHocVien = req.body.idHocVien
+    adminModel.deleteCourse(idHocVien,IdKhoaHoc)
+    //console.log(IdKhoaHoc,idHocVien)
+    res.redirect(req.headers.referer);
+  })
 
 
   router.post('/accept', async function (req, res) {
