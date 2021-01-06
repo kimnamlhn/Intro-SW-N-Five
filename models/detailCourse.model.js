@@ -56,7 +56,9 @@ module.exports = {
             return null;
         return rows;
         },
-
+    async enroll(entity) {
+            return db.add(entity, 'hocvien_dangky_khoahoc')
+        },
     
 }
 

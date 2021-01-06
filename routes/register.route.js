@@ -51,7 +51,7 @@ router.get('/', async function (req, res) {
    const fullName = req.body.fullName;
    const Email = req.body.Email;
    await userModel.add(req.session.tmpUser);
-  const lastid = JSON.parse(JSON.stringify(await userModel.lastId()))[0].lastID
+  const lastid = JSON.parse(JSON.stringify(await userModel.lastId()))[0].idTaiKhoan
   console.log("Last id", lastid)
   await stuModel.addHocVien(Email,lastid,fullName);
   res.render('user/login',{

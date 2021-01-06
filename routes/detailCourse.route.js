@@ -3,6 +3,8 @@ const detailModel = require('../models/detailCourse.model');
 const router = express.Router();
 const courseAuth = require('../models/auth.model');
 const { add } = require('../models/student.model');
+const enrollModel = require('../models/enroll.model')
+const auth = require('../middleware/auth.mdw');
 //Đi đến trang khóa học
 router.get('/:id', async function (req, res) {
     try {
@@ -60,6 +62,26 @@ router.get('/:id', async function (req, res) {
       }
 
      await detailModel.addComment(danhgia)
+     res.redirect(req.headers.referer);
+   
+    } catch (err) {
+      console.error(err);
+      res.send('View error log at server console.');
+    }
+  
+  })
+
+  router.post('/:id/enroll',auth, async function (req, res) {
+    try {
+      
+      const obj = {
+        KhoaHoc_IdKhoaHoc: parseFloat(req.body.IdKhoaHoc),
+        HocVien_idHocVien: res.locals.stuAccount.idHocVien,
+        NgayDangKi: new Date().toISOString().slice(0, 10) ,
+        TrangThai: 0
+      }
+
+     await enrollModel.enroll(obj)
      res.redirect(req.headers.referer);
    
     } catch (err) {
