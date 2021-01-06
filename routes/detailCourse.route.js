@@ -73,15 +73,15 @@ router.get('/:id', async function (req, res) {
     try {
       let IdKhoaHoc = parseFloat(req.body.IdKhoaHoc);
       let idHocVien = res.locals.stuAccount.idHocVien;
+      console.log(IdKhoaHoc,idHocVien)
       const obj = {
         KhoaHoc_IdKhoaHoc: IdKhoaHoc,
         HocVien_idHocVien: idHocVien,
         NgayDangKy: new Date().toISOString().slice(0, 10) ,
         TrangThai: 0
       }
-    let check = await courseAuth.courseAuth(IdKhoaHoc,idHocVien);
-    console.log(check)
-    if(check === false){
+    let check = await courseAuth.courseAuth(idHocVien,IdKhoaHoc);
+    if(check === true){
      await detailModel.enroll(obj)
     }
      res.redirect(req.headers.referer);
