@@ -33,13 +33,7 @@ router.post('/', async function(req, res) {
         Salt: null,
         LoaiTaiKhoan: 2
     }
-  const user = {
-      idTaiKhoan: null,
-      TenTaiKhoan: null,
-      MatKhau: hash,
-      Salt: null,
-      LoaiTaiKhoan: 2
-  }
+
   req.session.tmpUser = user
   const status = await login(Email);
   res.render('user/confirmOTP',{
