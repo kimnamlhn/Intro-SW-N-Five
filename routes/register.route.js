@@ -5,26 +5,33 @@ const bcrypt = require('bcryptjs');
 const userModel = require('../models/user.model');
 const stuModel = require('../models/student.model');
 //Xác minh email
-const {Auth} = require('two-step-auth');
+const { Auth } = require('two-step-auth');
 
-async function login(emailId){
+async function login(emailId) {
     const res = await Auth(emailId, "NFIVE");
     return res;
 }
 
 
-router.get('/', async function (req, res) {
+router.get('/', async function(req, res) {
     res.render('user/register');
-  })
-  
-  router.post('/', async function (req, res) {
+});
+
+router.post('/', async function(req, res) {
     const hash = bcrypt.hashSync(req.body.password, 10);
     const Email = req.body.email
     const stu = await stuModel.singleByEmail(Email)
     if (stu.length !== 0) {
-      return res.render('user/register', {
-        err_message: 'Email này đã được sử dụng.'
-      });
+        return res.render('user/register', {
+            err_message: 'Email này đã được sử dụng.'
+        });
+    }
+    const user = {
+        idTaiKhoan: null,
+        TenTaiKhoan: null,
+        MatKhau: hash,
+        Salt: null,
+        LoaiTaiKhoan: 2
     }
   const user = {
       idTaiKhoan: null,
