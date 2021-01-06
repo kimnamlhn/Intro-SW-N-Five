@@ -7,11 +7,11 @@
   });
    </script>
 
-    <script>
-       $('.addWishList').on('click', function () {
+       <script>
+       $('.enrollCourse').on('click', function () {
       const id = $(this).data('id');
-      $('#IdKhoaHoc-WishList').val(id);
-      $('#frmAddWishList').submit();
+      $('#IdKhoaHocEnroll').val(id);
+      $('#frmEnrollCourse').submit();
   });
    </script>
 
@@ -77,12 +77,14 @@
                 <!--Form add cart .//-->
                 {{#each lvCap2}}
                     {{#each courses}}
+                    <form action="/detail-course/{{IdKhoaHoc}}/enroll" method="post" id="frmEnrollCourse">
+                      <input type="hidden" name="IdKhoaHoc" id="IdKhoaHocEnroll">
+                    </form>
                      <div class=" col_featured  mix {{../TenLinhVuc}}">
                     <div class="featured__item featured__item__pic__hover_box">
                         <div class="featured__item__pic set-bg " data-setbg="/img/onlCourse.jpg">
                             <ul class="featured__item__pic__hover ">
-                                <li><a href="#"><i class="fa fa-heart"></i></a></li>
-                                <li><a href="#"><i class="fa fa-retweet"></i></a></li>
+                                <li><a data-id="{{IdKhoaHoc}}" href="javascript:;" role="button" class="enrollCourse"><i class="fa fa-registered" aria-hidden="true"></i></a></li>
                                 <li><a  data-id="{{IdKhoaHoc}}" href="javascript:;" role="button" class="addCourse"><i class="fa fa-shopping-cart"></i></a></li>
                             </ul>
                         </div>
@@ -152,9 +154,7 @@
 
             </div>
             <div class="more-student become-teacher-button">
-                <a href="#" alt="click-to-become-teacher">
-                    Đăng kí
-                </a>
+                <a href="/register/teacher" class="btn btn-outline-info">Đăng kí</a>
             </div>
     </section>
  <!--Top student-->

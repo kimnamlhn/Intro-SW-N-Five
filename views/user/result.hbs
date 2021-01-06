@@ -1,8 +1,14 @@
   
   <nav class="navbar navbar-expand-lg navbar-light bg-light shadow">
-    <a class="navbar-brand" href="#">
-      <i class="fa fa-lg">Logo</i>
-    </a>
+    <!-- Breadcrumb -->
+              <nav aria-label="breadcrumb" class="main-breadcrumb">
+                <ol class="breadcrumb">
+                  <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+                  <li class="breadcrumb-item"><a href="javascript:void(0)">User</a></li>
+                  <li class="breadcrumb-item active" aria-current="page">My Result</li>
+                </ol>
+              </nav>
+              <!-- /Breadcrumb -->
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
       aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
@@ -65,7 +71,11 @@
                         <span>{{progress}}%</span>
                   </td>
                 </tr>
+              
                 {{/each}}
+                {{#if empty}}
+                  <h5>Bạn chưa tham gia khóa học nào</h5>
+                {{/if}}
               </tbody>
             </table>
           </div>
