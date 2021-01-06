@@ -1,0 +1,26 @@
+<div class="card">
+ <h5 class="card-header"> Product </h5>
+  {{#if this.empty}}
+  <div class="card-body">
+    <p class="card-text">Không có dữ liệu.</p>
+  </div>
+  {{else}}
+    <div class="card-body">
+        <div class="row">
+            {{#each teacher}}
+              <div class="col-sm-4 mb-3">
+                  <div class="card h-100">
+                      <img src="/public/imgs/teacher/{{id}}/" alt="{{ProName}}" title ="{{ProName}}" class="card-img-top">
+                      <div class="card-body">
+                          <h6 class="card-title">{{ProName}}</h4>
+                          <h4 class="card-title text-danger">{{f_Price}}</h4>
+                          <p class="card-text">{{TinyDes}}</p>
+                      </div>
+                  </div>
+              </div>
+            {{/each}}
+        </div>
+
+  </div>
+  {{/if}}
+</div>

@@ -1,0 +1,46 @@
+<div class="container">
+      <div class="row">
+        <div class="col-sm-9 col-md-7 col-lg-5 mx-auto">
+          <div class="card card-signin my-5">
+            <div class="card-body">
+              <h5 class="card-title text-center">Sign In</h5>
+              <form class="form-signin" method="post">
+                <div class="form-group">
+                  {{#if err_message}}
+                  <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+                    {{err_message}}
+                  </div>
+                  {{/if}}
+                   {{#if succ_message}}
+                  <div class="alert alert-success alert-dismissible fade show" role="alert">
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+                    {{succ_message}}
+                  </div>
+                  {{/if}}
+                   <input type="email" id="inputEmail" class="form-control" name="email" placeholder="Email">
+                </div>
+  
+                <div class="form-group">
+                  <input type="password" id="inputPassword" class="form-control" name="password" placeholder="Password">
+                </div>
+  
+                <div class="custom-control custom-checkbox mb-3">
+                  <input type="checkbox" class="custom-control-input" id="customCheck1">
+                  <label class="custom-control-label" for="customCheck1">Remember password</label>
+                </div>
+                <button class="btn btn-lg btn-primary btn-block text-uppercase" type="submit">Sign in</button>
+                <hr class="my-4">
+                <div class="text-center">Don't have an account? <a href ="#">Sign up</a></div>
+                <button class="btn  btn-google btn-block text-uppercase" type="submit"><i class="fab fa-google mr-2"></i> Sign in with Google</button>
+                <button class="btn  btn-facebook btn-block text-uppercase mt-2" type="submit"><i class="fa fa-facebook mr-2" aria-hidden="true"></i></i> Sign in with Facebook</button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>

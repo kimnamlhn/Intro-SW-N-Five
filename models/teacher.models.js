@@ -1,11 +1,12 @@
 const db = require('../utils/db');
-const TBL_TEACHER = 'teacher';
+const coures = require('../models/courses.model');
+const TBL_TEACHER = 'giangvientam';
 module.exports = {
     all() {
         return db.load(`select * from ${TBL_TEACHER}`);
     },
     add(entity) {
-        return db.add(TBL_TEACHER, entity);
+        return db.add(entity, TBL_TEACHER);
     },
     single: function(id) {
         return db.load(`select * from ${TBL_TEACHER} where id = ${id} `)

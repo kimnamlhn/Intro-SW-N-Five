@@ -88,3 +88,108 @@ a:hover,a:focus{
 .bg-card{
     background-color: #dee7fa !important;
 }
+
+
+
+
+
+  .cart-item {
+    position: relative;
+    margin-bottom: 30px;
+    padding: 0 50px 0 10px;
+    background-color: #fff;
+    box-shadow: 0 12px 20px 1px rgba(64, 64, 64, .09);
+  }
+  .cart-item .cart-item-label {
+    display: block;
+    margin-bottom: 15px;
+    color: #8c8c8c;
+    font-size: 13px;
+    font-weight: 600;
+    text-transform: uppercase;
+  }
+  .cart-item .cart-item-product {
+    display: table;
+    width: 420px;
+    text-decoration: none;
+  }
+  .cart-item .cart-item-product-thumb, .cart-item .cart-item-product-info {
+    display: table-cell;
+    vertical-align: top;
+  }
+  .cart-item .cart-item-product-thumb {
+    width: 110px;
+  }
+
+  .cart-item .cart-item-product-info {
+    padding-top: 5px;
+    padding-left: 15px;
+  }
+  .cart-item .cart-item-product-info > span {
+    display: block;
+    margin-bottom: 2px;
+    color: #404040;
+    font-size: 12px;
+  }
+ 
+  .remove-item {
+    display: block;
+    position: absolute;
+    top: -5px;
+    right: -5px;
+    width: 22px;
+    height: 22px;
+    padding-left: 1px;
+    border-radius: 50%;
+    background-color: #ff5252;
+    color: #fff;
+    line-height: 23px;
+    text-align: center;
+    box-shadow: 0 3px 12px 0 rgba(255, 82, 82, .5);
+    cursor: pointer;
+  }
+
+  .btn-circle {
+    width: 60px;
+    height: 60px;
+    padding: 6px 0px;
+    border-radius: 30px;
+    text-align: center;
+    font-size: 12px;
+    line-height: 1.42857;
+}
+
+/* Tabs*/
+section {
+  padding: 60px 0;
+}
+
+section .section-title {
+  text-align: center;
+  color: #007b5e;
+  margin-bottom: 50px;
+  text-transform: uppercase;
+}
+#tabs{
+background: #007b5e;
+  color: #eee;
+}
+#tabs h6.section-title{
+  color: #eee;
+}
+
+#tabs .nav-tabs .nav-item.show .nav-link, .nav-tabs .nav-link.active {
+  color: #f3f3f3;
+  background-color: transparent;
+  border-color: transparent transparent #f3f3f3;
+  border-bottom: 4px solid !important;
+  font-size: 20px;
+  font-weight: bold;
+}
+#tabs .nav-tabs .nav-link {
+  border: 1px solid transparent;
+  border-top-left-radius: .25rem;
+  border-top-right-radius: .25rem;
+  color: #eee;
+  font-size: 20px;
+}
