@@ -1,3 +1,4 @@
+
 {{#section 'header'}}
 <link rel="stylesheet"
   href="https://cdnjs.cloudflare.com/ajax/libs/jquery-datetimepicker/2.5.20/jquery.datetimepicker.min.css">
@@ -17,11 +18,8 @@
 </script>
 
 {{/section}}
-
-<div class="container">
-        <div class="main-body">
-        
-              <!-- Breadcrumb -->
+<nav class="navbar navbar-expand-lg navbar-light bg-light shadow">
+     <!-- Breadcrumb -->
               <nav aria-label="breadcrumb" class="main-breadcrumb">
                 <ol class="breadcrumb">
                   <li class="breadcrumb-item"><a href="index.html">Home</a></li>
@@ -31,6 +29,21 @@
               </nav>
               <!-- /Breadcrumb -->
         
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+        </ul>
+        <div>
+            <button type="button" class="btn mr-2 text-white" style="background-color:  #AA1E28;">Đăng xuất</button>
+        </div>
+    </div>
+</nav>
+<div class="container">
+        <div class="main-body">
               <div class="row gutters-sm">
                 <div class="col-md-4 mb-3">
                   <div class="card">
@@ -58,10 +71,9 @@
                   </div>
                   <div class="card mt-3">
                     <div class="list-group" id="list-tab" role="tablist">
-                        <a class="list-group-item list-group-item-action active">My profile</a>
-                        <a class="list-group-item list-group-item-action" href= "/user/my-courses">My courses</a>
-                        <a class="list-group-item list-group-item-action" href="/user/my-watchlist">My watchlist</a>
-                        <a class="list-group-item list-group-item-action">Log out</a>
+                        <a class="list-group-item list-group-item-action active">Thông tin cá nhân</a>
+                        <a class="list-group-item list-group-item-action" href= "/user/my-courses">Khóa học của tôi</a>
+                        <a class="list-group-item list-group-item-action" href="/user/my-courses/result">Kết quả học tập</a>
                       </div>
                   </div>
                 </div>
