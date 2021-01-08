@@ -1,8 +1,5 @@
 {{#section 'footer'}}
    <script>
-       $('.acceptCourse').on('click', function () {
-         $('#frmAcceptCourse').submit();
-  });
        $('.deleteCourse').on('click', function () {
          $('#frmDeleteCourse').submit();
   });
@@ -67,7 +64,7 @@
         <div class="col-sm-9">
             <div class="row">
                 <div>
-                    <h3 class="header"> Quản lý học viên</h3>
+                    <h3 class="header">Xóa khóa học</h3>
                 </div>
                 <!-- <div style="margin-left: 5rem;">
                         <form class="form-inline my-2 my-lg-0">
@@ -84,9 +81,8 @@
                     <thead>
                         <tr>
                             <th scope="col">ID </th>
-                            <th scope="col">Tên học viên</th>
                             <th scope="col">Tên khóa học</th>
-                            <th scope="col">Chấp nhận</th>
+                            <th scope="col">Tên giảng viên</th>
                             <th scope="col">Xóa</th>
 
                         </tr>
@@ -94,38 +90,28 @@
                     <tbody>
                        {{#each this.list}}
                               <!--accept course-->
-                            <form action="/admin/accept" method="post" id="frmAcceptCourse">
+                            <form action="/admin/teacher-manage/accept" method="post" id="frmAcceptCourse">
                                 <input type="hidden" name="IdKhoaHoc" value="{{IdKhoaHoc}}">
-                                <input type="hidden" name="idHocVien"  value={{idHocVien}}>
+                                <input type="hidden" name="idHocVien"  value={{idGiangVien}}>
                             </form>
                             <!--accept course .//-->
                           <tr>
-                            <th scope="row">{{idHocVien}}</th>
-                            <td>{{TenHocVien}}</td>
+                            <th scope="row">{{idGiangVien}}</th>
                             <td>{{TenKhoaHoc}}</td>
-                            <td>
-                                <a class="icon_btn btn-sm icon_accept" href="javascript:;" role="button"
-                                    title="Accept Student">
-                                    <i class="fa fa-check acceptCourse"></i>
-                                </a>
-                            </td>
+                            <td>{{TenGiangVien}}</td>
                             <td>
                                 <a name="" id="" class="icon_btn btn-sm" href="javascript:;" role="button"
-                                    title="Delete student">
+                                    title="Delete course">
                                     <i class="fa fa-trash deleteCourse" aria-hidden="true"></i>
                                 </a>
                             </td>
                         </tr>
                             <!--delete course-->
-                            <form action="/admin/delete" method="post" id="frmDeleteCourse">
+                            <form action="/admin/del_course/delete" method="post" id="frmDeleteCourse">
                                 <input type="hidden" name="IdKhoaHoc" value="{{IdKhoaHoc}}">
-                                <input type="hidden" name="idHocVien"  value={{idHocVien}}>
                             </form>
                             <!--delete course .//-->
                        {{/each}}
-                        
-             
-
                     </tbody>
                 </table>
             </div>

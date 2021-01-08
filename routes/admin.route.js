@@ -69,6 +69,60 @@ router.get('/', auth, async function (req, res) {
 //     });
 //   })
 
+  router.get('/teacher_manage', async function (req, res) {
+    const temp = await adminModel.getTeacher();
+      res.render('admin/TeacherManage',{
+        list: temp,
+        empty: temp === null
+      });
+    })
+    router.post('/teacher_manage/accept', async function (req, res) {
+      const IdKhoaHoc = req.body.IdKhoaHoc
+      adminModel.acceptCourse(IdKhoaHoc)
+      //console.log(IdKhoaHoc,idHocVien)
+      res.redirect(req.headers.referer);
+    })
   
-
-module.exports = router
+    router.post('/teacher_manage/delete', async function (req, res) {
+      const IdKhoaHoc = req.body.IdKhoaHoc
+      adminModel.delCourse(IdKhoaHoc)
+      //console.log(IdKhoaHoc,idHocVien)
+      res.redirect(req.headers.referer);
+    })
+  
+    router.get('/del_course', async function (req, res) {
+      const temp = await adminModel.getTeacher();
+        res.render('admin/del_course',{
+          list: temp,
+          empty: temp === null
+        });
+      })
+      router.post('/del_course/delete', async function (req, res) {
+        const IdKhoaHoc = req.body.IdKhoaHoc
+        adminModel.delCourse(IdKhoaHoc)
+        res.redirect(req.headers.referer);
+      })
+      router.get('/add_course', async function (req, res) {
+      const temp = await adminModel.getTeacher();
+        res.render('admin/add_course',{
+          list: temp,
+          empty: temp === null
+        });
+      })
+  
+      router.get('/admin_manage', async function (req, res) {
+        const temp = await adminModel.getTeacher();
+          res.render('admin/quan_ly_admin',{
+            list: temp,
+            empty: temp === null
+          });
+        })
+        router.get('/admin_manage/add', async function (req, res) {
+          const temp = await adminModel.getTeacher();
+            res.render('admin/add_admin',{
+              list: temp,
+              empty: temp === null
+            });
+          })
+  
+    module.exports = router

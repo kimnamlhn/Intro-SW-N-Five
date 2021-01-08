@@ -1,3 +1,17 @@
+{{#section 'footer'}}
+   <script>
+       $('.acceptCourse').on('click', function () {
+         $('#frmAcceptCourse').submit();
+  });
+       $('.deleteCourse').on('click', function () {
+         $('#frmDeleteCourse').submit();
+  });
+   </script>
+
+  
+
+	
+{{/section}}
 <nav class="navbar navbar-expand-lg navbar-light bg-light shadow">
     <a class="navbar-brand" href="#">
         <i class="fa fa-lg">Logo</i>
@@ -43,7 +57,7 @@
                     <a href="#" class="list-group-item list-group-item-action">
                         Thông tin cá nhân
                     </a>
-                    <a href="#" class="list-group-item list-group-item-action">
+                    <a href="/teacher-manage" class="list-group-item list-group-item-action">
                         Quản lý giảng viên
                     </a>
 
@@ -53,7 +67,7 @@
         <div class="col-sm-9">
             <div class="row">
                 <div>
-                    <h3 class="header"> Quản lý học viên</h3>
+                    <h3 class="header"> Quản lý giảng viên</h3>
                 </div>
                 <!-- <div style="margin-left: 5rem;">
                         <form class="form-inline my-2 my-lg-0">
@@ -71,104 +85,49 @@
                         <tr>
                             <th scope="col">ID </th>
                             <th scope="col">Tên giảng viên</th>
-                            <th scope="col">Tên khóa học</th>
-                            <th scope="col">Trạng thái </th>
+                            <th scope="col">Khóa học giảng dạy</th>
+                            <th scope="col">Trạng thái</th>
                             <th scope="col">Chấp nhận</th>
                             <th scope="col">Xóa</th>
 
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <th scope="row">1</th>
-                            <td>Username 1</td>
-                            <td>Course1</td>
-                            <td>Đã cấp quyền</td>
+                       {{#each this.list}}
+                              <!--accept course-->
+                            <form action="/admin/teacher-manage/accept" method="post" id="frmAcceptCourse">
+                                <input type="hidden" name="IdKhoaHoc" value="{{IdKhoaHoc}}">
+                                <input type="hidden" name="idHocVien"  value={{idGiangVien}}>
+                            </form>
+                            <!--accept course .//-->
+                          <tr>
+                            <th scope="row">{{idGiangVien}}</th>
+                            <td>{{TenGiangVien}}</td>
+                            <td>{{TenKhoaHoc}}</td>
+                            <td>{{TrangThai}}</td>
                             <td>
-                                <a name="" id="" class="icon_btn btn-sm icon_accept" href="javascript:;" role="button"
+                                <a class="icon_btn btn-sm icon_accept" href="javascript:;" role="button"
                                     title="Accept Student">
-                                    <i class="fa fa-check"></i>
+                                    <i class="fa fa-check acceptCourse"></i>
                                 </a>
                             </td>
                             <td>
                                 <a name="" id="" class="icon_btn btn-sm" href="javascript:;" role="button"
                                     title="Delete student">
-                                    <i class="fa fa-trash" aria-hidden="true"></i>
+                                    <i class="fa fa-trash deleteCourse" aria-hidden="true"></i>
                                 </a>
                             </td>
                         </tr>
-                        <tr>
-                            <th scope="row">2</th>
-                            <td>Username 2</td>
-                            <td>Course2</td>
-                            <td>Chờ xét duyệt</td>
-                            <td>
-                                <a name="" id="" class="icon_btn btn-sm icon_accept" href="javascript:;" role="button"
-                                    title="Accept student">
-                                    <i class="fa fa-check"></i>
-                                </a>
-                            </td>
-                            <td>
-                                <a name="" id="" class="icon_btn btn-sm" href="javascript:;" role="button"
-                                    title="Delete student">
-                                    <i class="fa fa-trash" aria-hidden="true"></i>
-                                </a>
-                            </td>
-                        </tr>
-                        <tr>
-                            <th scope="row">3</th>
-                            <td>Username 3</td>
-                            <td>Couse3</td>
-                            <td>Đã cấp quyền</td>
-                            <td>
-                                <a name="" id="" class="icon_btn btn-sm icon_accept" href="javascript:;" role="button"
-                                    title="Accept student">
-                                    <i class="fa fa-check"></i>
-                                </a>
-                            </td>
-                            <td>
-                                <a name="" id="" class="icon_btn btn-sm" href="javascript:;" role="button"
-                                    title="Delete student">
-                                    <i class="fa fa-trash" aria-hidden="true"></i>
-                                </a>
-                            </td>
-                        </tr>
-                        <tr>
-                            <th scope="row">4</th>
-                            <td>Username 4</td>
-                            <td>Couse4</td>
-                            <td>Đã cấp quyền</td>
-                            <td>
-                                <a name="" id="" class="icon_btn btn-sm icon_accept" href="javascript:;" role="button"
-                                    title="Accept student">
-                                    <i class="fa fa-check"></i>
-                                </a>
-                            </td>
-                            <td>
-                                <a name="" id="" class="icon_btn btn-sm" href="javascript:;" role="button"
-                                    title="Delete student">
-                                    <i class="fa fa-trash" aria-hidden="true"></i>
-                                </a>
-                            </td>
-                        </tr>
-                        <tr>
-                            <th scope="row">5</th>
-                            <td>Username 5</td>
-                            <td>Couse5</td>
-                            <td>Chờ xét duyệt</td>
-                            <td>
-                                <a name="" id="" class="icon_btn btn-sm icon_accept" href="javascript:;" role="button"
-                                    title="Accept student">
-                                    <i class="fa fa-check"></i>
-                                </a>
-                            </td>
-                            <td>
-                                <a name="" id="" class="icon_btn btn-sm" href="javascript:;" role="button"
-                                    title="Delete student">
-                                    <i class="fa fa-trash" aria-hidden="true"></i>
-                                </a>
-                            </td>
-                        </tr>
+                            <!--delete course-->
+                            <form action="/admin/teacher-manage/delete" method="post" id="frmDeleteCourse">
+                                <input type="hidden" name="IdKhoaHoc" value="{{IdKhoaHoc}}">
+                                <input type="hidden" name="idHocVien"  value={{idGiangVien}}>
+                            </form>
+                            <!--delete course .//-->
+                       {{/each}}
+                        
+             
+
                     </tbody>
                 </table>
             </div>
