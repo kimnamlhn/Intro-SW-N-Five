@@ -1,10 +1,10 @@
 {{#section 'footer'}}
    <script>
-       $('.acceptCourse').on('click', function () {
-         $('#frmAcceptCourse').submit();
+       $('.acceptRequest').on('click', function () {
+         $('#frmAcceptRequest').submit();
   });
-       $('.deleteCourse').on('click', function () {
-         $('#frmDeleteCourse').submit();
+       $('.deleteRequest').on('click', function () {
+         $('#frmDeleteRequest').submit();
   });
    </script>
 
@@ -38,26 +38,26 @@
                         class="list-group-item list-group-item-action dropdown-toggle">Chỉnh sửa khóa học</a>
                     <ul class="collapse list-unstyled active" id="homeSubmenu">
                         <li>
-                            <a href="#">Thêm khóa học</a>
+                            <a href="/admin/add_course">Thêm khóa học</a>
                         </li>
                         <li>
-                            <a href="#">Xóa khóa học</a>
+                            <a href="/admin/del_course">Xóa khóa học</a>
                         </li>
                         <li>
-                            <a href="#">Chỉnh sửa khóa học</a>
+                            <a href="/admin/edit_course">Chỉnh sửa khóa học</a>
                         </li>
                     </ul>
                     <a href="#" class="list-group-item list-group-item-action">
                         Thống kê
                         <span class="badge badge-pill badge-danger float-right"></span>
                     </a>
-                    <a href="#" class="list-group-item list-group-item-action">
+                    <a href="/admin" class="list-group-item list-group-item-action">
                         Quản lý học viên
                     </a>
-                    <a href="#" class="list-group-item list-group-item-action">
+                    <a href="/admin/admin_profile" class="list-group-item list-group-item-action">
                         Thông tin cá nhân
                     </a>
-                    <a href="/teacher-manage" class="list-group-item list-group-item-action">
+                    <a href="/admin/teacher_manage" class="list-group-item list-group-item-action">
                         Quản lý giảng viên
                     </a>
 
@@ -84,8 +84,9 @@
                     <thead>
                         <tr>
                             <th scope="col">ID </th>
-                            <th scope="col">Tên giảng viên</th>
-                            <th scope="col">Khóa học giảng dạy</th>
+                            <th scope="col">Tên tài khoản</th>
+                            {{!-- <th scope="col">Lĩnh vực đăng ký</th>
+                            <th scope="col">Description</th> --}}
                             <th scope="col">Trạng thái</th>
                             <th scope="col">Chấp nhận</th>
                             <th scope="col">Xóa</th>
@@ -94,36 +95,33 @@
                     </thead>
                     <tbody>
                        {{#each this.list}}
-                              <!--accept course-->
-                            <form action="/admin/teacher-manage/accept" method="post" id="frmAcceptCourse">
-                                <input type="hidden" name="IdKhoaHoc" value="{{IdKhoaHoc}}">
-                                <input type="hidden" name="idHocVien"  value={{idGiangVien}}>
+                              <!--accept request-->
+                            <form action="/admin/teacher_manage/accept" method="post" id="frmAcceptRequest">
+                                <input type="hidden" name="TaiKhoan_idTaiKhoan" value="{{TaiKhoan_idTaiKhoan}}">
                             </form>
-                            <!--accept course .//-->
+                            <!--accept request .//-->
                           <tr>
-                            <th scope="row">{{idGiangVien}}</th>
-                            <td>{{TenGiangVien}}</td>
-                            <td>{{TenKhoaHoc}}</td>
+                            <th scope="row">{{TaiKhoan_idTaiKhoan}}</th>
+                            <td>{{TenTaiKhoan}}</td>
                             <td>{{TrangThai}}</td>
                             <td>
                                 <a class="icon_btn btn-sm icon_accept" href="javascript:;" role="button"
-                                    title="Accept Student">
-                                    <i class="fa fa-check acceptCourse"></i>
+                                    title="Accept request">
+                                    <i class="fa fa-check acceptRequest"></i>
                                 </a>
                             </td>
                             <td>
                                 <a name="" id="" class="icon_btn btn-sm" href="javascript:;" role="button"
-                                    title="Delete student">
-                                    <i class="fa fa-trash deleteCourse" aria-hidden="true"></i>
+                                    title="Delete request">
+                                    <i class="fa fa-trash deleteRequest" aria-hidden="true"></i>
                                 </a>
                             </td>
                         </tr>
-                            <!--delete course-->
-                            <form action="/admin/teacher-manage/delete" method="post" id="frmDeleteCourse">
-                                <input type="hidden" name="IdKhoaHoc" value="{{IdKhoaHoc}}">
-                                <input type="hidden" name="idHocVien"  value={{idGiangVien}}>
+                            <!--delete request-->
+                            <form action="/admin/teacher_manage/delete" method="post" id="frmDeleteRequest">
+                                <input type="hidden" name="TaiKhoan_idTaiKhoan" value="{{TaiKhoan_idTaiKhoan}}">
                             </form>
-                            <!--delete course .//-->
+                            <!--delete request.//-->
                        {{/each}}
                         
              

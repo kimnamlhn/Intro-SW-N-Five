@@ -39,6 +39,23 @@ module.exports = {
     //     await db.load(`delete from khoahoc where idKhoaHoc = ${idKhoaHoc}`);    
     //    },
 
+    async getRegisterTeacher() {
+        const rows = await db.load(`select * 
+        from Taikhoan_dangky_giangvien r, taikhoan t where t.idTaiKhoan = r.TaiKhoan_idTaiKhoan`);
+        if (rows.length === 0)
+            return null;
+    
+        return rows;
+    },
+
+     acceptRequest(TaiKhoan_idTaiKhoan) {
+        return db.load(`update Taikhoan_dangky_giangvien set TrangThai = 1 where TaiKhoan_idTaiKhoan = ${TaiKhoan_idTaiKhoan } `);    
+    },
+ 
+     deleteRequest(TaiKhoan_idTaiKhoan) {
+         return db.load(`delete from Taikhoan_dangky_giangvien where TaiKhoan_idTaiKhoan = ${TaiKhoan_idTaiKhoan} `);    
+        },
  
 }
 
+                                         

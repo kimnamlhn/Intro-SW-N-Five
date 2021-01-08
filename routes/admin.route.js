@@ -28,12 +28,6 @@ router.get('/', auth, async function (req, res) {
   })
 
 
-  router.post('/accept', async function (req, res) {
-    const idHv = req.body.idHocVien;
-   await adminModel.update(idHocVien)
-  res.redirect(req.headers.referer);
-  })
-
 //   router.post('/edit-email', async function (req, res) {
 //     const newEmail = req.body.Email;
 //     const id = req.body.idHocVien
@@ -69,27 +63,6 @@ router.get('/', auth, async function (req, res) {
 //     });
 //   })
 
-  router.get('/teacher_manage', async function (req, res) {
-    const temp = await adminModel.getTeacher();
-      res.render('admin/TeacherManage',{
-        list: temp,
-        empty: temp === null
-      });
-    })
-    router.post('/teacher_manage/accept', async function (req, res) {
-      const IdKhoaHoc = req.body.IdKhoaHoc
-      adminModel.acceptCourse(IdKhoaHoc)
-      //console.log(IdKhoaHoc,idHocVien)
-      res.redirect(req.headers.referer);
-    })
-  
-    router.post('/teacher_manage/delete', async function (req, res) {
-      const IdKhoaHoc = req.body.IdKhoaHoc
-      adminModel.delCourse(IdKhoaHoc)
-      //console.log(IdKhoaHoc,idHocVien)
-      res.redirect(req.headers.referer);
-    })
-  
     router.get('/del_course', async function (req, res) {
       const temp = await adminModel.getTeacher();
         res.render('admin/del_course',{
@@ -125,4 +98,48 @@ router.get('/', auth, async function (req, res) {
             });
           })
   
-    module.exports = router
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    router.get('/teacher_manage', async function (req, res) {
+      const temp = await adminModel.getRegisterTeacher();
+        res.render('admin/TeacherManage',{
+          list: temp,
+          empty: temp === null
+        });
+      })
+      router.post('/teacher_manage/accept', async function (req, res) {
+        const TaiKhoan_idTaiKhoan = req.body.TaiKhoan_idTaiKhoan
+        adminModel.acceptRequest(TaiKhoan_idTaiKhoan)
+        console.log(TaiKhoan_idTaiKhoan)
+        res.redirect(req.headers.referer);
+      })
+    
+      router.post('/teacher_manage/delete', async function (req, res) {
+        const TaiKhoan_idTaiKhoan = req.body.TaiKhoan_idTaiKhoan
+        adminModel.deleteRequest(TaiKhoan_idTaiKhoan)
+        console.log(TaiKhoan_idTaiKhoan)
+        res.redirect(req.headers.referer);
+      })
+    
+      module.exports = router
