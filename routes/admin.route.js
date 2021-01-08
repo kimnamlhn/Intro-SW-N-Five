@@ -99,13 +99,19 @@ router.get('/', auth, async function (req, res) {
       })
       router.post('/del_course/delete', async function (req, res) {
         const IdKhoaHoc = req.body.IdKhoaHoc
-        console.log(IdKhoaHoc);
         adminModel.delCourse(IdKhoaHoc)
         res.redirect(req.headers.referer);
       })
       router.get('/add_course', async function (req, res) {
       const temp = await adminModel.getTeacher();
         res.render('admin/add_course',{
+          list: temp,
+          empty: temp === null
+        });
+      })
+      router.get('/statistical', async function (req, res) {
+      const temp = await adminModel.getStatistical();
+        res.render('admin/StatisticalPage',{
           list: temp,
           empty: temp === null
         });
@@ -126,4 +132,6 @@ router.get('/', auth, async function (req, res) {
             });
           })
   
+
+
     module.exports = router

@@ -19,6 +19,15 @@ module.exports = {
     
         return rows;
     },
+    async getStatistical() {
+        // const rows = await db.load(`select * 
+        // from GiangVien h, khoahoc kh
+        // where  h.idGiangVien = kh.NguoiDay`);
+        // if (rows.length === 0)
+        //     return null;
+    
+        // return rows;
+    },
 
     changeState(idHocVien, idKhoaHoc) {
        return db.load(`update hocvien_dangky_khoahoc set TrangThai = 1 where KhoaHoc_IdKhoaHoc = ${idKhoaHoc}  and HocVien_idHocVien =${idHocVien} `);    
@@ -48,5 +57,7 @@ module.exports = {
             return db.load(`SET FOREIGN_KEY_CHECKS = 0;`)
 
        }
+
+       
 }
 

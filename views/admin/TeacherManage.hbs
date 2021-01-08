@@ -1,16 +1,16 @@
 {{#section 'footer'}}
-   <script>
-       $('.acceptCourse').on('click', function () {
-         $('#frmAcceptCourse').submit();
-  });
-       $('.deleteCourse').on('click', function () {
-         $('#frmDeleteCourse').submit();
-  });
-   </script>
+<script>
+    $('.acceptCourse').on('click', function () {
+        $('#frmAcceptCourse').submit();
+    });
+    $('.deleteCourse').on('click', function () {
+        $('#frmDeleteCourse').submit();
+    });
+</script>
 
-  
 
-	
+
+
 {{/section}}
 <nav class="navbar navbar-expand-lg navbar-light bg-light shadow">
     <a class="navbar-brand" href="#">
@@ -47,7 +47,7 @@
                             <a href="/admin/edit_course">Chỉnh sửa khóa học</a>
                         </li>
                     </ul>
-                    <a href="#" class="list-group-item list-group-item-action">
+                    <a href="/admin/statistical" class="list-group-item list-group-item-action">
                         Thống kê
                         <span class="badge badge-pill badge-danger float-right"></span>
                     </a>
@@ -93,14 +93,14 @@
                         </tr>
                     </thead>
                     <tbody>
-                       {{#each this.list}}
-                              <!--accept course-->
-                            <form action="/admin/teacher-manage/accept" method="post" id="frmAcceptCourse">
-                                <input type="hidden" name="IdKhoaHoc" value="{{IdKhoaHoc}}">
-                                <input type="hidden" name="idHocVien"  value={{idGiangVien}}>
-                            </form>
-                            <!--accept course .//-->
-                          <tr>
+                        {{#each this.list}}
+                        <!--accept course-->
+                        <form action="/admin/teacher-manage/accept" method="post" id="frmAcceptCourse">
+                            <input type="hidden" name="IdKhoaHoc" value="{{IdKhoaHoc}}">
+                            <input type="hidden" name="idHocVien" value={{idGiangVien}}>
+                        </form>
+                        <!--accept course .//-->
+                        <tr>
                             <th scope="row">{{idGiangVien}}</th>
                             <td>{{TenGiangVien}}</td>
                             <td>{{TenKhoaHoc}}</td>
@@ -118,15 +118,15 @@
                                 </a>
                             </td>
                         </tr>
-                            <!--delete course-->
-                            <form action="/admin/teacher-manage/delete" method="post" id="frmDeleteCourse">
-                                <input type="hidden" name="IdKhoaHoc" value="{{IdKhoaHoc}}">
-                                <input type="hidden" name="idHocVien"  value={{idGiangVien}}>
-                            </form>
-                            <!--delete course .//-->
-                       {{/each}}
-                        
-             
+                        <!--delete course-->
+                        <form action="/admin/teacher-manage/delete" method="post" id="frmDeleteCourse">
+                            <input type="hidden" name="IdKhoaHoc" value="{{IdKhoaHoc}}">
+                            <input type="hidden" name="idHocVien" value={{idGiangVien}}>
+                        </form>
+                        <!--delete course .//-->
+                        {{/each}}
+
+
 
                     </tbody>
                 </table>
