@@ -19,62 +19,78 @@
       <div class="row">
         <div class="col-sm-3">
           <div class="card mb-3">
-            <div class="list-group list-group-flush" id="list-group-dropdown">
-              <a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false" class="list-group-item list-group-item-action dropdown-toggle">Chỉnh sửa khóa học</a>
-              <ul class="collapse list-unstyled active" id="homeSubmenu">
-                  <li>
-                      <a href="#">Thêm khóa học</a>
-                  </li>
-                  <li>
-                      <a href="#">Xóa khóa học</a>
-                  </li>
-                  <li>
-                      <a href="#">Chỉnh sửa khóa học</a>
-                  </li>
-              </ul>
+                <div class="list-group list-group-flush" id="list-group-dropdown">
+                    <a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false"
+                        class="list-group-item list-group-item-action dropdown-toggle">Chỉnh sửa khóa học</a>
+                    <ul class="collapse list-unstyled active" id="homeSubmenu">
+                        <li>
+                            <a href="/admin/add_course">Thêm khóa học</a>
+                        </li>
+                        <li>
+                            <a href="/admin/del_course">Xóa khóa học</a>
+                        </li>
+                        <li>
+                            <a href="/admin/edit_course">Chỉnh sửa khóa học</a>
+                        </li>
+                    </ul>
+                    <a href="#" class="list-group-item list-group-item-action">
+                        Thống kê
+                        <span class="badge badge-pill badge-danger float-right"></span>
+                    </a>
+                    <a href="" class="list-group-item list-group-item-action">
+                        Quản lý học viên
+                    </a>
+                    <a href="/admin/admin_profile" class="list-group-item list-group-item-action">
+                        Thông tin cá nhân
+                    </a>
+                    <a href="/admin/teacher_manage" class="list-group-item list-group-item-action">
+                        Quản lý giảng viên
+                    </a>
 
-              <a href="#" class="list-group-item list-group-item-action">
-                Thống kê
-                <span class="badge badge-pill badge-danger float-right"></span>
-              </a>
-              <a href="#" class="list-group-item list-group-item-action">
-                  Quản lý học viên
-              </a>
-              <a href="#" class="list-group-item list-group-item-action">
-                  Thông tin cá nhân
-              </a>
-              <a href="#" class="list-group-item list-group-item-action">
-                  Quản lý giảng viên
-              </a>
-
-            </div>
+                </div>
           </div>
         </div>
         <div class="col-sm-9">
           <div class="row">
-            <div><h3 class="header" style="margin-left: 5rem;"> Chỉnh sửa khóa học </h3></div>    
+            <div><h3 class="header" style="margin-left: 5rem;"> Thêm khóa học </h3></div>    
           </div>
           <form method="POST" action="">
               <div class="card-body">
                   <table>
-                    <form action="/user/profile/edit-email" method="post">
-                        <tr>
-                        <td class="pt-3-half" contenteditable="true">Email</td>
-                        <td class="pt-3-half" contenteditable="true">
-                        <input type="hidden" name="idHocVien" value="{{idHocVien}}">
-                            <textarea class="form-control" id="exampleFormControlTextarea3" rows="7"></textarea>
-                        </td>
+                      <tr>
+                        <th>Tên khóa học</th>
+                        <th>
+                            <input type="text" class="form-control" id="txtCatName" name="CatName" autofocus>
+                        </th>    
                         <td>
                             <span class="table-remove"><button type="submit"
                                 class="btn btn-success btn-rounded btn-sm btn-block my-0">Save</button></span>
                         </td>
-                        </tr>
-                    </form>
-                    <div class="form-group">
-                    <label for="exampleFormControlTextarea3">Rounded corners</label>
-                    </div>              </table>
-              </div>
+                      </tr>
+                      <tr>
+                          <th>Mô tả khóa học</th>
+                          <th>
+                              <input type="text" class="form-control" id="txtCatName" name="CatName" autofocus>
+                          </th>    
+                        <td>
+                            <span class="table-remove"><button type="submit"
+                                class="btn btn-success btn-rounded btn-sm btn-block my-0">Save</button></span>
+                        </td>
+                      </tr>
+                      <tr>
+                          <th>Giảng viên</th>
+                          <th>
+                              <input type="text" class="form-control" id="txtCatName" name="CatName" autofocus>
+                          </th>    
+                        <td>
+                            <span class="table-remove"><button type="submit"
+                                class="btn btn-success btn-rounded btn-sm btn-block my-0">Save</button></span>
+                        </td>
+                      </tr>
+              </table>
+
           </form>
+
         </div>
       </div>
     </div>
