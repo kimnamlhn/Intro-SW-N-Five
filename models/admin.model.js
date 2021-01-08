@@ -32,13 +32,21 @@ module.exports = {
     // acceptCourse(idKhoaHoc) {
     // return db.load(`update khoahoc set TrangThai = 1 where idKhoaHoc = ${idKhoaHoc}`);    
     // },
-    // async delCourse(idKhoaHoc) {
-    //     await db.load(`delete from video where baihoc_idbaihoc = ${idKhoaHoc}`);    
-    //     await db.load(`delete from chuongkhoahoc where KhoaHoc_idKhoaHoc = ${idKhoaHoc}`);    
-    //     await db.load(`delete from baihoc where chuongkhoahoc_idchuongkhoahoc = ${idKhoaHoc}`);    
-    //     await db.load(`delete from khoahoc where idKhoaHoc = ${idKhoaHoc}`);    
+    // delCourse(idKhoaHoc) {
+    //     return db.load(`DELETE FROM khoahoc, GiangVien
+    //     USING khoahoc JOIN GiangVien
+    //     WHERE GiangVien.idGiangVien = khoahoc.NguoiDay and IdKhoaHoc = ${idKhoaHoc}  `)  
     //    },
+    delCourse(idKhoaHoc) {
+        this.setNonFreignKeyCheck();
+        console.log(idKhoaHoc);
+        return db.load(`delete from khoahoc where IdKhoaHoc = ${idKhoaHoc}`)  
+       },
+    
 
- 
+       setNonFreignKeyCheck(){
+            return db.load(`SET FOREIGN_KEY_CHECKS = 0;`)
+
+       }
 }
 

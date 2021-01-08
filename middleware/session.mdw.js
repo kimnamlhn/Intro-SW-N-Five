@@ -4,7 +4,7 @@ var options = {
     host: 'localhost',
     port: 3306,
     user: 'root',
-    password: 'dpkn',
+    password: '123123',
     database: 'mycourse'
 };
 
