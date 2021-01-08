@@ -142,4 +142,13 @@ router.get('/', auth, async function (req, res) {
         res.redirect(req.headers.referer);
       })
     
+
+      router.get('/edit_course', async function (req, res) {
+        const temp = await adminModel.getTeacher();
+          res.render('admin/edit_course',{
+            list: temp,
+            empty: temp === null
+          });
+        })
+  
       module.exports = router

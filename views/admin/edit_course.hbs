@@ -1,0 +1,80 @@
+    <nav class="navbar navbar-expand-lg navbar-light bg-light shadow">
+      <a class="navbar-brand" href="#">
+        <i class="fa fa-lg">Logo</i>
+      </a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+        </ul>
+        <div>
+          <button type="button" class="btn mr-2 text-white" style="background-color:  #AA1E28;">Đăng xuất</button>
+      </div>
+    </div>
+    </nav>
+    <div class="container-fluid mt-4">
+      <div class="row">
+        <div class="col-sm-3">
+          <div class="card mb-3">
+            <div class="list-group list-group-flush" id="list-group-dropdown">
+              <a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false" class="list-group-item list-group-item-action dropdown-toggle">Chỉnh sửa khóa học</a>
+              <ul class="collapse list-unstyled active" id="homeSubmenu">
+                  <li>
+                      <a href="#">Thêm khóa học</a>
+                  </li>
+                  <li>
+                      <a href="#">Xóa khóa học</a>
+                  </li>
+                  <li>
+                      <a href="#">Chỉnh sửa khóa học</a>
+                  </li>
+              </ul>
+
+              <a href="#" class="list-group-item list-group-item-action">
+                Thống kê
+                <span class="badge badge-pill badge-danger float-right"></span>
+              </a>
+              <a href="#" class="list-group-item list-group-item-action">
+                  Quản lý học viên
+              </a>
+              <a href="#" class="list-group-item list-group-item-action">
+                  Thông tin cá nhân
+              </a>
+              <a href="#" class="list-group-item list-group-item-action">
+                  Quản lý giảng viên
+              </a>
+
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-9">
+          <div class="row">
+            <div><h3 class="header" style="margin-left: 5rem;"> Chỉnh sửa khóa học </h3></div>    
+          </div>
+          <form method="POST" action="">
+              <div class="card-body">
+                  <table>
+                    <form action="/user/profile/edit-email" method="post">
+                        <tr>
+                        <td class="pt-3-half" contenteditable="true">Email</td>
+                        <td class="pt-3-half" contenteditable="true">
+                        <input type="hidden" name="idHocVien" value="{{idHocVien}}">
+                            <textarea class="form-control" id="exampleFormControlTextarea3" rows="7"></textarea>
+                        </td>
+                        <td>
+                            <span class="table-remove"><button type="submit"
+                                class="btn btn-success btn-rounded btn-sm btn-block my-0">Save</button></span>
+                        </td>
+                        </tr>
+                    </form>
+                    <div class="form-group">
+                    <label for="exampleFormControlTextarea3">Rounded corners</label>
+                    </div>              </table>
+              </div>
+          </form>
+        </div>
+      </div>
+    </div>
