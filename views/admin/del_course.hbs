@@ -5,7 +5,6 @@
   });
    </script>
 
-  
 
 	
 {{/section}}
@@ -89,12 +88,6 @@
                     </thead>
                     <tbody>
                        {{#each this.list}}
-                              <!--accept course-->
-                            <form action="/admin/teacher-manage/accept" method="post" id="frmAcceptCourse">
-                                <input type="hidden" name="IdKhoaHoc" value="{{IdKhoaHoc}}">
-                                <input type="hidden" name="idHocVien"  value={{idGiangVien}}>
-                            </form>
-                            <!--accept course .//-->
                           <tr>
                             <th scope="row">{{IdKhoaHoc}}</th>
                             <td>{{TenKhoaHoc}}</td>

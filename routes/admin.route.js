@@ -99,6 +99,7 @@ router.get('/', auth, async function (req, res) {
       })
       router.post('/del_course/delete', async function (req, res) {
         const IdKhoaHoc = req.body.IdKhoaHoc
+        console.log(IdKhoaHoc);
         adminModel.delCourse(IdKhoaHoc)
         res.redirect(req.headers.referer);
       })

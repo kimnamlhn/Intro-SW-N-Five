@@ -39,7 +39,7 @@ module.exports = {
     //    },
     delCourse(idKhoaHoc) {
         this.setNonFreignKeyCheck();
-        console.log(idKhoaHoc);
+        //console.log(idKhoaHoc);
         return db.load(`delete from khoahoc where IdKhoaHoc = ${idKhoaHoc}`)  
        },
     
