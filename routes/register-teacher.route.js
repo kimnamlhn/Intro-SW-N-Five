@@ -33,11 +33,12 @@ router.post('/', async function(req, res) {
         Email: req.body.email,
         password: req.body.password
     }]
-    const teacher = await teacherModel.add(entity);
+    const teacher = await teacherModel.register(req.body.name, req.body.dob, req.body.Des,req.body.email);
+    // const teacher = await teacherModel.add(entity);
     console.log(teacher);
 
     res.render('./vwAccount/register_teacher', {
-        succ_message: "dang ki thanh cong"
+        succ_message: "dang ki thanh cong, cho xet duyet!"
     });
 
 })

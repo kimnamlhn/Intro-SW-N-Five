@@ -129,16 +129,16 @@ router.get('/', auth, async function (req, res) {
         });
       })
       router.post('/teacher_manage/accept', async function (req, res) {
-        const TaiKhoan_idTaiKhoan = req.body.TaiKhoan_idTaiKhoan
-        adminModel.acceptRequest(TaiKhoan_idTaiKhoan)
-        console.log(TaiKhoan_idTaiKhoan)
+        const idGiangVienTam = req.body.idGiangVienTam
+        adminModel.acceptRequest(idGiangVienTam)
+        console.log(idGiangVienTam)
         res.redirect(req.headers.referer);
       })
     
       router.post('/teacher_manage/delete', async function (req, res) {
-        const TaiKhoan_idTaiKhoan = req.body.TaiKhoan_idTaiKhoan
-        adminModel.deleteRequest(TaiKhoan_idTaiKhoan)
-        console.log(TaiKhoan_idTaiKhoan)
+        const idGiangVienTam = req.body.idGiangVienTam
+        adminModel.deleteRequest(idGiangVienTam)
+        console.log(idGiangVienTam)
         res.redirect(req.headers.referer);
       })
     

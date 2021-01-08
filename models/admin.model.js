@@ -40,20 +40,19 @@ module.exports = {
     //    },
 
     async getRegisterTeacher() {
-        const rows = await db.load(`select * 
-        from Taikhoan_dangky_giangvien r, taikhoan t where t.idTaiKhoan = r.TaiKhoan_idTaiKhoan`);
+        const rows = await db.load(`select * from GiangVienTam`);
         if (rows.length === 0)
             return null;
     
         return rows;
     },
 
-     acceptRequest(TaiKhoan_idTaiKhoan) {
-        return db.load(`update Taikhoan_dangky_giangvien set TrangThai = 1 where TaiKhoan_idTaiKhoan = ${TaiKhoan_idTaiKhoan } `);    
+     acceptRequest(idGiangVienTam) {
+        return db.load(`update GiangVienTam set TrangThai = 1 where idGiangVienTam = ${idGiangVienTam} `);    
     },
  
-     deleteRequest(TaiKhoan_idTaiKhoan) {
-         return db.load(`delete from Taikhoan_dangky_giangvien where TaiKhoan_idTaiKhoan = ${TaiKhoan_idTaiKhoan} `);    
+     deleteRequest(idGiangVienTam) {
+         return db.load(`delete from GiangVienTam where idGiangVienTam = ${idGiangVienTam} `);    
         },
  
 }

@@ -22,5 +22,10 @@ module.exports = {
             id: id
         }
         return db.del(TBL_TEACHER, condition);
+    },
+
+
+    register(TenGiangVien, NgaySinh, MoTa, Email){
+        return db.load(`insert into GiangVienTam value (null, '${TenGiangVien}', null, '${MoTa}', null, '${Email}',0) `);    
     }
 };

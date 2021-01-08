@@ -97,12 +97,12 @@
                        {{#each this.list}}
                               <!--accept request-->
                             <form action="/admin/teacher_manage/accept" method="post" id="frmAcceptRequest">
-                                <input type="hidden" name="TaiKhoan_idTaiKhoan" value="{{TaiKhoan_idTaiKhoan}}">
+                                <input type="hidden" name="idGiangVienTam" value="{{idGiangVienTam}}">
                             </form>
                             <!--accept request .//-->
                           <tr>
-                            <th scope="row">{{TaiKhoan_idTaiKhoan}}</th>
-                            <td>{{TenTaiKhoan}}</td>
+                            <th scope="row">{{idGiangVienTam}}</th>
+                            <td>{{TenGiangVien}}</td>
                             <td>{{TrangThai}}</td>
                             <td>
                                 <a class="icon_btn btn-sm icon_accept" href="javascript:;" role="button"
@@ -119,7 +119,7 @@
                         </tr>
                             <!--delete request-->
                             <form action="/admin/teacher_manage/delete" method="post" id="frmDeleteRequest">
-                                <input type="hidden" name="TaiKhoan_idTaiKhoan" value="{{TaiKhoan_idTaiKhoan}}">
+                                <input type="hidden" name="idGiangVienTam" value="{{idGiangVienTam}}">
                             </form>
                             <!--delete request.//-->
                        {{/each}}
