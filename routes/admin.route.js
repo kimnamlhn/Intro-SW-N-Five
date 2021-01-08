@@ -155,9 +155,11 @@ router.get('/', auth, async function (req, res) {
     router.post('/add_course/add', async function(req, res) {
 
     const teacher = await adminModel.addCourse(req.body.Name, req.body.Des, req.body.Tea);
-    console.log(teacher);
 
-    res.redirect(req.headers.referer);
-    })
+    res.render('./admin/add_course', {
+      succ_message: "Add course success!"
+    });
+
+  })
     
       module.exports = router
