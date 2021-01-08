@@ -76,10 +76,7 @@ router.get('/', auth, async function (req, res) {
         res.redirect(req.headers.referer);
       })
       router.get('/add_course', async function (req, res) {
-      const temp = await adminModel.getTeacher();
         res.render('admin/add_course',{
-          list: temp,
-          empty: temp === null
         });
       })
   
@@ -150,5 +147,17 @@ router.get('/', auth, async function (req, res) {
             empty: temp === null
           });
         })
-  
+
+    router.get('/add_course', async function (req, res) {
+        res.render('./admin/add_course');
+      })
+
+    router.post('/add_course/add', async function(req, res) {
+
+    const teacher = await adminModel.addCourse(req.body.Name, req.body.Des, req.body.Tea);
+    console.log(teacher);
+
+    res.redirect(req.headers.referer);
+    })
+    
       module.exports = router

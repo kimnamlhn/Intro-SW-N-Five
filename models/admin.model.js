@@ -55,6 +55,10 @@ module.exports = {
          return db.load(`delete from GiangVienTam where idGiangVienTam = ${idGiangVienTam} `);    
         },
  
+
+    addCourse(TenKhoaHoc, MoTaKhoaHoc,GiangVien){
+        return db.load(`insert into KhoaHoc values(NULL,NULL, '${TenKhoaHoc}','${MoTaKhoaHoc}',null,null,null,null,null,null,null,1,1,1)`);
+    }
 }
 
                                          

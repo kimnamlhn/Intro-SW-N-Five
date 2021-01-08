@@ -54,29 +54,29 @@
           <div class="row">
             <div><h3 class="header" style="margin-left: 5rem;"> Thêm khóa học </h3></div>    
           </div>
-          <form method="POST" action="">
+          <form method="POST" action="/admin/add_course/add" method="post" id="frmAddCourse">
               <div class="card-body">
                   <table>
                       <tr>
                           <th>Tên khóa học</th>
                           <th>
-                              <input type="text" class="form-control" id="txtCatName" name="CatName" autofocus>
+                            <input type="text" id="inputName" name = "Name" class="form-control">
                           </th>    
                       </tr>
                       <tr>
                           <th>Mô tả khóa học</th>
                           <th>
-                              <input type="text" class="form-control" id="txtCatName" name="CatName" autofocus>
+                            <input type="text" id="inputDes" name = "Des" class="form-control">
                           </th>    
                       </tr>
                       <tr>
                           <th>Giảng viên</th>
                           <th>
-                              <input type="text" class="form-control" id="txtCatName" name="CatName" autofocus>
+                            <input type="text" id="inputTea" name = "Tea" class="form-control">
                           </th>    
                       </tr>
-              </table>
-              <div style="margin-left: 5rem;">
+                </table>
+              <div style="margin-left: 10rem;">
                   <button class="btn btn-outline-success my-2 my-sm-0 main_color_button" type="submit">
                       <i class="fa fa-plus" aria-hidden="true"></i>
                     Thêm
