@@ -20,5 +20,6 @@ module.exports = function(app) {
     });
     app.use('/register/teacher', require('../routes/register-teacher.route'));
     app.use('/admin', require('../routes/admin.route'));
+    app.use('/subscription', require('../routes/subscription.route'));
 
 }
