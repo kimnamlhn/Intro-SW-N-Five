@@ -15,11 +15,6 @@
       </div>
     </div>
     </nav>
-     {{#if succ_message}}
-                <div class="alert alert-dark" role="alert">
-                    {{succ_message}}
-                </div>
-    {{/if}}
     <div class="container-fluid mt-4">
       <div class="row">
         <div class="col-sm-3">
@@ -59,36 +54,40 @@
           <div class="row">
             <div><h3 class="header" style="margin-left: 5rem;"> Thêm khóa học </h3></div>    
           </div>
-          <form method="POST" action="/admin/add_course/add" method="post" id="frmAddCourse">
+          <form method="POST" action="">
               <div class="card-body">
                   <table>
                       <tr>
-                          <th>Tên khóa học</th>
-                          <th>
-                            <input type="text" id="inputName" name = "Name" class="form-control">
-                          </th>    
+                        <th>Tên khóa học</th>
+                        <th>
+                            <input type="text" class="form-control" id="txtCatName" name="CatName" autofocus>
+                        </th>    
+                        <td>
+                            <span class="table-remove"><button type="submit"
+                                class="btn btn-success btn-rounded btn-sm btn-block my-0">Save</button></span>
+                        </td>
                       </tr>
                       <tr>
                           <th>Mô tả khóa học</th>
                           <th>
-                            <input type="text" id="inputDes" name = "Des" class="form-control">
+                              <input type="text" class="form-control" id="txtCatName" name="CatName" autofocus>
                           </th>    
+                        <td>
+                            <span class="table-remove"><button type="submit"
+                                class="btn btn-success btn-rounded btn-sm btn-block my-0">Save</button></span>
+                        </td>
                       </tr>
                       <tr>
                           <th>Giảng viên</th>
                           <th>
-                            <input type="text" id="inputTea" name = "Tea" class="form-control">
+                              <input type="text" class="form-control" id="txtCatName" name="CatName" autofocus>
                           </th>    
+                        <td>
+                            <span class="table-remove"><button type="submit"
+                                class="btn btn-success btn-rounded btn-sm btn-block my-0">Save</button></span>
+                        </td>
                       </tr>
                 </table>
-              <div style="margin-left: 10rem;">
-                  <button class="btn btn-outline-success my-2 my-sm-0 main_color_button" type="submit">
-                      <i class="fa fa-plus" aria-hidden="true"></i>
-                    Thêm
-                  </button>
-              </div>
-
-              </div>
           </form>
 
         </div>

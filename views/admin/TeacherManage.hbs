@@ -1,16 +1,16 @@
 {{#section 'footer'}}
-<script>
-    $('.acceptCourse').on('click', function () {
-        $('#frmAcceptCourse').submit();
-    });
-    $('.deleteCourse').on('click', function () {
-        $('#frmDeleteCourse').submit();
-    });
-</script>
+   <script>
+       $('.acceptRequest').on('click', function () {
+         $('#frmAcceptRequest').submit();
+  });
+       $('.deleteRequest').on('click', function () {
+         $('#frmDeleteRequest').submit();
+  });
+   </script>
 
+  
 
-
-
+	
 {{/section}}
 <nav class="navbar navbar-expand-lg navbar-light bg-light shadow">
     <a class="navbar-brand" href="#">
@@ -84,8 +84,9 @@
                     <thead>
                         <tr>
                             <th scope="col">ID </th>
-                            <th scope="col">Tên giảng viên</th>
-                            <th scope="col">Khóa học giảng dạy</th>
+                            <th scope="col">Tên tài khoản</th>
+                            {{!-- <th scope="col">Lĩnh vực đăng ký</th>
+                            <th scope="col">Description</th> --}}
                             <th scope="col">Trạng thái</th>
                             <th scope="col">Chấp nhận</th>
                             <th scope="col">Xóa</th>
@@ -93,40 +94,37 @@
                         </tr>
                     </thead>
                     <tbody>
-                        {{#each this.list}}
-                        <!--accept course-->
-                        <form action="/admin/teacher-manage/accept" method="post" id="frmAcceptCourse">
-                            <input type="hidden" name="IdKhoaHoc" value="{{IdKhoaHoc}}">
-                            <input type="hidden" name="idHocVien" value={{idGiangVien}}>
-                        </form>
-                        <!--accept course .//-->
-                        <tr>
-                            <th scope="row">{{idGiangVien}}</th>
+                       {{#each this.list}}
+                              <!--accept request-->
+                            <form action="/admin/teacher_manage/accept" method="post" id="frmAcceptRequest">
+                                <input type="hidden" name="idGiangVienTam" value="{{idGiangVienTam}}">
+                            </form>
+                            <!--accept request .//-->
+                          <tr>
+                            <th scope="row">{{idGiangVienTam}}</th>
                             <td>{{TenGiangVien}}</td>
-                            <td>{{TenKhoaHoc}}</td>
                             <td>{{TrangThai}}</td>
                             <td>
                                 <a class="icon_btn btn-sm icon_accept" href="javascript:;" role="button"
-                                    title="Accept Student">
-                                    <i class="fa fa-check acceptCourse"></i>
+                                    title="Accept request">
+                                    <i class="fa fa-check acceptRequest"></i>
                                 </a>
                             </td>
                             <td>
                                 <a name="" id="" class="icon_btn btn-sm" href="javascript:;" role="button"
-                                    title="Delete student">
-                                    <i class="fa fa-trash deleteCourse" aria-hidden="true"></i>
+                                    title="Delete request">
+                                    <i class="fa fa-trash deleteRequest" aria-hidden="true"></i>
                                 </a>
                             </td>
                         </tr>
-                        <!--delete course-->
-                        <form action="/admin/teacher-manage/delete" method="post" id="frmDeleteCourse">
-                            <input type="hidden" name="IdKhoaHoc" value="{{IdKhoaHoc}}">
-                            <input type="hidden" name="idHocVien" value={{idGiangVien}}>
-                        </form>
-                        <!--delete course .//-->
-                        {{/each}}
-
-
+                            <!--delete request-->
+                            <form action="/admin/teacher_manage/delete" method="post" id="frmDeleteRequest">
+                                <input type="hidden" name="idGiangVienTam" value="{{idGiangVienTam}}">
+                            </form>
+                            <!--delete request.//-->
+                       {{/each}}
+                        
+             
 
                     </tbody>
                 </table>

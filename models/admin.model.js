@@ -56,7 +56,27 @@ module.exports = {
        setNonFreignKeyCheck(){
             return db.load(`SET FOREIGN_KEY_CHECKS = 0;`)
 
-       }
+       },
+
+        async getRegisterTeacher() {
+        const rows = await db.load(`select * from GiangVienTam`);
+        if (rows.length === 0)
+            return null;
+
+        return rows;
+    },
+
+     acceptRequest(idGiangVienTam) {
+        return db.load(`update GiangVienTam set TrangThai = 1 where idGiangVienTam = ${idGiangVienTam} `); 
+    },
+ 
+     deleteRequest(idGiangVienTam) {
+         return db.load(`delete from GiangVienTam where idGiangVienTam = ${idGiangVienTam} `);    
+        },
+
+    addCourse(TenKhoaHoc, MoTaKhoaHoc,GiangVien){
+        return db.load(`insert into KhoaHoc values(NULL,NULL, '${TenKhoaHoc}','${MoTaKhoaHoc}',null,null,null,null,null,null,null,1,1,1)`);
+    }
 
        
 }

@@ -69,26 +69,6 @@ router.get('/', auth, async function (req, res) {
 //     });
 //   })
 
-  router.get('/teacher_manage', async function (req, res) {
-    const temp = await adminModel.getTeacher();
-      res.render('admin/TeacherManage',{
-        list: temp,
-        empty: temp === null
-      });
-    })
-    router.post('/teacher_manage/accept', async function (req, res) {
-      const IdKhoaHoc = req.body.IdKhoaHoc
-      adminModel.acceptCourse(IdKhoaHoc)
-      //console.log(IdKhoaHoc,idHocVien)
-      res.redirect(req.headers.referer);
-    })
-  
-    router.post('/teacher_manage/delete', async function (req, res) {
-      const IdKhoaHoc = req.body.IdKhoaHoc
-      adminModel.delCourse(IdKhoaHoc)
-      //console.log(IdKhoaHoc,idHocVien)
-      res.redirect(req.headers.referer);
-    })
   
     router.get('/del_course', async function (req, res) {
       const temp = await adminModel.getTeacher();
@@ -133,5 +113,51 @@ router.get('/', auth, async function (req, res) {
           })
   
 
+
+    router.get('/teacher_manage', async function (req, res) {
+      const temp = await adminModel.getRegisterTeacher();
+        res.render('admin/TeacherManage',{
+          list: temp,
+          empty: temp === null
+        });
+      })
+      router.post('/teacher_manage/accept', async function (req, res) {
+        const idGiangVienTam = req.body.idGiangVienTam
+        adminModel.acceptRequest(idGiangVienTam)
+        console.log(idGiangVienTam)
+        res.redirect(req.headers.referer);
+      })
+    
+      router.post('/teacher_manage/delete', async function (req, res) {
+        const idGiangVienTam = req.body.idGiangVienTam
+        adminModel.deleteRequest(idGiangVienTam)
+        console.log(idGiangVienTam)
+        res.redirect(req.headers.referer);
+      })
+    
+
+      router.get('/edit_course', async function (req, res) {
+        const temp = await adminModel.getTeacher();
+          res.render('admin/edit_course',{
+            list: temp,
+            empty: temp === null
+          });
+        })
+
+    router.get('/add_course', async function (req, res) {
+        res.render('./admin/add_course');
+      })
+
+    router.post('/add_course/add', async function(req, res) {
+
+    const teacher = await adminModel.addCourse(req.body.Name, req.body.Des, req.body.Tea);
+
+    res.render('./admin/add_course', {
+      succ_message: "Add course success!"
+    });
+
+  })
+          
+      
 
     module.exports = router
