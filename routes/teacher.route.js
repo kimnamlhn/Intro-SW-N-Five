@@ -4,7 +4,7 @@ const teacherModel = require('../models/teacher.models')
 router.get('/teacher', async function(req, res) {
     try {
         const rows = await teacherModel.all();
-        //console.log(rows)
+        console.log(rows)
         res.render('./teacher/teacherList', {
             teacher: rows
         });
@@ -42,5 +42,8 @@ router.post('/teacher/update', async function(req, res) {
 router.post('/teacher/del', function(req, res) {
     const ret = teacherModel.del(req.body.id);
     res.redirect('/teacher');
+})
+router.get('/teacher/mieuta',function(req,res){
+    res.render('./teacher/mieuta');
 })
 module.exports = router

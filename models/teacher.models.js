@@ -1,6 +1,6 @@
 const db = require('../utils/db');
 const coures = require('../models/courses.model');
-const TBL_TEACHER = 'giangvientam';
+const TBL_TEACHER = 'GiangVien';
 module.exports = {
     all() {
         return db.load(`select * from ${TBL_TEACHER}`);
