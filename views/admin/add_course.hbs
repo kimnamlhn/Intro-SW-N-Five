@@ -1,0 +1,96 @@
+    <nav class="navbar navbar-expand-lg navbar-light bg-light shadow">
+      <a class="navbar-brand" href="#">
+        <i class="fa fa-lg">Logo</i>
+      </a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+        </ul>
+        <div>
+          <button type="button" class="btn mr-2 text-white" style="background-color:  #AA1E28;">Đăng xuất</button>
+      </div>
+    </div>
+    </nav>
+     {{#if succ_message}}
+                <div class="alert alert-dark" role="alert">
+                    {{succ_message}}
+                </div>
+    {{/if}}
+    <div class="container-fluid mt-4">
+      <div class="row">
+        <div class="col-sm-3">
+          <div class="card mb-3">
+                <div class="list-group list-group-flush" id="list-group-dropdown">
+                    <a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false"
+                        class="list-group-item list-group-item-action dropdown-toggle">Chỉnh sửa khóa học</a>
+                    <ul class="collapse list-unstyled active" id="homeSubmenu">
+                        <li>
+                            <a href="/admin/add_course">Thêm khóa học</a>
+                        </li>
+                        <li>
+                            <a href="/admin/del_course">Xóa khóa học</a>
+                        </li>
+                        <li>
+                            <a href="/admin/edit_course">Chỉnh sửa khóa học</a>
+                        </li>
+                    </ul>
+                    <a href="#" class="list-group-item list-group-item-action">
+                        Thống kê
+                        <span class="badge badge-pill badge-danger float-right"></span>
+                    </a>
+                    <a href="" class="list-group-item list-group-item-action">
+                        Quản lý học viên
+                    </a>
+                    <a href="/user/profile" class="list-group-item list-group-item-action">
+                        Thông tin cá nhân
+                    </a>
+                    <a href="/admin/teacher_manage" class="list-group-item list-group-item-action">
+                        Quản lý giảng viên
+                    </a>
+
+                </div>
+          </div>
+        </div>
+        <div class="col-sm-9">
+          <div class="row">
+            <div><h3 class="header" style="margin-left: 5rem;"> Thêm khóa học </h3></div>    
+          </div>
+          <form method="POST" action="/admin/add_course/add" method="post" id="frmAddCourse">
+              <div class="card-body">
+                  <table>
+                      <tr>
+                          <th>Tên khóa học</th>
+                          <th>
+                            <input type="text" id="inputName" name = "Name" class="form-control">
+                          </th>    
+                      </tr>
+                      <tr>
+                          <th>Mô tả khóa học</th>
+                          <th>
+                            <input type="text" id="inputDes" name = "Des" class="form-control">
+                          </th>    
+                      </tr>
+                      <tr>
+                          <th>Giảng viên</th>
+                          <th>
+                            <input type="text" id="inputTea" name = "Tea" class="form-control">
+                          </th>    
+                      </tr>
+                </table>
+              <div style="margin-left: 10rem;">
+                  <button class="btn btn-outline-success my-2 my-sm-0 main_color_button" type="submit">
+                      <i class="fa fa-plus" aria-hidden="true"></i>
+                    Thêm
+                  </button>
+              </div>
+
+              </div>
+          </form>
+
+        </div>
+      </div>
+    </div>
