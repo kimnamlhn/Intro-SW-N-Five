@@ -1,6 +1,8 @@
 const express = require('express');
 const detailModel = require('../models/home.model');
 const router = express.Router();
+
+
 //Đi đến trang chủ
 router.get('/', async function(req, res) {
     try {
@@ -25,6 +27,8 @@ router.get('/', async function(req, res) {
         res.send('View error log at server console.');
     }
 
-})
+});
+
+
 
 module.exports = router;

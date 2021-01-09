@@ -15,5 +15,6 @@ module.exports = function(app) {
     app.use('/user/view-video', require('../routes/view-video.route'));
     app.use('/register/teacher', require('../routes/register-teacher.route'));
     app.use('/admin', require('../routes/admin.route'));
+    app.use('/',require('../routes/teacher.route'));
 
 }

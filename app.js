@@ -6,7 +6,7 @@ app.use(express.json());
 app.use(express.urlencoded({
     extended: true
 }));
-
+app.use('/img/teacher',express.static('teacher'));
 
 
 app.use(express.static(path.join(__dirname, './resources')));
