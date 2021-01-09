@@ -73,7 +73,6 @@ router.get('/:id', async function (req, res) {
     try {
       let IdKhoaHoc = parseFloat(req.body.IdKhoaHoc);
       let idHocVien = res.locals.stuAccount.idHocVien;
-      console.log(IdKhoaHoc,idHocVien)
       const obj = {
         KhoaHoc_IdKhoaHoc: IdKhoaHoc,
         HocVien_idHocVien: idHocVien,

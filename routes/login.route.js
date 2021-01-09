@@ -3,7 +3,8 @@ const router = express.Router();
 const bcrypt = require('bcryptjs');
 const userModel = require('../models/user.model');
 const stuModel = require('../models/student.model')
-router.get('/', async function (req, res) {
+const LoginAuth = require('../middleware/LoginAuth.mdw');
+router.get('/',LoginAuth, async function (req, res) {
     const ref = req.headers.referer
     if (req.headers.referer) {
         req.session.retUrl = ref;

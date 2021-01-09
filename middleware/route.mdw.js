@@ -2,9 +2,8 @@ module.exports = function(app) {
     app.use('/', require('../routes/home.route'));
 
     app.use('/courses', require('../routes/courses.route'));
-    app.get('/search-result', function(req, res) {
-        res.render('guest/search-result');
-    });
+    app.use('/search/course', require('../routes/search.route'));
+
     app.use('/detail-course', require('../routes/detailCourse.route'));
     app.use('/login', require('../routes/login.route'));
 

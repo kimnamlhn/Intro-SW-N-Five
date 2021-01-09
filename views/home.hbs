@@ -74,6 +74,7 @@
                  <form action="/cart/add" method="post" id="frmAddCourse">
                      <input type="hidden" name="IdKhoaHoc" id="IdKhoaHoc">
                 </form>
+                
                 <!--Form add cart .//-->
                 {{#each lvCap2}}
                     {{#each courses}}
@@ -89,7 +90,7 @@
                             </ul>
                         </div>
                         <div class="featured__item__text">
-                            <h6 class="font-weight-bold"><a href="#">{{TenKhoaHoc}}</a></h6>
+                            <h6 class="font-weight-bold"><a href="/detail-course/{{IdKhoaHoc}}">{{TenKhoaHoc}}</a></h6>
                             <div class="rating">
                                 <i class="fa fa-star"></i>
                                 <i class="fa fa-star"></i>
@@ -98,7 +99,7 @@
                                 <i class="fa fa-star"></i>
                                 <i  class="text-dark"> <span>(<i class="fa fa-user" aria-hidden="true"></i>{{SoLuotXem}})</span> </i>
                             </div>   
-                            <h6 class="text-truncate">{{MoTaChiTiet}}</h6>  
+                            <h6 class="text-truncate" style="height: 50px;" >{{MoTaNgan}}</h6>  
                             <h6 class="text-muted"><i class="fa fa-calendar" aria-hidden="true"></i>{{NgayCapNhat}}</h6>
                         </div>
                     </div>
