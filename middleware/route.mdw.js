@@ -12,11 +12,7 @@ module.exports = function(app) {
     app.use('/cart', require('../routes/cart.route'));
     app.use('/user/profile', require('../routes/user.route'));
     app.use('/user/my-courses', require('../routes/mycourses.route'));
-    app.get('/user/view-video', function (req, res) {    
-        res.render('user/view-video',{
-            layout:false
-        });
-    });
+    app.use('/user/view-video', require('../routes/view-video.route'));
     app.use('/register/teacher', require('../routes/register-teacher.route'));
     app.use('/admin', require('../routes/admin.route'));
 

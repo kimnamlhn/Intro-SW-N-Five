@@ -7,11 +7,11 @@
   });
    </script>
 
-    <script>
+           <script>
        $('.enrollCourse').on('click', function () {
       const id = $(this).data('id');
-      $('#IdKhoaHocEnroll').val(id);
-      $('#frmEnrollCourse').submit();
+      let frmId = '#frmEnrollCourse'+id
+      $(frmId).submit();
   });
    </script>
 {{/section}}
@@ -71,7 +71,7 @@
                     {{/if}}
                     {{#each this.mycourses}}
                            <!--Enroll-->
-                            <form action="/detail-course/{{IdKhoaHoc}}/enroll" method="post" id="frmEnrollCourse">
+                            <form action="/detail-course/{{IdKhoaHoc}}/enroll" method="post" id="frmEnrollCourse{{IdKhoaHoc}}">
                                 <input type="hidden" name="IdKhoaHoc" id="IdKhoaHocEnroll">
                             </form>
                             <!--Enroll.//-->

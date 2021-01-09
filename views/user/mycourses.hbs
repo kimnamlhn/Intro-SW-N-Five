@@ -1,30 +1,16 @@
- 
-
-   <nav class="navbar navbar-expand-lg navbar-light bg-light shadow">
-    <!-- Breadcrumb -->
+ <div class="container">
+        <div class="main-body">
+        
+              <!-- Breadcrumb -->
               <nav aria-label="breadcrumb" class="main-breadcrumb">
                 <ol class="breadcrumb">
                   <li class="breadcrumb-item"><a href="index.html">Home</a></li>
                   <li class="breadcrumb-item"><a href="javascript:void(0)">User</a></li>
-                  <li class="breadcrumb-item active" aria-current="page">MyCourses</li>
+                  <li class="breadcrumb-item active" aria-current="page">My courses</li>
                 </ol>
               </nav>
               <!-- /Breadcrumb -->
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
-      aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <form action="/login/-out" method="post" id="frmLogout"></form>
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav mr-auto">
-      </ul>
-      <div>
-        <a href="javascript: $('#frmLogout').submit();" type="submit" class="btn mr-2 text-white" style="background-color:  #AA1E28;">Đăng xuất</a>
-      </div>
-    </div>
-  </nav>             
-<div class="container">
-        <div class="main-body">
+        
               <div class="row gutters-sm">
                 <div class="col-md-4 mb-3">
                   <div class="card">
@@ -32,7 +18,7 @@
                       <div class="d-flex flex-column align-items-center text-center">
                         <img src="https://bootdey.com/img/Content/avatar/avatar7.png" alt="Admin" class="rounded-circle" width="150">
                         <div class="mt-3">
-                          {{#with stuAccount}}
+                           {{#with stuAccount}}
                           {{#if TenHocVien}}
                             <h4>{{TenHocVien}}</h4>
                           {{else}}
@@ -44,32 +30,35 @@
                           {{else}}
                             <p class="text-secondary mb-1">(NO BIRTHDAY)</p>
                           {{/if}}
-                          
+                          <form action="/user/my-watchlist/remove" method="post" id="frmRemoverCourse">
+                        <input type="hidden" name="IdKhoaHoc" id="IdKhoaHoc">
+                        <input type="hidden" name="idHocVien" id="idHocVien" value="{{idHocVien}}">
+                        </form>
                           {{/with}}
+                          <a class="btn btn-primary" href="/user/profile">Edit profile</a>
                         </div>
                       </div>
                     </div>
                   </div>
                   <div class="card mt-3">
+                   <div class="card mt-3">
                     <div class="list-group" id="list-tab" role="tablist">
-                        <a class="list-group-item list-group-item-action"href="/user/profile" role="tab">Thông tin cá nhân</a>
-                        <a class="list-group-item list-group-item-action active" href="">Khóa học của tôi</a>
-                        <a class="list-group-item list-group-item-action"href="/user/my-courses/result">Kết quả học tập</a>
+                        <a class="list-group-item list-group-item-action" href="/user/profile">Profile</a>
+                        <a class="list-group-item list-group-item-action active" href="">My courses</a>
+                        <a class="list-group-item list-group-item-action" href="/user/my-watchlist">My watchlist</a>
+                        <a class="list-group-item list-group-item-action">Log out</a>
                       </div>
+                  </div>
                   </div>
                 </div>
                 <div class="col-md-8">
-                  <h3 class="card-header text-center font-weight-bold text-uppercase mb-3">My courses</h3>
-                   {{#if empty}}
-                  <h2 class="d-flex justify-content-center font-weight-bold">Bạn chưa tham gia khóa học nào</h2>
-                  {{/if}}
+                  <h3 class="card-header text-center font-weight-bold text-uppercase mb-3">My courses ({{nCourses}})</h3>
                   <!--Watchlist-->
 
                 <div class="row">
-                 
                   <!--Card-->
                   {{#each myCourses}}
-                    <div class="col-12 col-md-6">
+                    <div class="col-12 col-md-6 mt-2">
                     <div class="card">
                       <img class="card-img-top" src="../img/onlCourse.jpg" alt="course-img">
                       <div class="card-body">
@@ -84,13 +73,13 @@
                           <span><a hfre="#">Leave a rating</a></span>
                       </div>
                       <div class="d-flex justify-content-center">
-                        <a class="btn btn-outline-danger btn-sm stretched-link" href="/user/view-video/{{IdKhoaHoc}}/1">View this course</a>     
+                        <a class="btn btn-outline-danger btn-sm stretched-link" href="/user/view-video/{{fistIdVid}}&{{IdKhoaHoc}}">View this course</a>     
                       </div>  
                       </div>
                       </div>
                     </div>
                   {{/each}}
-                 
+                  
                     <!--Card .//-->
 
                   </div>
@@ -102,7 +91,6 @@
           </div>
           <!--Card .//-->
 
-          <!--Card .//-->
         </div>
         <!--End watchlist .//-->
       </div>

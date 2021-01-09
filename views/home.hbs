@@ -10,8 +10,8 @@
        <script>
        $('.enrollCourse').on('click', function () {
       const id = $(this).data('id');
-      $('#IdKhoaHocEnroll').val(id);
-      $('#frmEnrollCourse').submit();
+      let frmId = '#frmEnrollCourse'+id
+      $(frmId).submit();
   });
    </script>
 
@@ -78,8 +78,8 @@
                 <!--Form add cart .//-->
                 {{#each lvCap2}}
                     {{#each courses}}
-                    <form action="/detail-course/{{IdKhoaHoc}}/enroll" method="post" id="frmEnrollCourse">
-                      <input type="hidden" name="IdKhoaHoc" id="IdKhoaHocEnroll">
+                    <form action="/detail-course/{{IdKhoaHoc}}/enroll" method="post" id="frmEnrollCourse{{IdKhoaHoc}}">
+                      <input type="hidden" name="IdKhoaHoc" value="{{IdKhoaHoc}}">
                     </form>
                      <div class=" col_featured  mix {{../TenLinhVuc}}">
                     <div class="featured__item featured__item__pic__hover_box">
