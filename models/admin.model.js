@@ -76,8 +76,15 @@ module.exports = {
 
     addCourse(TenKhoaHoc, MoTaKhoaHoc,GiangVien){
         return db.load(`insert into KhoaHoc values(NULL,NULL, '${TenKhoaHoc}','${MoTaKhoaHoc}',null,null,null,null,null,null,null,1,1,1)`);
-    }
+    },
 
-       
-}
+    async getAdmin() {
+        const rows = await db.load(`select * 
+        from TaiKhoan
+        where  LoaiTaiKhoan = 0`);
+        if (rows.length === 0)
+            return null;
+    
+        return rows;
+    },}
 

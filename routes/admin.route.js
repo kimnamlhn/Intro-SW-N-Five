@@ -98,18 +98,13 @@ router.get('/', auth, async function (req, res) {
       })
   
       router.get('/admin_manage', async function (req, res) {
-        const temp = await adminModel.getTeacher();
-          res.render('admin/quan_ly_admin',{
+        const temp = await adminModel.getAdmin();
+          res.render('admin/admin_manage',{
             list: temp,
             empty: temp === null
           });
         })
-        router.get('/admin_manage/add', async function (req, res) {
-          const temp = await adminModel.getTeacher();
-            res.render('admin/add_admin',{
-              list: temp,
-              empty: temp === null
-            });
+        router.post('/admin_manage/delete', async function (req, res) {
           })
   
 
@@ -144,9 +139,6 @@ router.get('/', auth, async function (req, res) {
           });
         })
 
-    router.get('/add_course', async function (req, res) {
-        res.render('./admin/add_course');
-      })
 
     router.post('/add_course/add', async function(req, res) {
 
