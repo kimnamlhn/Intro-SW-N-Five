@@ -1,7 +1,9 @@
 const express = require('express');
 const router = express.Router();
 const teacherModel = require('../models/teacher.models')
-router.get('/teacher', async function(req, res) {
+const Teacherauth = require('../middleware/TeacherAuth.mdw');
+
+router.get('/teacher', Teacherauth,async function(req, res) {
     try {
         const rows = await teacherModel.all();
         console.log(rows)
@@ -13,7 +15,7 @@ router.get('/teacher', async function(req, res) {
         res.send('View error log at server console.');
     }
 })
-router.get('/teacher/add', async function(req, res) {
+router.get('/teacher/add',Teacherauth, async function(req, res) {
     res.render('./teacher/add');
 })
 router.post('/teacher/add', async function(req, res) {
@@ -26,7 +28,7 @@ router.post('/teacher/add', async function(req, res) {
     const rowss = await teacherModel.add(entity);
     res.redirect('/teacher');
 })
-router.get('/teacher/edit', async function(req, res) {
+router.get('/teacher/edit', Teacherauth,async function(req, res) {
     const id = +req.query.id || -1;
     const rows = await teacherModel.single(id);
     const category = rows[0];
@@ -43,7 +45,7 @@ router.post('/teacher/del', function(req, res) {
     const ret = teacherModel.del(req.body.id);
     res.redirect('/teacher');
 })
-router.get('/teacher/mieuta', async function(req, res) {
+router.get('/teacher/mieuta',Teacherauth, async function(req, res) {
     try {
         const id = +req.query.id || -1;
         console.log(id)

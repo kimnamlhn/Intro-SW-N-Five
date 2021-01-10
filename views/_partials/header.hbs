@@ -115,7 +115,33 @@
         </li>
         </ul>
             {{else}}
-                <div class="d-flex justify-content-end">
+                {{#if Teachertype}}
+                     <ul class="navbar-nav mr-auto">
+                <li class="nav-item">
+                    <a href="/cart" class="btn btn-info btn-sm">
+                    <i class="fa fa-shopping-cart" aria-hidden="true"></i> Cart {{#if nCart}}
+                           <span class="badge badge-pill badge-danger">{{nCart}}</span>
+                       {{/if}}
+                     </a>
+                </li>
+
+                <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <i class="fa fa-envelope-o">
+                <i class="fa fa-user" aria-hidden="true"></i><span class="badge badge-primary">11</span>
+                </i>
+                Teacher
+                </a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <a class="dropdown-item" href="/teacher/mieuta">Profile</a>
+            <a class="dropdown-item" href="/teacher">List</a>
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item" href="javascript: $('#frmLogout').submit();">Log out</a>
+          </div>
+        </li>
+        </ul>
+                {{else}}
+                    <div class="d-flex justify-content-end">
                 <div class="mr-2">
                     <a href="/cart" class="btn btn-info">
                         <i class="fa fa-shopping-cart" aria-hidden="true"></i> Cart 
@@ -133,6 +159,7 @@
                     <a href="/register" class="btn btn-light mr-2">Register</a>
                 </div>
             </div>
+                {{/if}}
             {{/if}}
                 
             {{/if}}

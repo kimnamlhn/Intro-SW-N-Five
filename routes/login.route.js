@@ -43,7 +43,6 @@ router.get('/',LoginAuth, async function (req, res) {
     const type = req.body.option;
     if(type === 'Admin'){
       const admin = await authModel.checkAdmin(req.body.username)
-      console.log(admin)
       if(admin === null) {
         return res.render('guest/login', {
           err_message: 'Invalid Username or password.'
@@ -60,6 +59,25 @@ router.get('/',LoginAuth, async function (req, res) {
       req.session.authAdmin= admin;
       res.redirect('/admin');
     }
+    else if(type === 'Giảng viên'){
+      const teacher = await authModel.checkTeacher(req.body.username)
+      console.log(teacher)
+      if(teacher=== null) {
+        return res.render('guest/login', {
+          err_message: 'Invalid Username or password.'
+        });
+      }
+      const ret =  bcrypt.compareSync(req.body.password, teacher.MatKhau);
+      if (ret === false) {
+        return res.render('user/login', {
+          err_message: 'Invalid Username or password.'
+        });
+      }
+      
+      req.session.Teachertype=true;
+      req.session.authTeacher =  teacher;
+      res.redirect('/teacher/mieuta');
+    }
 
   })
 
@@ -67,6 +85,7 @@ router.get('/',LoginAuth, async function (req, res) {
 
     req.session.accounttype=false;
     req.session.Admintype=false;
+    req.session.Teachertype=false;
     req.session.authUser=null;
     res.redirect(req.headers.referer);
   })
