@@ -74,8 +74,8 @@ module.exports = {
          return db.load(`delete from GiangVienTam where idGiangVienTam = ${idGiangVienTam} `);    
         },
 
-    addCourse(TenKhoaHoc,LinhVuc,GiangVien,MoTa){
-        return db.load(`insert into KhoaHoc value (NULL,NULL,'${TenKhoaHoc}','${MoTa}',null,0,0,DATE_FORMAT(now(), "%m/%d/%y"),0,null,null,${GiangVien},${GiangVien},${LinhVuc})`);
+    addCourse(TenKhoaHoc,LinhVuc,GiangVien,MoTa,HinhDaiDien){
+        return db.load(`insert into KhoaHoc value (NULL,NULL,'${TenKhoaHoc}','${MoTa}',null,0,0,DATE_FORMAT(now(), "%m/%d/%y"),0,'${HinhDaiDien}',null,${GiangVien},${GiangVien},${LinhVuc})`);
     },
 
     async getAdmin() {
@@ -102,4 +102,26 @@ module.exports = {
         if (rows.length === 0)
             return null;
         return rows;
-    }}
+    },
+
+
+    async getAllChapter(idKhoaHoc) {
+        const rows = await db.load(`select * 
+        from KhoaHoc where idKhoaHoc = ${idKhoaHoc}`);
+        if (rows.length === 0)
+            return null;
+        return rows;
+    },
+
+    addLesson(idKhoaHoc,TenBaiHoc,MoTa,idChuong){
+        //Khoa hoc chua co chuong
+        if(idChuong==''){
+            db.load(`insert into ChuongKhoaHoc value (null,'Chuong 1',${idKhoaHoc})`);
+            idChuong = 1;
+        }
+        console.log(idChuong);
+
+        return db.load(`insert into BaiHoc value (null,'${TenBaiHoc}','${MoTa}',${idChuong})`);
+    }
+
+}
