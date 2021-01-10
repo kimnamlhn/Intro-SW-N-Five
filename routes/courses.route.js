@@ -5,10 +5,8 @@ const router = express.Router();
 router.get('/:id', async function (req, res) {
     try {
       const coId = req.params.id;
-     console.log(coId)
       const list = await courseModel.courseByCateg(coId)
      const categ = await courseModel.allWithDetails()
-     // console.log(res.locals.lcCategories)
       res.render('guest/courses', {
         mycourses: list,
         empty: list === null,

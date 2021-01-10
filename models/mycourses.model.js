@@ -14,10 +14,13 @@ module.exports = {
     async myCourses(idHocVien) {
         const rows = await db.load(`select k.*, g.TenGiangVien
         from khoahoc k, hocvien_dangky_khoahoc h, giangvien g 
-        where h.KhoaHoc_IdKhoaHoc = k.IdKhoaHoc and h.HocVien_idHocVien = ${idHocVien} and k.NguoiDay = g.idGiangVien and h.TrangThai = 1`);
+        where h.KhoaHoc_IdKhoaHoc = k.IdKhoaHoc and h.HocVien_idHocVien = ${idHocVien} and k.NguoiDay = g.idGiangVien`);
         if (rows.length === 0)
             return null;
         return rows;
+        },
+    async buyCourse(entity) {
+        return db.add(entity, 'hocvien_dangky_khoahoc')
         },
     
 }

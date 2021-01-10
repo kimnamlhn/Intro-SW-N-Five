@@ -1,6 +1,23 @@
+{{#section 'footer'}}
+   <script>
+       $('.addCourse').on('click', function () {
+    const id = $(this).data('id');
+    $('#IdKhoaHoc').val(id);
+    $('#frmAddCourse').submit();
+  });
+   </script>
+    <script>
+       $(document).ready(function(){
+        $('#option').change(function(){
+        $('#frmsortOption').submit();
+  });
+});
+    </script>
+  
+{{/section}}
  <!--Search bar-->
       <div class="s007">
-        <form>
+        <form action="/search/course">
             <div class="inner-form">
               <div class="basic-search">
                 <div class="input-field">
@@ -9,118 +26,73 @@
                       <path d="M18.869 19.162l-5.943-6.484c1.339-1.401 2.075-3.233 2.075-5.178 0-2.003-0.78-3.887-2.197-5.303s-3.3-2.197-5.303-2.197-3.887 0.78-5.303 2.197-2.197 3.3-2.197 5.303 0.78 3.887 2.197 5.303 3.3 2.197 5.303 2.197c1.726 0 3.362-0.579 4.688-1.645l5.943 6.483c0.099 0.108 0.233 0.162 0.369 0.162 0.121 0 0.242-0.043 0.338-0.131 0.204-0.187 0.217-0.503 0.031-0.706zM1 7.5c0-3.584 2.916-6.5 6.5-6.5s6.5 2.916 6.5 6.5-2.916 6.5-6.5 6.5-6.5-2.916-6.5-6.5z"></path>
                     </svg>
                   </div>
-                  <input id="search" type="text" placeholder="Search..." />
+                  <input id="search" type="text" name="search-text" placeholder="{{searchText}}" />
                   <div class="result-count">
-                    <span>108 </span>results</div>
+                    <span>{{numCourses}} </span>results</div>
                 </div>
               </div>
               </div>
-              </form>
+        </form>
       </div>
       <!--End search bar .//-->
 
     <section class="section-content padding-y">
-        <div><h1 class="d-flex justify-content-center">108 results for “web”</h1></div>
+        <div><h1 class="d-flex justify-content-center">{{numCourses}} results for “{{searchText}}”</h1></div>
         <div class="container">
         
         <div class="row">
         <main class="col-md-9">
         <!--Sort-->
+        
         <header class="border-bottom mb-4 pb-3">
                 <div class="form-inline">
                     <span class="ml-md-auto mr-2"> Sắp xếp theo:</span> 
-                    <select class="mr-2 form-control">
-                        <option>Điểm đánh giá giảm dần</option>
-                        <option>Giá tăng dần</option>
+                    <form action="/search/course" id="frmsortOption">
+                    <select class="mr-2 form-control" id="option" name="option">
+                        {{#if option}}
+                            {{#each option}}
+                            <option {{#if default}}selected{{/if}}>{{option}}</option>
+                            {{/each}}
+                        {{else}}
+                            <option>Điểm đánh giá giảm dần</option>
+                            <option>Số lượt đăng ký giảm dần</option>
+                        {{/if}}
+                        
                     </select>
+                    <input type="hidden" name="search-text" value="{{searchText}}">
+                    </form>
         </header>
         <!--End sort .//-->
         </section>
         <div class="d-flex justify-content-center">
             <div class="col-md-10">
                 <!--Course-->
-                <div class="row p-2 bg-white border rounded">
+                 <form action="/cart/add" method="post" id="frmAddCourse">
+                <input type="hidden" name="IdKhoaHoc" id="IdKhoaHoc">
+                </form>
+                {{#each result }}
+                    <div class="row p-2 bg-white border rounded mt-2">
                     <div class="col-md-3 mt-1"><img class="img-fluid img-responsive rounded product-image" src="../img/onlCourse.jpg"></div>
                     <div class="col-md-6 mt-1">
-                        <h5>The Complete 2020 Web Development Bootcamp</h5>
+                        <h5>{{TenKhoaHoc}}</h5>
                         <div class="d-flex flex-row">
-                            <div class="ratings mr-2"><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i></div><span>(5100)</span>
+                            <div class="ratings mr-2"><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i></div><span>({{SoLuongHVDangKy}})</span>
                         </div>
-                        <div><b>DR. Angela Yu</b></div>
-                        <div class="mt-1 mb-1 spec-1"><span>55 total hours</span><span class="dot"></span><span>44 lectures</span><span class="dot"></span><span>All level<br></span></div>
-                        <p class="text-justify text-truncate para mb-0">Become a full-stack web developer with just one course. HTML, CSS, Javascript, Node, React, MongoDB and more!<br><br></p>
+                        <div><b>{{TenGiangVien}}</b></div>
+                        <p class="text-justify text-truncate para mb-0">{{MoTaNgan}}<br><br></p>
                     </div>
                     <div class="align-items-center align-content-center col-md-3 border-left mt-1">
                         <div class="d-flex flex-row align-items-center">
-                            <h4 class="mr-1">$13.99</h4><span class="strike-text">$20.99</span>
                         </div>
-                        <h6 class="text-success"><span class="badge badge-danger ml-3"><i class="far fa-clock pr-1"></i>Best seller</span></h6>
-                        <div class="d-flex flex-column mt-4"><button class="btn btn-primary" type="button"><i class="fa fa-eye" aria-hidden="true"></i>Details</button><button class="btn btn-outline-danger mt-2" type="button"><i class="fa fa-shopping-cart" aria-hidden="true"></i>Add to cart</button></div>
+                        <div class="d-flex flex-column mt-4"><a href ="/detail-course/{{IdKhoaHoc}}"class="btn btn-primary" type="button"><i class="fa fa-eye" aria-hidden="true"></i>Details</a><a class="btn btn-outline-danger mt-2 addCourse" data-id="{{IdKhoaHoc}}" href="javascript:;" role="button"><i class="fa fa-shopping-cart" aria-hidden="true"></i>Add to cart</a></div>
                     </div>
                 </div>
+                {{/each}}
+                
                 <!--End course .//-->
-                <!--Course-->
-                <div class="row p-2 bg-white border rounded">
-                    <div class="col-md-3 mt-1"><img class="img-fluid img-responsive rounded product-image" src="../img/onlCourse.jpg"></div>
-                    <div class="col-md-6 mt-1">
-                        <h5>The Complete 2020 Web Development Bootcamp</h5>
-                        <div class="d-flex flex-row">
-                            <div class="ratings mr-2"><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i></div><span>(5100)</span>
-                        </div>
-                        <div><b>DR. Angela Yu</b></div>
-                        <div class="mt-1 mb-1 spec-1"><span>55 total hours</span><span class="dot"></span><span>44 lectures</span><span class="dot"></span><span>All level<br></span></div>
-                        <p class="text-justify text-truncate para mb-0">Become a full-stack web developer with just one course. HTML, CSS, Javascript, Node, React, MongoDB and more!<br><br></p>
-                    </div>
-                    <div class="align-items-center align-content-center col-md-3 border-left mt-1">
-                        <div class="d-flex flex-row align-items-center">
-                            <h4 class="mr-1">$13.99</h4><span class="strike-text">$20.99</span>
-                        </div>
-                        <h6 class="text-success"><span class="badge badge-danger ml-3"><i class="far fa-clock pr-1"></i>Best seller</span></h6>
-                        <div class="d-flex flex-column mt-4"><button class="btn btn-primary" type="button"><i class="fa fa-eye" aria-hidden="true"></i>Details</button><button class="btn btn-outline-danger mt-2" type="button"><i class="fa fa-shopping-cart" aria-hidden="true"></i>Add to cart</button></div>
-                    </div>
-                </div>
-                <!--End Course .//-->
-                <!--Course-->
-                <div class="row p-2 bg-white border rounded">
-                    <div class="col-md-3 mt-1"><img class="img-fluid img-responsive rounded product-image" src="../img/onlCourse.jpg"></div>
-                    <div class="col-md-6 mt-1">
-                        <h5>The Complete 2020 Web Development Bootcamp</h5>
-                        <div class="d-flex flex-row">
-                            <div class="ratings mr-2"><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i></div><span>(5100)</span>
-                        </div>
-                        <div><b>DR. Angela Yu</b></div>
-                        <div class="mt-1 mb-1 spec-1"><span>55 total hours</span><span class="dot"></span><span>44 lectures</span><span class="dot"></span><span>All level<br></span></div>
-                        <p class="text-justify text-truncate para mb-0">Become a full-stack web developer with just one course. HTML, CSS, Javascript, Node, React, MongoDB and more!<br><br></p>
-                    </div>
-                    <div class="align-items-center align-content-center col-md-3 border-left mt-1">
-                        <div class="d-flex flex-row align-items-center">
-                            <h4 class="mr-1">$13.99</h4><span class="strike-text">$20.99</span>
-                        </div>
-                        <h6 class="text-success"><span class="badge badge-danger ml-3"><i class="far fa-clock pr-1"></i>Best seller</span></h6>
-                        <div class="d-flex flex-column mt-4"><button class="btn btn-primary" type="button"><i class="fa fa-eye" aria-hidden="true"></i>Details</button><button class="btn btn-outline-danger mt-2" type="button"><i class="fa fa-shopping-cart" aria-hidden="true"></i>Add to cart</button></div>
-                    </div>
-                </div>
-                <!--End Course .//-->
-                <!--Course-->
-                <div class="row p-2 bg-white border rounded">
-                    <div class="col-md-3 mt-1"><img class="img-fluid img-responsive rounded product-image" src="../img/onlCourse.jpg"></div>
-                    <div class="col-md-6 mt-1">
-                        <h5>The Complete 2020 Web Development Bootcamp</h5>
-                        <div class="d-flex flex-row">
-                            <div class="ratings mr-2"><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i></div><span>(5100)</span>
-                        </div>
-                        <div><b>DR. Angela Yu</b></div>
-                        <div class="mt-1 mb-1 spec-1"><span>55 total hours</span><span class="dot"></span><span>44 lectures</span><span class="dot"></span><span>All level<br></span></div>
-                        <p class="text-justify text-truncate para mb-0">Become a full-stack web developer with just one course. HTML, CSS, Javascript, Node, React, MongoDB and more!<br><br></p>
-                    </div>
-                    <div class="align-items-center align-content-center col-md-3 border-left mt-1">
-                        <div class="d-flex flex-row align-items-center">
-                            <h4 class="mr-1">$13.99</h4><span class="strike-text">$20.99</span>
-                        </div>
-                        <h6 class="text-success"><span class="badge badge-danger ml-3"><i class="far fa-clock pr-1"></i>Best seller</span></h6>
-                        <div class="d-flex flex-column mt-4"><button class="btn btn-primary" type="button"><i class="fa fa-eye" aria-hidden="true"></i>Details</button><button class="btn btn-outline-danger mt-2" type="button"><i class="fa fa-shopping-cart" aria-hidden="true"></i>Add to cart</button></div>
-                    </div>
-                </div>
+               
+               
+                
                 <!--End Course .//-->
                 <!--Pagination-->
                 <div class= "d-flex justify-content-center">

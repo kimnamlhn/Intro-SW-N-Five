@@ -3,6 +3,8 @@ const detailModel = require('../models/detailCourse.model');
 const router = express.Router();
 const courseAuth = require('../models/auth.model');
 const { add } = require('../models/student.model');
+const enrollModel = require('../models/enroll.model')
+const auth = require('../middleware/auth.mdw');
 //Đi đến trang khóa học
 router.get('/:id', async function (req, res) {
     try {
@@ -12,7 +14,6 @@ router.get('/:id', async function (req, res) {
       if(res.locals.accounttype === true){
         check = courseAuth.courseAuth(res.locals.stuAccount.idHocVien,coId)
       }
-      console.log(check)
       const list = await detailModel.detailCourse(coId)
       const feedback = await detailModel.getFeedBack(coId)
       const relatedCourse = await detailModel.relatedCourse(coId)
@@ -25,7 +26,6 @@ router.get('/:id', async function (req, res) {
         rows[i].lessons = less
         }
      }
-     console.log(rows)
      
 
      //
@@ -60,6 +60,29 @@ router.get('/:id', async function (req, res) {
       }
 
      await detailModel.addComment(danhgia)
+     res.redirect(req.headers.referer);
+   
+    } catch (err) {
+      console.error(err);
+      res.send('View error log at server console.');
+    }
+  
+  })
+
+  router.post('/:id/enroll',auth, async function (req, res) {
+    try {
+      let IdKhoaHoc = parseFloat(req.body.IdKhoaHoc);
+      let idHocVien = res.locals.stuAccount.idHocVien;
+      const obj = {
+        KhoaHoc_IdKhoaHoc: IdKhoaHoc,
+        HocVien_idHocVien: idHocVien,
+        NgayDangKy: new Date().toISOString().slice(0, 10) ,
+        TrangThai: 0
+      }
+    let check = await courseAuth.courseAuth(idHocVien,IdKhoaHoc);
+    if(check === true){
+     await detailModel.enroll(obj)
+    }
      res.redirect(req.headers.referer);
    
     } catch (err) {

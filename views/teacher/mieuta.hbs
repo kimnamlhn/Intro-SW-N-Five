@@ -1,0 +1,160 @@
+
+{{#section 'header'}}
+<link rel="stylesheet"
+  href="https://cdnjs.cloudflare.com/ajax/libs/jquery-datetimepicker/2.5.20/jquery.datetimepicker.min.css">
+{{/section}}
+ 
+{{#section 'footer'}}
+<script
+  src="https://cdnjs.cloudflare.com/ajax/libs/jquery-datetimepicker/2.5.20/jquery.datetimepicker.full.min.js"></script>
+
+<script>
+ $('#txtDOB').datetimepicker({
+    format: 'd/m/Y',
+    timepicker: false,
+    mask: true,
+  });
+
+</script>
+
+{{/section}}
+  <nav class="navbar navbar-expand-lg navbar-light bg-light shadow">
+   <!-- Breadcrumb -->
+              {{!-- <nav aria-label="breadcrumb" class="main-breadcrumb">
+                <ol class="breadcrumb">
+                  <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+                  <li class="breadcrumb-item"><a href="javascript:void(0)">User</a></li>
+                  <li class="breadcrumb-item active" aria-current="page">My profile</li>
+                </ol>
+              </nav> --}}
+              <!-- /Breadcrumb -->
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+      aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <form action="/login/-out" method="post" id="frmLogout"></form>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav mr-auto">
+      </ul>
+      {{!-- <div>
+        <a href="javascript: $('#frmLogout').submit();" type="submit" class="btn mr-2 text-white" style="background-color:  #AA1E28;">Đăng xuất</a>
+      </div> --}}
+    </div>
+  </nav>
+<div class="container">
+        <div class="main-body">
+              <div class="row gutters-sm">
+                <div class="col-md-4 mb-3">
+                  <div class="card">
+                    <div class="card-body">
+                      <div class="d-flex flex-column align-items-center text-center">
+                        <img src="https://bootdey.com/img/Content/avatar/avatar7.png" alt="Admin" class="rounded-circle" width="150">
+                        <div class="mt-3">
+                          {{#with this.teacher}}
+                          {{#if TenGiangVien}}
+                            <h4>{{TenGiangVien}}</h4>
+                          {{else}}
+                            <h4>(NO NAME)</h4>
+                          {{/if}}
+                          
+                          {{#if NgaySinh}}
+                            <p class="text-secondary mb-1">{{Tuoi}} years old</p>
+                          {{else}}
+                            <p class="text-secondary mb-1">(NO BIRTHDAY)</p>
+                          {{/if}}
+                          
+                          {{/with}}
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="card mt-3">
+                    <div class="list-group" id="list-tab" role="tablist">
+                        <a class="list-group-item list-group-item-action ">
+                          <a  class="btn btn-primary" href="/teacher" role="button">TRỞ VỀ TRANG GIẢNG VIÊN</a>
+                        </a>
+                        {{!-- <a class="list-group-item list-group-item-action" href= "/user/my-courses">Khóa học của tôi</a>
+                        <a class="list-group-item list-group-item-action" href="/user/my-courses/result">Kết quả học tập</a> --}}
+                      </div>
+                  </div>
+                </div>
+                <div class="col-md-8">
+                 
+                  <div class="card">
+
+                    <h3 class="card-header text-center font-weight-bold text-uppercase py-4">Miêu Tả</h3>
+                    <div class="card-body">
+                      <!--Form Edit-->
+                       <!--Form Edit .//-->
+                      <div id="table" class="table-editable">
+                        {{#with this.teacher}}
+                          
+                        
+                        <table class="table table-bordered table-responsive-md table-striped text-center">
+                          
+                            <thead>
+                              <tr>
+                                <th class="text-center">STT</th>
+                                <th class="text-center">LOẠI</th>
+                                <th class="text-center">THÔNG TIN</th>
+                                {{!-- <th class="text-center">Edit</th> --}}
+                              </tr>
+                            </thead>
+                            <tbody>
+                                <form action="" method="post">
+                              <tr>
+                                <td class="pt-3-half" contenteditable="true">1</td>
+                                <td class="pt-3-half" contenteditable="true">Email</td>
+                                <td class="pt-3-half" contenteditable="true">
+                                  <div class="card-body"></div>
+                                   <p class="card-text">{{Email}}</p>
+                                 </div>
+                                </td>
+                                {{!-- <td>
+                                  <span class="table-remove"><button type="submit"
+                                      class="btn btn-success btn-rounded btn-sm btn-block my-0">Save</button></span>
+                                </td> --}}
+                              </tr>
+                              </form>
+                              <!-- This is our clonable table line -->
+                                <form action="/user/profile/edit-name" method="post">
+                                <input type="hidden" name="idGiangVien" value="{{idGiangVien}}">
+                              <tr>
+                                <td class="pt-3-half" contenteditable="true">2</td>
+                                <td class="pt-3-half" contenteditable="true">Full name</td>
+                                <td class="pt-3-half" contenteditable="true">
+                                 <div class="card-body"></div>
+                                   <p class="card-text">{{TenGiangVien}}</p>
+                                 </div>
+                                </td>
+                                 <tr>
+                                <td class="pt-3-half" contenteditable="true">3</td>
+                                <td class="pt-3-half" contenteditable="true">description</td>
+                                <td class="pt-3-half" contenteditable="true">
+                                <div class="card-body"></div>
+                                   <p class="card-text">{{MoTa}}</p>
+                                 </div>
+                                </td>
+                               {{!-- <td>
+                                  <span class="table-remove"><button type="submit"
+                                      class="btn btn-success btn-rounded btn-sm btn-block my-0">Save</button></span>
+                                </td> --}}
+                              </tr>
+                              </form>
+                              <!-- This is our clonable table line -->
+                            </tbody>
+                          </form>
+                          
+                        </table>
+                        {{/with}}
+                      </div>
+                    </div>
+                  </div>
+                  <!--End Edit profile-->
+                  </div>
+                </div>
+              </div>
+            </div>
+            
+        </div>
+        

@@ -39,7 +39,6 @@ module.exports = {
       const rows = await db.load(`select *, cast(MatKhau as char) AS MatKhau from ${TBL_USERS} where idTaiKhoan = '${idTaiKhoan}'`);
       if (rows.length === 0)
         return null;
-  
       return rows[0];
     },
     

@@ -1,6 +1,6 @@
 const db = require('../utils/db');
 const coures = require('../models/courses.model');
-const TBL_TEACHER = 'giangvientam';
+const TBL_TEACHER = 'GiangVien';
 module.exports = {
     all() {
         return db.load(`select * from ${TBL_TEACHER}`);
@@ -9,7 +9,7 @@ module.exports = {
         return db.add(entity, TBL_TEACHER);
     },
     single: function(id) {
-        return db.load(`select * from ${TBL_TEACHER} where id = ${id} `)
+        return db.load(`select * from ${TBL_TEACHER} where idGiangVien = ${id} `)
     },
     patch: function(entity) {
         const condition = {
@@ -22,5 +22,10 @@ module.exports = {
             id: id
         }
         return db.del(TBL_TEACHER, condition);
+    },
+
+
+    register(TenGiangVien, NgaySinh, MoTa, Email) {
+        return db.load(`insert into GiangVienTam value (null, "${TenGiangVien}", null, "${MoTa}", null, "${Email}",0) `);
     }
 };

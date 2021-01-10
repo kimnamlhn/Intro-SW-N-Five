@@ -1,6 +1,5 @@
 const categoryModel = require('../models/courses.model');
 const stuModel = require('../models/student.model')
-const wListModel = require('../models/wishlist.model')
 
 module.exports = function (app) {
   app.use(async function (req, res, next) {
@@ -13,8 +12,6 @@ module.exports = function (app) {
       const HocVien = await stuModel.singleByidTaiKhoan(res.locals.authUser.idTaiKhoan)
       res.locals.stuAccount = HocVien
       
-      const nItems = await wListModel.nItem(HocVien.idHocVien);
-      res.locals.nItem = nItems[0]
     }
      next();
    }),

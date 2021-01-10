@@ -1,43 +1,48 @@
-
-<div class="row">
- 
-  <div class="col-md-3">
-    <li class="list-group-item">Ngoại ngữ</li>
-    <li class="list-group-item">Lập trình</li>
-    <li class="list-group-item">Âm nhạc</li>
-    <li class="list-group-item">Hội họa</li>
-    <li class="list-group-item">Nấu ăn</li>
-  </div>
-   <div class="col-md-9">
+<form action="" method="post">
+    <div class="card">
+    <h5 class="card-header">
+      GIẢNG VIÊN
+    
+    </h5>
+    
+    {{#if this.empty}}
+    <div class="card-body">
+      <p class="card-text">Không có dữ liệu.</p>
+    </div>
+    {{else}}
+    <div class="card-body">
+      <div class="row">
+        {{#each this.teacher}}
+        <div class="col-sm-4 mb-3">
+          <div class="card h-100">
+            <img src="/img/teacher/team-01.png" class="card-img-top" alt="{{ProName}}"
+              title="{{ProName}}">
+            <div class="card-body">
+              <h6 class="card-title"> {{TenGiangVien}}</h6>
+              <h5 class="card-title text-danger">{{idGiangVien}}</h5>
+              <p class="card-text">
+                {{Email}}
+              </p>
+            </div>
+            <div class="card-footer">
+              <a class="btn btn-sm btn-outline-primary" href="/teacher/mieuta?id={{idGiangVien}}" role="button">
+                <i class="fa fa-eye" aria-hidden="true"></i>
+                Miêu Tả
+              </a>
+            
+            </div>
+          </div>
+        </div>
+        {{/each}}
+      </div>
+    </div>
+    {{/if}}
+    <div class="card-footer text-muted">
       <div class="d-flex flex-row-reverse">
-       
-         <div class="p-2">
-          <a class="btn btn-outline-success" href="/teacher/add" role="button">
-          <i class="fa fa-address-book" aria-hidden="true"></i>
-            ADD TEACHER
-          </a>
+        <div class="p-2">
+          <a name="" id="" class="btn btn-primary" href="/" role="button">TRỞ VỀ TRANG CHỦ  </a>
         </div>
       </div>
-     <div class="card-body  ">
-       <div class="row ">
-          {{#each this.teacher}}
-              <div class="col-sm-4 w-100">
-                <div class="card ">
-                  <div class="card-body">
-                    <h4 class="card-title">{{fullName}}</h4>
-                    <p class="card-text">{{url}}</p>
-                    <p class="card-text">{{job}}</p>
-                  </div>
-                  <div class="card-footer text-muted">
-                    <a class="btn btn-outline-success" href="/teacher/edit?id={{id}}" role="button">
-                      <i class="fa fa-address-book" aria-hidden="true"></i>
-                        EDIT TEACHER
-                    </a>
-                  </div>
-                </div>
-              </div> 
-          {{/each}}
-       </div>
-     </div>   
-   </div>
-</div>
+    </div>
+  </div>
+  </form>

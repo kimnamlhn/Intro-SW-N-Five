@@ -26,38 +26,30 @@ router.post('/', async function(req, res) {
             err_message: 'Email này đã được sử dụng.'
         });
     }
-    const user = {
-        idTaiKhoan: null,
-        TenTaiKhoan: null,
-        MatKhau: hash,
-        Salt: null,
-        LoaiTaiKhoan: 2
-    }
-    req.session.tmpUser = user
-    const status = await login(Email);
-    res.render('user/confirmOTP', {
-        user: user,
-        Email: Email,
-        fullName: req.body.name,
-        OTP: status.OTP,
-        fail: status.success !== true,
-    });
+  req.session.tmpUser = user
+  const status = await login(Email);
+  res.render('user/confirmOTP',{
+    user: user,
+    Email: Email,
+    fullName: req.body.name,
+    OTP: status.OTP,
+    fail: status.success !== true,
+  });
 
-})
+  })
 
 
 
-router.post('/confirmOTP', async function(req, res) {
-    const fullName = req.body.fullName;
-    const Email = req.body.Email;
-    await userModel.add(req.session.tmpUser);
-    const lastid = JSON.parse(JSON.stringify(await userModel.lastId()))[0].lastID
-    console.log("Last id", lastid)
-    await stuModel.addHocVien(Email, lastid, fullName);
-    res.render('user/login', {
-        succ_message: 'Đăng kí thành công.'
-    });
-})
-
-
-module.exports = router;
+  router.post('/confirmOTP', async function (req, res) {
+   const fullName = req.body.fullName;
+   const Email = req.body.Email;
+   await userModel.add(req.session.tmpUser);
+  const lastid = JSON.parse(JSON.stringify(await userModel.lastId()))[0].idTaiKhoan
+  console.log("Last id", lastid)
+  await stuModel.addHocVien(Email,lastid,fullName);
+  res.render('user/login',{
+    succ_message: 'Đăng kí thành công.'
+   });
+  })
+ 
+  module.exports = router;

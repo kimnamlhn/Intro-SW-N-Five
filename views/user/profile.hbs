@@ -18,30 +18,29 @@
 </script>
 
 {{/section}}
-<nav class="navbar navbar-expand-lg navbar-light bg-light shadow">
-     <!-- Breadcrumb -->
+  <nav class="navbar navbar-expand-lg navbar-light bg-light shadow">
+   <!-- Breadcrumb -->
               <nav aria-label="breadcrumb" class="main-breadcrumb">
                 <ol class="breadcrumb">
                   <li class="breadcrumb-item"><a href="index.html">Home</a></li>
                   <li class="breadcrumb-item"><a href="javascript:void(0)">User</a></li>
-                  <li class="breadcrumb-item active" aria-current="page">{{stuAccount.TenHocVien}} Profile</li>
+                  <li class="breadcrumb-item active" aria-current="page">My profile</li>
                 </ol>
               </nav>
               <!-- /Breadcrumb -->
-        
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
-        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
+      aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
     </button>
-
+    <form action="/login/-out" method="post" id="frmLogout"></form>
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul class="navbar-nav mr-auto">
-        </ul>
-        <div>
-            <button type="button" class="btn mr-2 text-white" style="background-color:  #AA1E28;">Đăng xuất</button>
-        </div>
+      <ul class="navbar-nav mr-auto">
+      </ul>
+      <div>
+        <a href="javascript: $('#frmLogout').submit();" type="submit" class="btn mr-2 text-white" style="background-color:  #AA1E28;">Đăng xuất</a>
+      </div>
     </div>
-</nav>
+  </nav>
 <div class="container">
         <div class="main-body">
               <div class="row gutters-sm">
