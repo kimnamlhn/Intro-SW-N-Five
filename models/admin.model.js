@@ -74,8 +74,8 @@ module.exports = {
          return db.load(`delete from GiangVienTam where idGiangVienTam = ${idGiangVienTam} `);    
         },
 
-    addCourse(TenKhoaHoc, MoTaKhoaHoc,GiangVien){
-        return db.load(`insert into KhoaHoc values(NULL,NULL, '${TenKhoaHoc}','${MoTaKhoaHoc}',null,null,null,null,null,null,null,1,1,1)`);
+    addCourse(TenKhoaHoc,LinhVuc,GiangVien,MoTa){
+        return db.load(`insert into KhoaHoc value (NULL,NULL,'${TenKhoaHoc}','${MoTa}',null,null,null,null,null,null,null,${GiangVien},${GiangVien},${LinhVuc})`);
     },
 
     async getAdmin() {
@@ -86,5 +86,20 @@ module.exports = {
             return null;
     
         return rows;
-    },}
+    },
 
+    async getAllTeacher() {
+        const rows = await db.load(`select * 
+        from GiangVien`);
+        if (rows.length === 0)
+            return null;
+        return rows;
+    },
+
+    async getAllCategory() {
+        const rows = await db.load(`select * 
+        from linhvuccap2`);
+        if (rows.length === 0)
+            return null;
+        return rows;
+    }}

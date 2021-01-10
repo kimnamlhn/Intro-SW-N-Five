@@ -1,3 +1,7 @@
+
+    
+    
+    
     <div id="wrapper">
 
         <!-- Sidebar -->
@@ -81,15 +85,15 @@
         </ul>
         <!-- End of Sidebar -->
 
-     {{#if succ_message}}
-                <div class="alert alert-dark" role="alert">
-                    {{succ_message}}
-                </div>
-    {{/if}}
+
 
         <!-- Content Wrapper -->
         <div id="content-wrapper" class="d-flex flex-column">
-
+     {{#if succ_message}}
+                <div class="alert alert-success" role="alert">
+                    {{succ_message}}
+                </div>
+    {{/if}}
             <!-- Main Content -->
             <div id="content">
 
@@ -111,26 +115,49 @@
                                         </th>    
                                     </tr>
                                     <tr>
-                                        <th>Mô tả khóa học</th>
+                                        <th>Lĩnh vực</th>
                                         <th>
-                                          <input type="text" id="inputDes" name = "Des" class="form-control">
+                                          <select class="mr-2 form-control" id="CatOption" name="CatOption">
+                                              {{#if option}}
+                                                  {{#each option}}
+                                                  <option {{#if default}}selected{{/if}}>{{option}}</option>
+                                                  {{/each}}
+                                              {{else}}
+                                              {{#each this.CatList}}
+                                                <option value="{{idLinhVucCap2}}">{{TenLinhVuc}}</option>
+                                              {{/each}}
+                                              {{/if}}
+                                              
+                                          </select>
                                         </th>    
                                     </tr>
                                     <tr>
                                         <th>Giảng viên</th>
                                         <th>
-                                          <input type="text" id="inputTea" name = "Tea" class="form-control">
+                                          <select class="mr-2 form-control" id="TeaOption" name="TeaOption">
+                                              {{#if option}}
+                                                  {{#each option}}
+                                                  <option {{#if default}}selected{{/if}}>{{option}}</option>
+                                                  {{/each}}
+                                              {{else}}
+                                              {{#each this.TeaList}}
+                                                <option value="{{idGiangVien}}">{{TenGiangVien}}</option>
+                                              {{/each}}
+                                              {{/if}}
+                                              
+                                          </select>
                                         </th>    
                                     </tr>
+                                    <tr>
+                                      <th>Mô tả chi tiết</th>
+                                      <th>
+                                        <textarea id="editor" name = "Des"></textarea>
+                                      </th>
+                                    </tr>
                               </table>
-                            <div style="margin-left: 6rem;">
-                                <button class="btn btn-outline-success my-2 my-sm-0 main_color_button" type="submit">
-                                    <i class="fa fa-plus" aria-hidden="true"></i>
-                                  Thêm
-                                </button>
+                                    <button type="submit" class="btn btn-primary" style="margin-left: 6rem;">Submit</button>
                             </div>
 
-                            </div>
                         </form>
                     </div>
 
@@ -139,8 +166,8 @@
 
             </div>
             <!-- End of Main Content -->
-
         </div>
         <!-- End of Content Wrapper -->
+
 
     </div>
