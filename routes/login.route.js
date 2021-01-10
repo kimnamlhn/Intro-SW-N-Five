@@ -14,12 +14,8 @@ router.get('/',LoginAuth, async function (req, res) {
     res.render('user/login');
   })
   router.get('/other', async function (req, res) {
-    const ref = req.headers.referer
-    if (req.headers.referer) {
-        req.session.retUrl = ref;
-      }
-    
-      res.redirect('/admin');
+  
+      res.render('guest/login')
   })
   
   router.post('/', async function (req, res) {
