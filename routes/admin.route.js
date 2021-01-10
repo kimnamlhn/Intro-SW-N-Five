@@ -73,12 +73,12 @@ router.get('/', Adminauth, async function (req, res) {
   
     router.get('/del_course',Adminauth, async function (req, res) {
       const temp = await adminModel.getTeacher();
-        res.render('admin/del_course',{
+        res.render('admin/course_list',{
           list: temp,
           empty: temp === null
         });
       })
-      router.post('/del_course/delete', async function (req, res) {
+      router.post('/course_list/delete', async function (req, res) {
         const IdKhoaHoc = req.body.IdKhoaHoc
         adminModel.delCourse(IdKhoaHoc)
         res.redirect(req.headers.referer);
@@ -145,13 +145,26 @@ router.get('/', Adminauth, async function (req, res) {
 
 
     router.post('/add_course/add', async function(req, res) {
-      await adminModel.addCourse(req.body.Name, req.body.CatOption, req.body.TeaOption, req.body.Des);
+      await adminModel.addCourse(req.body.Name, req.body.CatOption, req.body.TeaOption, req.body.Des,req.body.Pic);
       res.render('./admin/add_course', {
         succ_message: "Thêm khóa học thành công!"
       });
 
   })
-          
-      
+
+  router.post('/course_list/(:id)?', async function(req, res) {
+    const temp = await adminModel.getAllChapter(req.body.IdKhoaHoc)
+    res.render('./admin/add_lesson', {
+      IdKhoaHoc: req.body.IdKhoaHoc,
+      ChapList: temp,
+    });
+  })
+
+  router.post('/course_list/(:id)?/add', async function(req, res) {
+    await adminModel.addLesson(req.params.id,req.body.Name, req.body.Des,req.body.ChapOption)
+    res.render('./admin/course_list', {
+      succ_message: "Thêm bài học thành công!"
+    });
+  })      
 
     module.exports = router

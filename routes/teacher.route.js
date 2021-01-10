@@ -43,7 +43,39 @@ router.post('/teacher/del', function(req, res) {
     const ret = teacherModel.del(req.body.id);
     res.redirect('/teacher');
 })
-router.get('/teacher/mieuta',function(req,res){
-    res.render('./teacher/mieuta');
+router.get('/teacher/mieuta', async function(req, res) {
+    try {
+        const id = +req.query.id || -1;
+        console.log(id)
+        const rows = await teacherModel.single(id)
+        teacher = rows[0];
+        res.render('./teacher/mieuta', {
+            teacher
+        });
+    } catch (err) {
+        console.error(err);
+        res.send('View error log at server console.');
+    }
+})
+router.post('/teacher/mieuta', async function(req, res) {
+    try {
+        const id = +req.query.idGiangVien || -1;
+        const rows = await teacherModel.all();
+        var temp;
+        console.log(id)
+        console.log("khong co du lieu")
+        for (let index = 1; index <= rows.length; index++) {
+            if (id === rows[index].idGiangVien) {
+                temp = rows[index]
+            }
+
+        }
+        res.render('./teacher/mieuta', {
+            teacher: temp
+        });
+    } catch (err) {
+        console.error(err);
+        res.send('View error log at server console.');
+    }
 })
 module.exports = router
