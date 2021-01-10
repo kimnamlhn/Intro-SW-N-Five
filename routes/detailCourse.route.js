@@ -13,7 +13,7 @@ router.get('/:id', async function (req, res) {
       var check = false;
       if(res.locals.accounttype === true){
         check = courseAuth.courseAuth(res.locals.stuAccount.idHocVien,coId)
-      }
+      }z
       const list = await detailModel.detailCourse(coId)
       const feedback = await detailModel.getFeedBack(coId)
       const relatedCourse = await detailModel.relatedCourse(coId)

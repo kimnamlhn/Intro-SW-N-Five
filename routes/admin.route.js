@@ -1,9 +1,10 @@
 const express = require('express');
-const auth = require('../middleware/auth.mdw');
+const Adminauth = require('../middleware/adminAuth.mdw');
+
 const adminModel = require('../models/admin.model');
 const router = express.Router();
 
-router.get('/', auth, async function (req, res) {
+router.get('/', Adminauth, async function (req, res) {
   const temp = await adminModel.single();
     res.render('admin/StudentManage',{
       list: temp,
@@ -70,7 +71,7 @@ router.get('/', auth, async function (req, res) {
 //   })
 
   
-    router.get('/del_course', async function (req, res) {
+    router.get('/del_course',Adminauth, async function (req, res) {
       const temp = await adminModel.getTeacher();
         res.render('admin/del_course',{
           list: temp,
@@ -82,7 +83,7 @@ router.get('/', auth, async function (req, res) {
         adminModel.delCourse(IdKhoaHoc)
         res.redirect(req.headers.referer);
       })
-      router.get('/statistical', async function (req, res) {
+      router.get('/statistical',Adminauth, async function (req, res) {
       const temp = await adminModel.getStatistical();
         res.render('admin/StatisticalPage',{
           list: temp,
@@ -90,7 +91,7 @@ router.get('/', auth, async function (req, res) {
         });
       })
   
-      router.get('/admin_manage', async function (req, res) {
+      router.get('/admin_manage', Adminauth,async function (req, res) {
         const temp = await adminModel.getAdmin();
           res.render('admin/admin_manage',{
             list: temp,
@@ -102,7 +103,7 @@ router.get('/', auth, async function (req, res) {
   
 
 
-    router.get('/teacher_manage', async function (req, res) {
+    router.get('/teacher_manage',Adminauth, async function (req, res) {
       const temp = await adminModel.getRegisterTeacher();
         res.render('admin/TeacherManage',{
           list: temp,
@@ -124,7 +125,7 @@ router.get('/', auth, async function (req, res) {
       })
     
 
-      router.get('/edit_course', async function (req, res) {
+      router.get('/edit_course',Adminauth, async function (req, res) {
         const temp = await adminModel.getTeacher();
           res.render('admin/edit_course',{
             list: temp,
@@ -132,7 +133,7 @@ router.get('/', auth, async function (req, res) {
           });
         })
 
-    router.get('/add_course', async function (req, res) {
+    router.get('/add_course',Adminauth, async function (req, res) {
       const temp = await adminModel.getAllTeacher();
       const cat = await adminModel.getAllCategory();
         res.render('admin/add_course',{
