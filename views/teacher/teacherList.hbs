@@ -1,17 +1,48 @@
-
-<div class="row">
-       <class class="row ">
-          {{#each this.teacher}}
-                <div class="card" style="width: 18rem;">
-                  <img class="card-img-top" src="/img/teacher/team-01.png" alt="Card image cap">
-                  <div class="card-body">
-                    <h5 class="card-title">{{TenGiangVien}}</h5>
-                    <h6 class="card-title">{{Email}}</h6>
-                    <a href="/teacher/mieuta" class="btn btn-primary">Go somewhere</a>
-                  </div>
-                </div>
-          {{/each}}
-       </div>
-     </div>   
-   </div>
+<form action="" method="post">
+    <div class="card">
+    <h5 class="card-header">
+      GIẢNG VIÊN
+    
+    </h5>
+    
+    {{#if this.empty}}
+    <div class="card-body">
+      <p class="card-text">Không có dữ liệu.</p>
+    </div>
+    {{else}}
+    <div class="card-body">
+      <div class="row">
+        {{#each this.teacher}}
+        <div class="col-sm-4 mb-3">
+          <div class="card h-100">
+            <img src="/img/teacher/team-01.png" class="card-img-top" alt="{{ProName}}"
+              title="{{ProName}}">
+            <div class="card-body">
+              <h6 class="card-title"> {{TenGiangVien}}</h6>
+              <h5 class="card-title text-danger">{{idGiangVien}}</h5>
+              <p class="card-text">
+                {{Email}}
+              </p>
+            </div>
+            <div class="card-footer">
+              <a class="btn btn-sm btn-outline-primary" href="/teacher/mieuta?id={{idGiangVien}}" role="button">
+                <i class="fa fa-eye" aria-hidden="true"></i>
+                Miêu Tả
+              </a>
+            
+            </div>
+          </div>
+        </div>
+        {{/each}}
+      </div>
+    </div>
+    {{/if}}
+    <div class="card-footer text-muted">
+      <div class="d-flex flex-row-reverse">
+        <div class="p-2">
+          <a name="" id="" class="btn btn-primary" href="/" role="button">TRỞ VỀ TRANG CHỦ  </a>
+        </div>
+      </div>
+    </div>
   </div>
+  </form>

@@ -26,14 +26,6 @@ router.post('/', async function(req, res) {
             err_message: 'Email này đã được sử dụng.'
         });
     }
-    const user = {
-        idTaiKhoan: null,
-        TenTaiKhoan: null,
-        MatKhau: hash,
-        Salt: null,
-        LoaiTaiKhoan: 2
-    }
-
   req.session.tmpUser = user
   const status = await login(Email);
   res.render('user/confirmOTP',{
