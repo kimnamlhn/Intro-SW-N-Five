@@ -9,7 +9,7 @@ module.exports = {
         return db.add(entity, TBL_TEACHER);
     },
     single: function(id) {
-        return db.load(`select * from ${TBL_TEACHER} where id = ${id} `)
+        return db.load(`select * from ${TBL_TEACHER} where idGiangVien = ${id} `)
     },
     patch: function(entity) {
         const condition = {
@@ -25,7 +25,7 @@ module.exports = {
     },
 
 
-    register(TenGiangVien, NgaySinh, MoTa, Email){
-        return db.load(`insert into GiangVienTam value (null, "${TenGiangVien}", null, "${MoTa}", null, "${Email}",0) `);    
+    register(TenGiangVien, NgaySinh, MoTa, Email) {
+        return db.load(`insert into GiangVienTam value (null, "${TenGiangVien}", null, "${MoTa}", null, "${Email}",0) `);
     }
 };
