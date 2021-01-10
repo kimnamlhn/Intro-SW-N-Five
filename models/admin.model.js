@@ -75,7 +75,7 @@ module.exports = {
         },
 
     addCourse(TenKhoaHoc,LinhVuc,GiangVien,MoTa){
-        return db.load(`insert into KhoaHoc value (NULL,NULL,'${TenKhoaHoc}','${MoTa}',null,null,null,null,null,null,null,${GiangVien},${GiangVien},${LinhVuc})`);
+        return db.load(`insert into KhoaHoc value (NULL,NULL,'${TenKhoaHoc}','${MoTa}',null,0,0,DATE_FORMAT(now(), "%m/%d/%y"),0,null,null,${GiangVien},${GiangVien},${LinhVuc})`);
     },
 
     async getAdmin() {
