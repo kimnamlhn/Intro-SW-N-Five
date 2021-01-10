@@ -1,7 +1,17 @@
+{{#section 'footer'}}
+   <script>
+       $('.deleteAccount').on('click', function () {
+         const id = $(this).data('id');
+           const frmId = '#frmDeleteAccount' + id
+         $(frmId).submit();
+  });
+   </script>
 
-    
-    
-    
+  
+
+	
+{{/section}}
+
     <div id="wrapper">
 
         <!-- Sidebar -->
@@ -25,7 +35,7 @@
 
 
             <!-- Nav Item - Pages Collapse Menu -->
-            <li class="nav-item active">
+            <li class="nav-item">
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo"
                     aria-expanded="true" aria-controls="collapseTwo">
                     <i class="fas fa-fw fa-cog"></i>
@@ -67,7 +77,7 @@
             </li>
 
             <!-- Nav Item - Tables -->
-            <li class="nav-item">
+            <li class="nav-item active">
                 <a class="nav-link" href="/admin/admin_manage">
                     <i class="fas fa-fw fa-table"></i>
                     <span>Quản lý Admin</span></a>
@@ -84,15 +94,9 @@
         </ul>
         <!-- End of Sidebar -->
 
-
-
         <!-- Content Wrapper -->
         <div id="content-wrapper" class="d-flex flex-column">
-     {{#if succ_message}}
-                <div class="alert alert-success" role="alert">
-                    {{succ_message}}
-                </div>
-    {{/if}}
+
             <!-- Main Content -->
             <div id="content">
 
@@ -102,62 +106,43 @@
 
                     <div class="card shadow mb-4">
                         <div class="card-header py-3">
-                            <h6 class="m-0 font-weight-bold text-primary">Thêm khóa học</h6>
+                            <h6 class="m-0 font-weight-bold text-primary">Danh sách admin</h6>
                         </div>
-                        <form method="POST" action="/admin/add_course/add" method="post" id="frmAddCourse">
-                            <div class="card-body">
-                                <table>
-                                    <tr>
-                                        <th>Tên khóa học</th>
-                                        <th>
-                                          <input type="text" id="inputName" name = "Name" class="form-control">
-                                        </th>    
-                                    </tr>
-                                    <tr>
-                                        <th>Lĩnh vực</th>
-                                        <th>
-                                          <select class="mr-2 form-control" id="CatOption" name="CatOption">
-                                              {{#if option}}
-                                                  {{#each option}}
-                                                  <option {{#if default}}selected{{/if}}>{{option}}</option>
-                                                  {{/each}}
-                                              {{else}}
-                                              {{#each this.CatList}}
-                                                <option value="{{idLinhVucCap2}}">{{TenLinhVuc}}</option>
-                                              {{/each}}
-                                              {{/if}}
-                                              
-                                          </select>
-                                        </th>    
-                                    </tr>
-                                    <tr>
-                                        <th>Giảng viên</th>
-                                        <th>
-                                          <select class="mr-2 form-control" id="TeaOption" name="TeaOption">
-                                              {{#if option}}
-                                                  {{#each option}}
-                                                  <option {{#if default}}selected{{/if}}>{{option}}</option>
-                                                  {{/each}}
-                                              {{else}}
-                                              {{#each this.TeaList}}
-                                                <option value="{{idGiangVien}}">{{TenGiangVien}}</option>
-                                              {{/each}}
-                                              {{/if}}
-                                              
-                                          </select>
-                                        </th>    
-                                    </tr>
-                                    <tr>
-                                      <th>Mô tả chi tiết</th>
-                                      <th>
-                                        <textarea id="editor" name = "Des"></textarea>
-                                      </th>
-                                    </tr>
-                              </table>
-                                    <button type="submit" class="btn btn-primary" style="margin-left: 6rem;">Submit</button>
-                            </div>
+                        <div class="card-body">
+                            <div class="table-responsive">
+                                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                                    <thead>
+                                        <tr>
+                                            <th>Id</th>
+                                            <th>Tên tài khoản</th>
+                                            <th>Email</th>
+                                            <th>Xóa</th>
+                                        </tr>
+                                    </thead>
+                                   
+                                    <tbody>
+                                         {{#each this.list}}
+                                        <tr>
+                                            <td>{{idTaiKhoan}}</td>
+                                            <td>{{TenTaiKhoan}}</td>
+                                            <td>{{Email}}</td>
+                                            <td> 
+                                              <a data-id="{{idTaiKhoan}}"  class="icon_btn btn-sm deleteAccount" href="javascript:;" role="button"
+                                                title="Delete Account">
+                                                <i class="fa fa-trash" aria-hidden="true"></i>
+                                              </a>
+                                            </td>
+                                        </tr>
+                                        <form action="/admin/admin_manage/delete" method="post" id="frmDeleteAccount{{idTaiKhoan}}">
+                                        <input type="hidden" name="idTaiKhoan"  value={{idTaiKhoan}}>
+                                        </form>
+                                        {{/each}}
 
-                        </form>
+                       
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
                     </div>
 
                 </div>
@@ -165,8 +150,8 @@
 
             </div>
             <!-- End of Main Content -->
+
         </div>
         <!-- End of Content Wrapper -->
-
 
     </div>

@@ -82,13 +82,6 @@ router.get('/', auth, async function (req, res) {
         adminModel.delCourse(IdKhoaHoc)
         res.redirect(req.headers.referer);
       })
-      router.get('/add_course', async function (req, res) {
-      const temp = await adminModel.getTeacher();
-        res.render('admin/add_course',{
-          list: temp,
-          empty: temp === null
-        });
-      })
       router.get('/statistical', async function (req, res) {
       const temp = await adminModel.getStatistical();
         res.render('admin/StatisticalPage',{
@@ -98,18 +91,13 @@ router.get('/', auth, async function (req, res) {
       })
   
       router.get('/admin_manage', async function (req, res) {
-        const temp = await adminModel.getTeacher();
-          res.render('admin/quan_ly_admin',{
+        const temp = await adminModel.getAdmin();
+          res.render('admin/admin_manage',{
             list: temp,
             empty: temp === null
           });
         })
-        router.get('/admin_manage/add', async function (req, res) {
-          const temp = await adminModel.getTeacher();
-            res.render('admin/add_admin',{
-              list: temp,
-              empty: temp === null
-            });
+        router.post('/admin_manage/delete', async function (req, res) {
           })
   
 
@@ -145,16 +133,21 @@ router.get('/', auth, async function (req, res) {
         })
 
     router.get('/add_course', async function (req, res) {
-        res.render('./admin/add_course');
+      const temp = await adminModel.getAllTeacher();
+      const cat = await adminModel.getAllCategory();
+        res.render('admin/add_course',{
+          CatList: cat,
+          TeaList: temp,
+          empty: temp === null
+        });
       })
 
+
     router.post('/add_course/add', async function(req, res) {
-
-    const teacher = await adminModel.addCourse(req.body.Name, req.body.Des, req.body.Tea);
-
-    res.render('./admin/add_course', {
-      succ_message: "Add course success!"
-    });
+      await adminModel.addCourse(req.body.Name, req.body.CatOption, req.body.TeaOption, req.body.Des);
+      res.render('./admin/add_course', {
+        succ_message: "Thêm khóa học thành công!"
+      });
 
   })
           
