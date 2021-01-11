@@ -1,17 +1,19 @@
 {{#section 'footer'}}
    <script>
-       $('.deleteAccount').on('click', function () {
-         const id = $(this).data('id');
-           const frmId = '#frmDeleteAccount' + id
-         $(frmId).submit();
+       $('.deleteCourse').on('click', function () {
+         $('#frmDeleteCourse').submit();
+  });
+   </script>
+      <script>
+       $('.addLesson').on('click', function () {
+         $('#frmAddLesson').submit();
   });
    </script>
 
-  
+
 
 	
 {{/section}}
-
     <div id="wrapper">
 
         <!-- Sidebar -->
@@ -35,7 +37,7 @@
 
 
             <!-- Nav Item - Pages Collapse Menu -->
-            <li class="nav-item">
+            <li class="nav-item active">
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo"
                     aria-expanded="true" aria-controls="collapseTwo">
                     <i class="fas fa-fw fa-cog"></i>
@@ -77,7 +79,7 @@
             </li>
 
             <!-- Nav Item - Tables -->
-            <li class="nav-item active">
+            <li class="nav-item ">
                 <a class="nav-link" href="/admin/admin_manage">
                     <i class="fas fa-fw fa-table"></i>
                     <span>Quản lý Admin</span></a>
@@ -96,8 +98,11 @@
 
         <!-- Content Wrapper -->
         <div id="content-wrapper" class="d-flex flex-column">
-
-            <!-- Main Content -->
+     {{#if succ_message}}
+                <div class="alert alert-success" role="alert">
+                    {{succ_message}}
+                </div>
+    {{/if}}            <!-- Main Content -->
             <div id="content">
 
 
@@ -106,39 +111,48 @@
 
                     <div class="card shadow mb-4">
                         <div class="card-header py-3">
-                            <h6 class="m-0 font-weight-bold text-primary">Danh sách admin</h6>
+                            <h6 class="m-0 font-weight-bold text-primary">Danh sách khóa học</h6>
                         </div>
                         <div class="card-body">
                             <div class="table-responsive">
                                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                                     <thead>
                                         <tr>
-                                            <th>Id</th>
-                                            <th>Tên tài khoản</th>
-                                            <th>Email</th>
-                                            <th>Xóa</th>
+                                            <th scope="col">ID </th>
+                                            <th scope="col">Tên khóa học</th>
+                                            <th scope="col">Tên giảng viên</th>
+                                            <th scope="col">Thêm</th>
+                                            <th scope="col">Xóa</th>
+
                                         </tr>
                                     </thead>
-                                   
+                                                
                                     <tbody>
-                                         {{#each this.list}}
+                                    {{#each this.list}}
                                         <tr>
-                                            <td>{{idTaiKhoan}}</td>
-                                            <td>{{TenTaiKhoan}}</td>
-                                            <td>{{Email}}</td>
-                                            <td> 
-                                              <a data-id="{{idTaiKhoan}}"  class="icon_btn btn-sm deleteAccount" href="javascript:;" role="button"
-                                                title="Delete Account">
-                                                <i class="fa fa-trash" aria-hidden="true"></i>
-                                              </a>
+                                            <th scope="row">{{IdKhoaHoc}}</th>
+                                            <td>{{TenKhoaHoc}}</td>
+                                            <td>{{TenGiangVien}}</td>
+                                            <td>
+                                                <a name="" id="" class="icon_btn btn-sm" href="javascript:;" role="button"
+                                                    title="Add lesson">
+                                                    <i class="fa fa-plus addLesson" aria-hidden="true"></i>
+                                                </a>
+                                            </td>                                            <td>
+                                                <a name="" id="" class="icon_btn btn-sm" href="javascript:;" role="button"
+                                                    title="Delete course">
+                                                    <i class="fa fa-trash deleteCourse" aria-hidden="true"></i>
+                                                </a>
                                             </td>
                                         </tr>
-                                        <form action="/admin/admin_manage/delete" method="post" id="frmDeleteAccount{{idTaiKhoan}}">
-                                        <input type="hidden" name="idTaiKhoan"  value={{idTaiKhoan}}>
-                                        </form>
-                                        {{/each}}
-
-                       
+                                            <form action="/admin/course_list/{{IdKhoaHoc}}" method="post" id="frmAddLesson">
+                                                <input type="hidden" name="IdKhoaHoc" value="{{IdKhoaHoc}}">
+                                            </form>                                            <!--delete course-->
+                                            <form action="/admin/course_list/delete" method="post" id="frmDeleteCourse">
+                                                <input type="hidden" name="IdKhoaHoc" value="{{IdKhoaHoc}}">
+                                            </form>
+                                            <!--delete course .//-->
+                                    {{/each}}
                                     </tbody>
                                 </table>
                             </div>

@@ -4,6 +4,7 @@ const bcrypt = require('bcryptjs');
 const userModel = require('../models/user.model');
 const stuModel = require('../models/student.model')
 const LoginAuth = require('../middleware/LoginAuth.mdw');
+const authModel = require('../models/auth.model')
 router.get('/',LoginAuth, async function (req, res) {
     const ref = req.headers.referer
     if (req.headers.referer) {
@@ -11,6 +12,10 @@ router.get('/',LoginAuth, async function (req, res) {
       }
     
     res.render('user/login');
+  })
+  router.get('/other', async function (req, res) {
+  
+      res.render('guest/login')
   })
   
   router.post('/', async function (req, res) {
@@ -21,7 +26,7 @@ router.get('/',LoginAuth, async function (req, res) {
       });
     }
     const user = await userModel.singleByidTaiKhoan(stu[0].TaiKhoan_idTaiKhoan);
-
+    console.log(user)
     const ret =  bcrypt.compareSync(req.body.password, user.MatKhau);
     if (ret === false) {
       return res.render('user/login', {
@@ -34,9 +39,53 @@ router.get('/',LoginAuth, async function (req, res) {
     res.redirect(url);
   })
 
+  router.post('/other', async function (req, res) {
+    const type = req.body.option;
+    if(type === 'Admin'){
+      const admin = await authModel.checkAdmin(req.body.username)
+      if(admin === null) {
+        return res.render('guest/login', {
+          err_message: 'Invalid Username or password.'
+        });
+      }
+      const ret =  bcrypt.compareSync(req.body.password, admin.MatKhau);
+      if (ret === false) {
+        return res.render('user/login', {
+          err_message: 'Invalid Username or password.'
+        });
+      }
+      
+      req.session.Admintype=true;
+      req.session.authAdmin= admin;
+      res.redirect('/admin');
+    }
+    else if(type === 'Giảng viên'){
+      const teacher = await authModel.checkTeacher(req.body.username)
+      console.log(teacher)
+      if(teacher=== null) {
+        return res.render('guest/login', {
+          err_message: 'Invalid Username or password.'
+        });
+      }
+      const ret =  bcrypt.compareSync(req.body.password, teacher.MatKhau);
+      if (ret === false) {
+        return res.render('user/login', {
+          err_message: 'Invalid Username or password.'
+        });
+      }
+      
+      req.session.Teachertype=true;
+      req.session.authTeacher =  teacher;
+      res.redirect('/teacher/mieuta');
+    }
+
+  })
+
   router.post('/-out', async function (req, res) {
 
     req.session.accounttype=false;
+    req.session.Admintype=false;
+    req.session.Teachertype=false;
     req.session.authUser=null;
     res.redirect(req.headers.referer);
   })

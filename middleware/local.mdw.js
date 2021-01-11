@@ -6,7 +6,15 @@ module.exports = function (app) {
     if (typeof (req.session.accounttype) === 'undefined') {
       req.session.accounttype = false;
     }
+    else if (typeof (req.session.Admintype) === 'undefined') {
+      req.session.Admintype = false;
+    }
+    else if (typeof (req.session.Teachertype) === 'undefined') {
+      req.session.Teachertype = false;
+    }
     res.locals.accounttype = req.session.accounttype;
+    res.locals.Admintype = req.session.Admintype;
+    res.locals.Teachertype = req.session.Teachertype;
     res.locals.authUser = req.session.authUser;
     if(res.locals.accounttype === true){
       const HocVien = await stuModel.singleByidTaiKhoan(res.locals.authUser.idTaiKhoan)

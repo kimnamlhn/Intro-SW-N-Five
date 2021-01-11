@@ -34,7 +34,7 @@
                 <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <a class="collapse-item" href="/admin/add_course">Thêm khóa học</a>
-                        <a class="collapse-item" href="/admin/del_course">Danh sách khóa học</a>
+                        <a class="collapse-item" href="/admin/course_list">Danh sách khóa học</a>
                     </div>
                 </div>
             </li>
@@ -148,12 +148,18 @@
                                         </th>    
                                     </tr>
                                     <tr>
+                                      <th>Hình đại diện </th>
+                                      <th>
+                                        <textarea id="editor" name = "Pic"></textarea>
+                                      </th>
+                                    </tr>                                    <tr>
                                       <th>Mô tả chi tiết</th>
                                       <th>
                                         <textarea id="editor" name = "Des"></textarea>
                                       </th>
                                     </tr>
                               </table>
+
                                     <button type="submit" class="btn btn-primary" style="margin-left: 6rem;">Submit</button>
                             </div>
 
